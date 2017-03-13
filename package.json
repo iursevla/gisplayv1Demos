@@ -1,0 +1,19 @@
+{
+  "name": "gisplayv2demos",
+  "version": "1.0.0",
+  "description": "Home for gisplay v2 demos.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iursevla/gisplayv2Demos.git"
+  },
+  "author": "Rui Alves",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/iursevla/gisplayv2Demos/issues"
+  },
+  "homepage": "https://github.com/iursevla/gisplayv2Demos#readme"
+}
