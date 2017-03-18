@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/Gisplay/Gisplay.js | Gisplay API Documentation API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">Gisplay</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Aesthetic.js~Aesthetic.html">Aesthetic</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Feature.js~Feature.html">Feature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Gisplay.js~Gisplay.html">Gisplay</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Legend.js~Legend.html">Legend</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">Gisplay/Maps</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper.html">BGMapWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/ChangeMap.js~ChangeMap.html">ChangeMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/ChorochromaticMap.js~ChorochromaticMap.html">ChorochromaticMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/Choropleth.js~Choropleth.html">Choropleth</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/DotMap.js~DotMap.html">DotMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/Map.js~Map.html">Map</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/ProportionalSymbolsMap.js~ProportionalSymbolsMap.html">ProportionalSymbolsMap</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/Gisplay/Gisplay.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Choropleth } from &apos;./Maps/Choropleth&apos;;
+import { DotMap } from &apos;./Maps/DotMap&apos;;
+import { ChangeMap } from &apos;./Maps/ChangeMap&apos;;
+import { ProportionalSymbolsMap } from &apos;./Maps/ProportionalSymbolsMap&apos;
+import { ChorochromaticMap } from &apos;./Maps/ChorochromaticMap&apos;;
+
+/**
+ * Gisplay API with one method for each map available.
+ */
+export class Gisplay {
+
+    constructor() {
+        console.log(&quot;Gisplay Class constructor&quot;);
+        window.profiling = true;
+        window.maps = new Array();
+        window.mapcount = 0;
+
+        //WebGL API
+        window._vertexcount = 0;
+        window._tricount = 0;
+        /*return this;*/
+    }
+
+    makeChoropleth(bgmap, geometry, options) {
+        if (this.profiling == true)
+            this.startTimeStamp = Date.now();
+        /*console.log(options)*/
+        const gismap = new Choropleth(bgmap, geometry, options);
+        this.makeMap(gismap, options);//options.defaultid);
+    }
+
+    makeDotMap(bgmap, geometry, options) {
+        if (this.profiling == true)
+            this.startTimeStamp = Date.now();
+        const gismap = new DotMap(bgmap, geometry, options);
+        this.makeMap(gismap, options);
+
+    }
+
+    makeChangeMap(bgmap, geometry, options) {
+        if (this.profiling == true)
+            this.startTimeStamp = Date.now();
+        const gismap = new ChangeMap(bgmap, geometry, options);
+        this.makeMap(gismap, options);
+    }
+
+    makeProportionalSymbolsMap(bgmap, geometry, options) {
+        if (this.profiling == true)
+            this.startTimeStamp = Date.now();
+        const gismap = new ProportionalSymbolsMap(bgmap, geometry, options);
+        this.makeMap(gismap, options); //@Rui add options (n tinha WUT)
+
+    }
+
+    makeChorochromaticMap(bgmap, geometry, options) {
+        if (this.profiling == true)
+            this.startTimeStamp = Date.now();
+        const gismap = new ChorochromaticMap(bgmap, geometry, options);
+        this.makeMap(gismap, options);//@Rui .defaultid);
+    }
+
+    makeMap(gismap, options) {
+        let defaultid = options.defaultid != null ? defaultid : 1;
+        setTimeout(console =&gt; {
+            /*alert(this.profiling);*/
+            let start = 0;
+            if (this.profiling == true)
+                start = Date.now();
+            /*defaultid = defaultid != null ? defaultid : 1;*/
+            if (gismap.colorscheme == undefined)
+                gismap.colorscheme = gismap.defaults(defaultid).colorScheme;
+            if (gismap.classbreaks == undefined) {
+                if (gismap.numberofclasses == undefined) {
+                    gismap.numberofclasses = gismap.defaults(defaultid).numberOfClasses;
+                }
+                gismap.preProcessData(gismap.geometry, gismap.numberofclasses, gismap.algorithm, gismap.colorscheme);
+            }
+
+            //gismap.processData(gismap.geometry);
+            gismap.loadGeoJSON(gismap.geometry);
+            let start2 = 0;
+            if (this.profiling == true) {
+                start2 = Date.now();
+                window.console.log(`Tempo de processamento do dados (segundos): ${(start2 - start) / 1000}`);
+            }
+            gismap.draw();
+
+            let end = 0;
+            if (this.profiling == true) {
+                end = Date.now();
+                window.console.log(`Tempo de desenho do mapa (segundos): ${(end - start2) / 1000}`);
+            }
+            if (options.legend != false)
+                gismap.buildLegend();
+            if (options.loader != false) {
+                gismap.loader();
+            }
+            if (this.profiling == true) {
+                end = Date.now();
+                window.console.log(`Tempo total (segundos): ${(end - this.startTimeStamp) / 1000}`);
+            }
+        }, 1);
+    }
+
+    changemapDefaults(defaultid) {
+        const options = {};
+        switch (defaultid) {
+            case 1:
+                break;
+            default:
+                break;
+        }
+        return options;
+    }
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>

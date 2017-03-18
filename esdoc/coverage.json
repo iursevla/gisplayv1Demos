@@ -1,0 +1,232 @@
+{
+  "coverage": "5.35%",
+  "expectCount": 168,
+  "actualCount": 9,
+  "files": {
+    "src/Gisplay/Aesthetic.js": {
+      "expectCount": 14,
+      "actualCount": 0,
+      "undocumentLines": [
+        3,
+        19,
+        42,
+        27,
+        5,
+        56,
+        14,
+        7,
+        23,
+        6,
+        15,
+        11,
+        9,
+        8
+      ]
+    },
+    "src/Gisplay/Maps/BGMapWrapper.js": {
+      "expectCount": 12,
+      "actualCount": 0,
+      "undocumentLines": [
+        2,
+        3,
+        13,
+        65,
+        9,
+        38,
+        34,
+        30,
+        46,
+        79,
+        5,
+        42
+      ]
+    },
+    "src/Gisplay/Maps/ChangeMap.js": {
+      "expectCount": 15,
+      "actualCount": 1,
+      "undocumentLines": [
+        13,
+        14,
+        55,
+        10,
+        61,
+        25,
+        47,
+        12,
+        16,
+        56,
+        42,
+        43,
+        35,
+        18
+      ]
+    },
+    "src/Gisplay/Maps/ChorochromaticMap.js": {
+      "expectCount": 3,
+      "actualCount": 1,
+      "undocumentLines": [
+        10,
+        14
+      ]
+    },
+    "src/Gisplay/Maps/Choropleth.js": {
+      "expectCount": 10,
+      "actualCount": 1,
+      "undocumentLines": [
+        11,
+        32,
+        9,
+        41,
+        21,
+        12,
+        14,
+        34,
+        15
+      ]
+    },
+    "src/Gisplay/Maps/DotMap.js": {
+      "expectCount": 10,
+      "actualCount": 1,
+      "undocumentLines": [
+        12,
+        28,
+        9,
+        35,
+        21,
+        11,
+        15,
+        29,
+        13
+      ]
+    },
+    "src/Gisplay/Feature.js": {
+      "expectCount": 2,
+      "actualCount": 1,
+      "undocumentLines": [
+        7
+      ]
+    },
+    "src/Gisplay/Gisplay.js": {
+      "expectCount": 10,
+      "actualCount": 1,
+      "undocumentLines": [
+        105,
+        12,
+        40,
+        55,
+        24,
+        32,
+        62,
+        47,
+        26
+      ]
+    },
+    "src/Gisplay/Legend.js": {
+      "expectCount": 16,
+      "actualCount": 1,
+      "undocumentLines": [
+        79,
+        5,
+        196,
+        154,
+        99,
+        11,
+        16,
+        20,
+        190,
+        24,
+        255,
+        157,
+        271,
+        170,
+        6
+      ]
+    },
+    "src/Gisplay/Maps/Map.js": {
+      "expectCount": 61,
+      "actualCount": 1,
+      "undocumentLines": [
+        95,
+        234,
+        1130,
+        1122,
+        1124,
+        1127,
+        108,
+        463,
+        238,
+        561,
+        1128,
+        21,
+        348,
+        502,
+        278,
+        637,
+        799,
+        1143,
+        702,
+        890,
+        567,
+        1125,
+        1095,
+        56,
+        520,
+        1257,
+        357,
+        968,
+        260,
+        274,
+        1123,
+        486,
+        549,
+        1131,
+        1135,
+        491,
+        1104,
+        1139,
+        1106,
+        1132,
+        178,
+        1126,
+        179,
+        1133,
+        1136,
+        1129,
+        168,
+        344,
+        282,
+        26,
+        488,
+        528,
+        99,
+        992,
+        45,
+        1113,
+        1134,
+        443,
+        541,
+        433
+      ]
+    },
+    "src/Gisplay/Maps/ProportionalSymbolsMap.js": {
+      "expectCount": 15,
+      "actualCount": 1,
+      "undocumentLines": [
+        12,
+        14,
+        43,
+        9,
+        56,
+        28,
+        19,
+        11,
+        16,
+        44,
+        15,
+        21,
+        22,
+        17
+      ]
+    }
+  }
+}

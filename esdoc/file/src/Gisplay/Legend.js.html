@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <base data-ice="baseUrl" href="../../../">
+  <title data-ice="title">src/Gisplay/Legend.js | Gisplay API Documentation API Document</title>
+  <link type="text/css" rel="stylesheet" href="css/style.css">
+  <link type="text/css" rel="stylesheet" href="css/prettify-tomorrow.css">
+  <script src="script/prettify/prettify.js"></script>
+  
+  
+  <script src="script/manual.js"></script>
+</head>
+<body class="layout-container" data-ice="rootContainer">
+
+<header>
+  <a href="./">Home</a>
+  
+  <a href="identifiers.html">Reference</a>
+  <a href="source.html">Source</a>
+  
+  
+  <div class="search-box">
+  <span>
+    <img src="./image/search.png">
+    <span class="search-input-edge"></span><input class="search-input"><span class="search-input-edge"></span>
+  </span>
+    <ul class="search-result"></ul>
+  </div>
+</header>
+
+<nav class="navigation" data-ice="nav"><div>
+  <ul>
+    
+  <li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">Gisplay</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Aesthetic.js~Aesthetic.html">Aesthetic</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Feature.js~Feature.html">Feature</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Gisplay.js~Gisplay.html">Gisplay</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Legend.js~Legend.html">Legend</a></span></span></li>
+<li data-ice="doc"><div data-ice="dirPath" class="nav-dir-path">Gisplay/Maps</div><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper.html">BGMapWrapper</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/ChangeMap.js~ChangeMap.html">ChangeMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/ChorochromaticMap.js~ChorochromaticMap.html">ChorochromaticMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/Choropleth.js~Choropleth.html">Choropleth</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/DotMap.js~DotMap.html">DotMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/Map.js~Map.html">Map</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/ProportionalSymbolsMap.js~ProportionalSymbolsMap.html">ProportionalSymbolsMap</a></span></span></li>
+</ul>
+</div>
+</nav>
+
+<div class="content" data-ice="content"><h1 data-ice="title">src/Gisplay/Legend.js</h1>
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * This class represents the Map Legend. 15/03
+ */
+export class Legend {
+    constructor(id, title) {
+        this.title = title;
+        this.init(id);
+        return this;
+    }
+
+    insertLegend(map) {
+        this.legendDiv.appendChild(this.table);
+        map.getContainer().appendChild(this.legendDiv);
+    }
+
+    insertPointRow(currentaes, mapobj) {
+        this.insertRow(currentaes, mapobj, 2);
+    }
+
+    insertPolygonRow(currentaes, mapobj) {
+        this.insertRow(currentaes, mapobj, 1);
+    }
+
+    insertRow(currentaes, mapobj, type) {
+
+        const row = document.createElement(&apos;tr&apos;);
+        const value = document.createElement(&apos;td&apos;);
+        const color = document.createElement(&apos;td&apos;);
+        let text;
+        if (typeof currentaes.range[0] === &apos;number&apos;) {
+            const mininput = currentaes.range[0] != null ? currentaes.range[0] : mapobj.min;
+            const maxinput = currentaes.range[1] != null ? currentaes.range[1] : mapobj.max;
+            if (currentaes.outer == false)
+                text = document.createTextNode(`[${mininput}, ${maxinput}[`);
+            else
+                text = document.createTextNode(`[${mininput}, ${maxinput}]`);
+        }
+        else
+            text = document.createTextNode(currentaes.range[0]);
+        value.appendChild(text);
+
+        const colorDiv = document.createElement(&apos;div&apos;);
+        colorDiv.style.position = &apos;relative&apos;;
+        const rgbc = `rgba(${currentaes.fillColor[0]},${currentaes.fillColor[1]},${currentaes.fillColor[2]},${currentaes.fillColor[3]})`;
+        colorDiv.style[&apos;backgroundColor&apos;] = rgbc;
+        if (type == 1) {//polygon
+            colorDiv.style.height = 25;//(mapCanvas.height / 10);
+            colorDiv.style.width = 80;//(mapCanvas.width / 10);
+            if (currentaes.strokeColor != null &amp;&amp; currentaes != undefined)
+                colorDiv.style[&apos;borderColor&apos;] = `rgba(${currentaes.strokeColor[0]},${currentaes.strokeColor[1]},${currentaes.strokeColor[2]},${currentaes.strokeColor[3]})`;
+            colorDiv.className = &apos;_gisplayrectangle&apos;;
+        }
+        else if (type == 2) {//point
+            let size;
+            if (currentaes.pointSize != null) {
+                size = Math.max(currentaes.pointSize, 5);
+            }
+            else
+                size = 25;
+            colorDiv.style.height = size;
+            colorDiv.style.width = size;
+            colorDiv.className = &apos;_gisplaycircle&apos;;
+        }
+
+
+        color.appendChild(colorDiv);
+
+        row.appendChild(color);
+        row.appendChild(value);
+
+
+
+        row.onclick = function () {
+            if (window.profiling == true)
+                var start = Date.now();
+            if (mapobj.legendToggle != false) {
+                const toFade = !currentaes.enableDisable();
+                if (toFade == true) {
+                    this.className += &quot; _gisplayfade&quot;;
+                }
+                else {
+                    this.className = this.className.replace(/(?:^|\s)_gisplayfade(?!\S)/g, &apos;&apos;);
+                }
+            }
+            if (mapobj.legendOnClickCall != null &amp;&amp; mapobj.legendOnClickCall != undefined)
+                mapobj.legendOnClickCall(currentaes);
+            mapobj.draw();
+            if (window.profiling == true) {
+                const end = Date.now();
+                window.console.log(`Tempo de processamento de filtragem pela legenda (segundos): ${(end - start) / 1000}`);
+            }
+
+        };
+
+        this.table.appendChild(row);
+
+    }
+
+    insertGradient(mapobj, left, middle, right) {
+        const row = document.createElement(&apos;tr&apos;);
+        const value = document.createElement(&apos;td&apos;);
+        const valueDiv = document.createElement(&apos;div&apos;);
+        value.colSpan = 2;
+        value.style.textAlign = &apos;center&apos;;
+        let numberof = 5;
+        if (mapobj.aesthetics.length &gt; 5)
+            numberof = mapobj.aesthetics.length;
+        let strcolor = &apos;&apos;;
+        for (let i = 0; i &lt; numberof; i++) {
+            const color = mapobj.fcolor(i / numberof).rgb();
+            strcolor += `,rgba(${Math.round(color[0])},${Math.round(color[1])},${Math.round(color[2])},${mapobj.alpha})`;
+        }
+        strcolor += &apos;) &apos;;
+        valueDiv.style.background = `-webkit-linear-gradient(left${strcolor}`;
+
+        valueDiv.style.height = 25;//(mapCanvas.height / 10);
+        valueDiv.style.width = 130;//(mapCanvas.width / 10);
+
+        const row2 = document.createElement(&apos;tr&apos;);
+        const value2 = document.createElement(&apos;td&apos;);
+        value2.colSpan = 2;
+
+        const divleft = document.createElement(&apos;div&apos;);
+        divleft.style.textAlign = &apos;left&apos;;
+        divleft.style.width = &apos;33%&apos;;
+        divleft.style.display = &quot;inline-block&quot;;
+        const lefttext = document.createTextNode(left);
+        const divmid = document.createElement(&apos;div&apos;);
+        divmid.style.textAlign = &apos;center&apos;;
+        divmid.style.width = &apos;33%&apos;;
+        divmid.style.display = &quot;inline-block&quot;;
+        const text = document.createTextNode(middle);
+        const divright = document.createElement(&apos;div&apos;);
+        divright.style.textAlign = &apos;right&apos;;
+        divright.style.width = &apos;33%&apos;;
+        divright.style.display = &quot;inline-block&quot;;
+        const righttext = document.createTextNode(right);
+
+
+
+        divleft.appendChild(lefttext);
+        divmid.appendChild(text);
+        divright.appendChild(righttext);
+        value2.appendChild(divleft);
+        value2.appendChild(divmid);
+        value2.appendChild(divright);
+        value.appendChild(valueDiv);
+        row2.appendChild(value2);
+        row.appendChild(value);
+        this.table.appendChild(row);
+        this.table.appendChild(row2);
+    }
+
+    init(id, classname) {
+        //console.log(&quot;id == &quot; + id);
+        const mapCanvas = document.getElementById(`mapCanvas${id}`);
+        this.legendDiv = document.createElement(&apos;div&apos;);
+        if (classname != undefined &amp;&amp; classname != null) {
+            this.legendDiv.className = classname;
+        }
+        else {
+            this.legendDiv.className = &apos;_gisplaylegendBR&apos;;
+        }
+        this.legendDiv.id = `legendDiv${id}`;
+
+
+
+
+
+        this.table = document.createElement(&apos;table&apos;);
+        this.table.style.zIndex = &quot;2000&quot;;
+        const thvalue = document.createElement(&apos;th&apos;);
+        const thcolor = document.createElement(&apos;th&apos;);
+        thcolor.style.align = &quot;center&quot;;
+        //thcolor.style.width = 100;
+        this.table.appendChild(thcolor);
+        this.table.appendChild(thvalue);
+        const titlerow = document.createElement(&apos;tr&apos;);
+        const titletd = document.createElement(&apos;td&apos;);
+        titletd.colSpan = 2;
+        titletd.style.textAlign = &apos;center&apos;;
+        titletd.style.width = 100;
+        const titletext = document.createTextNode(this.title);
+        titletd.appendChild(titletext);
+        titlerow.appendChild(titletd);
+        this.table.appendChild(titlerow);
+
+    }
+
+    insertProportionalSymbols(currentaes, mapobj, numberof) {
+        if (this.lastdiv == undefined) {
+            var row = document.createElement(&apos;tr&apos;);
+            var value = document.createElement(&apos;td&apos;);
+            value.colSpan = 2;
+            value.style.textAlign = &apos;center&apos;;
+            this.firstInsertion = true;
+        } else { this.firstInsertion = false; }
+
+        const rgbc = `rgba(${currentaes.fillColor[0]},${currentaes.fillColor[1]},${currentaes.fillColor[2]},${1})`;
+        let strokecolor;
+
+        if (currentaes.strokeColor != null &amp;&amp; currentaes != undefined)
+            strokecolor = `rgba(${currentaes.strokeColor[0]},${currentaes.strokeColor[1]},${currentaes.strokeColor[2]},${currentaes.strokeColor[3]})`;
+        else
+            strokecolor = `rgba(${0},${0},${0},${1})`;
+
+        for (let i = numberof - 1; i &gt;= 0; i--) {
+            const current = document.createElement(&apos;div&apos;);
+            let propvalue;
+            if (this.firstInsertion == false &amp;&amp; i == (numberof - 1) || numberof == 1)
+                propvalue = currentaes.range[1];
+            else
+                propvalue = mapobj.min + i / (numberof - 1) * (mapobj.max - mapobj.min);
+
+            const text = document.createTextNode(this.round(propvalue));
+            current.appendChild(text);
+            const colorDiv = document.createElement(&apos;div&apos;);
+            colorDiv.style.position = &apos;relative&apos;;
+            colorDiv.style.backgroundColor = rgbc;
+            colorDiv.className = &apos;_gisplayproportionalcircle&apos;;
+            colorDiv.style.borderColor = strokecolor;
+            const temppointsize = ((mapobj.maxpointsize - mapobj.minpointsize) / (mapobj.max - mapobj.min)) * (propvalue - mapobj.min);
+            const size = Math.max(temppointsize, 7.5);
+            colorDiv.style.height = size;
+            colorDiv.style.width = size;
+            colorDiv.style.inherit = false;
+
+            colorDiv.onclick = function (e) {
+                if (window.profiling == true)
+                    var start = Date.now();
+                if (mapobj.legendToggle != false) {
+                    const toFade = !currentaes.enableDisable();
+                    if (toFade == true) {
+                        this.className += &quot; _gisplayfade&quot;;
+                    }
+                    else {
+                        this.className = this.className.replace(/(?:^|\s)_gisplayfade(?!\S)/g, &apos;&apos;);
+                    }
+                }
+                if (mapobj.legendOnClickCall != null &amp;&amp; mapobj.legendOnClickCall != undefined)
+                    mapobj.legendOnClickCall(currentaes);
+                mapobj.draw();
+                if (window.profiling == true) {
+                    const end = Date.now();
+                    window.console.log(`Tempo de processamento de filtragem pela legenda (segundos): ${(end - start) / 1000}`);
+                }
+                if (!e) var e = window.event;
+                e.cancelBubble = true;
+                if (e.stopPropagation) e.stopPropagation();
+
+            };
+            current.appendChild(colorDiv);
+            if (/*i!= (numberof-1) &amp;&amp;*/ this.lastdiv != undefined) {
+                this.lastdiv.appendChild(current);
+                this.lastdiv = colorDiv;
+            }
+            else {
+                value.appendChild(current);
+                this.lastdiv = colorDiv;
+            }
+
+        }
+        if (this.firstInsertion == true) {
+            row.appendChild(value);
+            this.table.appendChild(row);
+        }
+
+
+    }
+
+    round(value, exp) {//@Rui Added cuz its used by insertProportionalSymbols
+        if (typeof exp === &apos;undefined&apos; || +exp === 0)
+            return Math.round(value);
+
+        value = +value;
+        exp = +exp;
+
+        if (isNaN(value) || !(typeof exp === &apos;number&apos; &amp;&amp; exp % 1 === 0))
+            return NaN;
+
+        // Shift
+        value = value.toString().split(&apos;e&apos;);
+        value = Math.round(+(value[0] + &apos;e&apos; + (value[1] ? (+value[1] + exp) : exp)));
+
+        // Shift back
+        value = value.toString().split(&apos;e&apos;);
+        return +(value[0] + &apos;e&apos; + (value[1] ? (+value[1] - exp) : -exp));
+    }
+}</code></pre>
+
+</div>
+
+<footer class="footer">
+  Generated by <a href="https://esdoc.org">ESDoc<span data-ice="esdocVersion">(0.5.2)</span><img src="./image/esdoc-logo-mini-black.png"></a>
+</footer>
+
+<script src="script/search_index.js"></script>
+<script src="script/search.js"></script>
+<script src="script/pretty-print.js"></script>
+<script src="script/inherited-summary.js"></script>
+<script src="script/test-summary.js"></script>
+<script src="script/inner-link.js"></script>
+<script src="script/patch-for-local.js"></script>
+</body>
+</html>
