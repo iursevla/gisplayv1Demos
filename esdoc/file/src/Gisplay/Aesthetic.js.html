@@ -154,10 +154,9 @@ export class Aesthetic {
     }
 
     /**
-     * Checks the existence or not ? of {Aesthethic._attr}
-     * 
-     * @param {string} value - The attribute  
-     * @returns {boolean} - True if the value is ?
+     * Verifies the existence or not of the property Aesthethic._attr and if it fits inside this Aesthetic range.
+     * @param {string} value - The attribute ?.
+     * @returns {boolean} - True if there&apos;s no range or it is inside the range or ?, otherwise, false.
      * 
      * @memberOf Aesthetic
      */
@@ -173,6 +172,14 @@ export class Aesthetic {
         }
     }
 
+    /**
+     * Add new grouped feature ? 
+     * @todo Finish document of this method.
+     * @param {number} id 
+     * @param {null} triangles - Always empty? See line:479 Map.js
+     * @param {null} borders - Always empty? See line:479 Map.js 
+     * @param {{buffer: WebGLBuffer, itemSize: number, numItems: number}} points 
+     */
     addGroupedFeature(id, triangles, borders, points) {
         if (this._allFeatures == null) {
             this._allFeatures = new Array();
@@ -187,6 +194,11 @@ export class Aesthetic {
         }
     }
 
+    /**
+     * Inverts this Aesthetic element state in the Legend object.
+     * If it was enabled it will be disabled or vice-versa.
+     * @returns {boolean} Inverse of current enabled value.
+     */
     enableDisable() {
         this.enabled = !this.enabled;
         return this.enabled;

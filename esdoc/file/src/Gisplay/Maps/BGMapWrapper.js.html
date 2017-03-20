@@ -48,18 +48,34 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/Gisplay/Maps/BGMapWrapper.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
+ * This class represents a background map wrapper. Used to be a &quot;middle-man&quot; between the 
+ * background map provider and the API.
+ */
 export class BGMapWrapper {
+
+    /**
+     * This is the map that comes from the background map provider(e.g., MapBox).
+     * @param {Object} map 
+     */
     constructor(map) {
         console.log(&quot;BGMapWrapper constructor?&quot;);
         this.map = map;
-        /*return this;*/
     }
 
+    /**
+     * Returns the map&apos;s containing HTML element.
+     */
     getContainer() {
         return this.map.getContainer();
     }
 
+    /**
+     * Given one id it creates a canvas object.
+     * @todo Understand case mapbox comment bellow.
+     * @param {number} id - The id of the canvas to be created.
+     * @returns {HTMLCanvasElement} Canvas object where everything will be drawn.
+     */
     createCanvas(id) {
         const mapCanvas = document.createElement(&apos;canvas&apos;);
         mapCanvas.id = `mapCanvas${id}`;
@@ -77,22 +93,40 @@ export class BGMapWrapper {
         return canvas;
     }
 
+    /**
+     * Returns the map&apos;s current zoom level.
+     */
     getZoom() {
         return this.map.getZoom();
     }
 
+    /**
+     * Returns the longitude of the northwest corner of the bounding box.
+     */
     getLngBound() {
         return this.map.getBounds().getNorthWest().lng;
     }
 
+    /**
+     * Returns the latitude of the northwest corner of the bounding box.
+     */
     getLatBound() {
         return this.map.getBounds().getNorthWest().lat;
     }
 
+    /**
+     * Adds a listener to a specified event type.
+     * @param {string} eventstr - The event type to add a listen for.
+     * @param {Function} eventfunction - The function to be called when the event is fired. The listener function is called with the data object passed to  fire , extended with  target and  type properties. 
+     */
     onEvent(eventstr, eventfunction) {
         this.map.on(eventstr, eventfunction);
     }
 
+    /**
+     * @todo This method is calling another with parameters in the 1st if. This is incorrect.
+     * Creates loader to be shown at the beginning when the API is loading all data.
+     */
     loader() {
         if (this.loaderDiv === undefined)
             this.createLoader(this.map);
@@ -112,6 +146,11 @@ export class BGMapWrapper {
         }
     }
 
+    /**
+     * @todo Probably it is not being used because nobody calls it(see L:82).
+     * Auxiliar method to be called when the we want to create the loader.
+     * It inserts two divs on the map
+     */
     createLoader() {
         const outerDiv = document.createElement(&apos;div&apos;);
         const innerDiv = document.createElement(&apos;div&apos;);

@@ -1,44 +1,44 @@
 {
   "type": "File",
   "start": 0,
-  "end": 334,
+  "end": 2146,
   "loc": {
     "start": {
       "line": 1,
       "column": 0
     },
     "end": {
-      "line": 19,
-      "column": 0
+      "line": 61,
+      "column": 11
     }
   },
   "program": {
     "type": "Program",
     "start": 0,
-    "end": 334,
+    "end": 2146,
     "loc": {
       "start": {
         "line": 1,
         "column": 0
       },
       "end": {
-        "line": 19,
-        "column": 0
+        "line": 61,
+        "column": 11
       }
     },
     "sourceType": "module",
     "body": [
       {
         "type": "ExportNamedDeclaration",
-        "start": 35,
-        "end": 328,
+        "start": 152,
+        "end": 1838,
         "loc": {
           "start": {
-            "line": 5,
+            "line": 9,
             "column": 0
           },
           "end": {
-            "line": 16,
+            "line": 50,
             "column": 1
           }
         },
@@ -46,29 +46,29 @@
         "source": null,
         "declaration": {
           "type": "ClassDeclaration",
-          "start": 42,
-          "end": 328,
+          "start": 159,
+          "end": 1838,
           "loc": {
             "start": {
-              "line": 5,
+              "line": 9,
               "column": 7
             },
             "end": {
-              "line": 16,
+              "line": 50,
               "column": 1
             }
           },
           "id": {
             "type": "Identifier",
-            "start": 48,
-            "end": 55,
+            "start": 165,
+            "end": 172,
             "loc": {
               "start": {
-                "line": 5,
+                "line": 9,
                 "column": 13
               },
               "end": {
-                "line": 5,
+                "line": 9,
                 "column": 20
               },
               "identifierName": "Feature"
@@ -79,50 +79,51 @@
           "superClass": null,
           "body": {
             "type": "ClassBody",
-            "start": 56,
-            "end": 328,
+            "start": 173,
+            "end": 1838,
             "loc": {
               "start": {
-                "line": 5,
+                "line": 9,
                 "column": 21
               },
               "end": {
-                "line": 16,
+                "line": 50,
                 "column": 1
               }
             },
             "body": [
               {
                 "type": "ClassMethod",
-                "start": 65,
-                "end": 319,
+                "start": 948,
+                "end": 1835,
                 "loc": {
                   "start": {
-                    "line": 7,
+                    "line": 22,
                     "column": 4
                   },
                   "end": {
-                    "line": 14,
+                    "line": 49,
                     "column": 5
                   }
                 },
                 "computed": false,
                 "key": {
                   "type": "Identifier",
-                  "start": 65,
-                  "end": 76,
+                  "start": 948,
+                  "end": 959,
                   "loc": {
                     "start": {
-                      "line": 7,
+                      "line": 22,
                       "column": 4
                     },
                     "end": {
-                      "line": 7,
+                      "line": 22,
                       "column": 15
                     },
                     "identifierName": "constructor"
                   },
-                  "name": "constructor"
+                  "name": "constructor",
+                  "leadingComments": null
                 },
                 "static": false,
                 "kind": "constructor",
@@ -133,15 +134,15 @@
                 "params": [
                   {
                     "type": "Identifier",
-                    "start": 77,
-                    "end": 79,
+                    "start": 960,
+                    "end": 962,
                     "loc": {
                       "start": {
-                        "line": 7,
+                        "line": 22,
                         "column": 16
                       },
                       "end": {
-                        "line": 7,
+                        "line": 22,
                         "column": 18
                       },
                       "identifierName": "id"
@@ -150,15 +151,15 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 81,
-                    "end": 91,
+                    "start": 964,
+                    "end": 974,
                     "loc": {
                       "start": {
-                        "line": 7,
+                        "line": 22,
                         "column": 20
                       },
                       "end": {
-                        "line": 7,
+                        "line": 22,
                         "column": 30
                       },
                       "identifierName": "properties"
@@ -167,15 +168,15 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 93,
-                    "end": 102,
+                    "start": 976,
+                    "end": 985,
                     "loc": {
                       "start": {
-                        "line": 7,
+                        "line": 22,
                         "column": 32
                       },
                       "end": {
-                        "line": 7,
+                        "line": 22,
                         "column": 41
                       },
                       "identifierName": "triangles"
@@ -184,15 +185,15 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 104,
-                    "end": 111,
+                    "start": 987,
+                    "end": 994,
                     "loc": {
                       "start": {
-                        "line": 7,
+                        "line": 22,
                         "column": 43
                       },
                       "end": {
-                        "line": 7,
+                        "line": 22,
                         "column": 50
                       },
                       "identifierName": "borders"
@@ -201,15 +202,15 @@
                   },
                   {
                     "type": "Identifier",
-                    "start": 113,
-                    "end": 119,
+                    "start": 996,
+                    "end": 1002,
                     "loc": {
                       "start": {
-                        "line": 7,
+                        "line": 22,
                         "column": 52
                       },
                       "end": {
-                        "line": 7,
+                        "line": 22,
                         "column": 58
                       },
                       "identifierName": "points"
@@ -219,534 +220,748 @@
                 ],
                 "body": {
                   "type": "BlockStatement",
-                  "start": 121,
-                  "end": 319,
+                  "start": 1004,
+                  "end": 1835,
                   "loc": {
                     "start": {
-                      "line": 7,
+                      "line": 22,
                       "column": 60
                     },
                     "end": {
-                      "line": 14,
+                      "line": 49,
                       "column": 5
                     }
                   },
                   "body": [
                     {
                       "type": "ExpressionStatement",
-                      "start": 132,
-                      "end": 146,
+                      "start": 1098,
+                      "end": 1112,
                       "loc": {
                         "start": {
-                          "line": 8,
+                          "line": 27,
                           "column": 8
                         },
                         "end": {
-                          "line": 8,
+                          "line": 27,
                           "column": 22
                         }
                       },
                       "expression": {
                         "type": "AssignmentExpression",
-                        "start": 132,
-                        "end": 145,
+                        "start": 1098,
+                        "end": 1111,
                         "loc": {
                           "start": {
-                            "line": 8,
+                            "line": 27,
                             "column": 8
                           },
                           "end": {
-                            "line": 8,
+                            "line": 27,
                             "column": 21
                           }
                         },
                         "operator": "=",
                         "left": {
                           "type": "MemberExpression",
-                          "start": 132,
-                          "end": 140,
+                          "start": 1098,
+                          "end": 1106,
                           "loc": {
                             "start": {
-                              "line": 8,
+                              "line": 27,
                               "column": 8
                             },
                             "end": {
-                              "line": 8,
+                              "line": 27,
                               "column": 16
                             }
                           },
                           "object": {
                             "type": "ThisExpression",
-                            "start": 132,
-                            "end": 136,
+                            "start": 1098,
+                            "end": 1102,
                             "loc": {
                               "start": {
-                                "line": 8,
+                                "line": 27,
                                 "column": 8
                               },
                               "end": {
-                                "line": 8,
+                                "line": 27,
                                 "column": 12
                               }
-                            }
+                            },
+                            "leadingComments": null
                           },
                           "property": {
                             "type": "Identifier",
-                            "start": 137,
-                            "end": 140,
+                            "start": 1103,
+                            "end": 1106,
                             "loc": {
                               "start": {
-                                "line": 8,
+                                "line": 27,
                                 "column": 13
                               },
                               "end": {
-                                "line": 8,
+                                "line": 27,
                                 "column": 16
                               },
                               "identifierName": "_id"
                             },
                             "name": "_id"
                           },
-                          "computed": false
+                          "computed": false,
+                          "leadingComments": null
                         },
                         "right": {
                           "type": "Identifier",
-                          "start": 143,
-                          "end": 145,
+                          "start": 1109,
+                          "end": 1111,
                           "loc": {
                             "start": {
-                              "line": 8,
+                              "line": 27,
                               "column": 19
                             },
                             "end": {
-                              "line": 8,
+                              "line": 27,
                               "column": 21
                             },
                             "identifierName": "id"
                           },
                           "name": "id"
+                        },
+                        "leadingComments": null
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "*\r\n         * This Feature id.\r\n         * @type {number} \r\n         ",
+                          "start": 1015,
+                          "end": 1088,
+                          "loc": {
+                            "start": {
+                              "line": 23,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 26,
+                              "column": 11
+                            }
+                          }
                         }
-                      }
+                      ],
+                      "trailingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "*\r\n         * Properties associated with this Feature.  \r\n         * @type {{fx: string, _gisplayid:number}}  \r\n         ",
+                          "start": 1122,
+                          "end": 1247,
+                          "loc": {
+                            "start": {
+                              "line": 28,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 31,
+                              "column": 11
+                            }
+                          }
+                        }
+                      ]
                     },
                     {
                       "type": "ExpressionStatement",
-                      "start": 156,
-                      "end": 186,
+                      "start": 1257,
+                      "end": 1287,
                       "loc": {
                         "start": {
-                          "line": 9,
+                          "line": 32,
                           "column": 8
                         },
                         "end": {
-                          "line": 9,
+                          "line": 32,
                           "column": 38
                         }
                       },
                       "expression": {
                         "type": "AssignmentExpression",
-                        "start": 156,
-                        "end": 185,
+                        "start": 1257,
+                        "end": 1286,
                         "loc": {
                           "start": {
-                            "line": 9,
+                            "line": 32,
                             "column": 8
                           },
                           "end": {
-                            "line": 9,
+                            "line": 32,
                             "column": 37
                           }
                         },
                         "operator": "=",
                         "left": {
                           "type": "MemberExpression",
-                          "start": 156,
-                          "end": 172,
+                          "start": 1257,
+                          "end": 1273,
                           "loc": {
                             "start": {
-                              "line": 9,
+                              "line": 32,
                               "column": 8
                             },
                             "end": {
-                              "line": 9,
+                              "line": 32,
                               "column": 24
                             }
                           },
                           "object": {
                             "type": "ThisExpression",
-                            "start": 156,
-                            "end": 160,
+                            "start": 1257,
+                            "end": 1261,
                             "loc": {
                               "start": {
-                                "line": 9,
+                                "line": 32,
                                 "column": 8
                               },
                               "end": {
-                                "line": 9,
+                                "line": 32,
                                 "column": 12
                               }
-                            }
+                            },
+                            "leadingComments": null
                           },
                           "property": {
                             "type": "Identifier",
-                            "start": 161,
-                            "end": 172,
+                            "start": 1262,
+                            "end": 1273,
                             "loc": {
                               "start": {
-                                "line": 9,
+                                "line": 32,
                                 "column": 13
                               },
                               "end": {
-                                "line": 9,
+                                "line": 32,
                                 "column": 24
                               },
                               "identifierName": "_properties"
                             },
                             "name": "_properties"
                           },
-                          "computed": false
+                          "computed": false,
+                          "leadingComments": null
                         },
                         "right": {
                           "type": "Identifier",
-                          "start": 175,
-                          "end": 185,
+                          "start": 1276,
+                          "end": 1286,
                           "loc": {
                             "start": {
-                              "line": 9,
+                              "line": 32,
                               "column": 27
                             },
                             "end": {
-                              "line": 9,
+                              "line": 32,
                               "column": 37
                             },
                             "identifierName": "properties"
                           },
                           "name": "properties"
+                        },
+                        "leadingComments": null
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "*\r\n         * Properties associated with this Feature.  \r\n         * @type {{fx: string, _gisplayid:number}}  \r\n         ",
+                          "start": 1122,
+                          "end": 1247,
+                          "loc": {
+                            "start": {
+                              "line": 28,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 31,
+                              "column": 11
+                            }
+                          }
                         }
-                      }
+                      ],
+                      "trailingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "*\r\n         * Number of triangles associated with this Feature.\r\n         * @type {{itemSize: number, numItems: number}}\r\n         ",
+                          "start": 1297,
+                          "end": 1432,
+                          "loc": {
+                            "start": {
+                              "line": 33,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 36,
+                              "column": 11
+                            }
+                          }
+                        }
+                      ]
                     },
                     {
                       "type": "ExpressionStatement",
-                      "start": 196,
-                      "end": 224,
+                      "start": 1442,
+                      "end": 1470,
                       "loc": {
                         "start": {
-                          "line": 10,
+                          "line": 37,
                           "column": 8
                         },
                         "end": {
-                          "line": 10,
+                          "line": 37,
                           "column": 36
                         }
                       },
                       "expression": {
                         "type": "AssignmentExpression",
-                        "start": 196,
-                        "end": 223,
+                        "start": 1442,
+                        "end": 1469,
                         "loc": {
                           "start": {
-                            "line": 10,
+                            "line": 37,
                             "column": 8
                           },
                           "end": {
-                            "line": 10,
+                            "line": 37,
                             "column": 35
                           }
                         },
                         "operator": "=",
                         "left": {
                           "type": "MemberExpression",
-                          "start": 196,
-                          "end": 211,
+                          "start": 1442,
+                          "end": 1457,
                           "loc": {
                             "start": {
-                              "line": 10,
+                              "line": 37,
                               "column": 8
                             },
                             "end": {
-                              "line": 10,
+                              "line": 37,
                               "column": 23
                             }
                           },
                           "object": {
                             "type": "ThisExpression",
-                            "start": 196,
-                            "end": 200,
+                            "start": 1442,
+                            "end": 1446,
                             "loc": {
                               "start": {
-                                "line": 10,
+                                "line": 37,
                                 "column": 8
                               },
                               "end": {
-                                "line": 10,
+                                "line": 37,
                                 "column": 12
                               }
-                            }
+                            },
+                            "leadingComments": null
                           },
                           "property": {
                             "type": "Identifier",
-                            "start": 201,
-                            "end": 211,
+                            "start": 1447,
+                            "end": 1457,
                             "loc": {
                               "start": {
-                                "line": 10,
+                                "line": 37,
                                 "column": 13
                               },
                               "end": {
-                                "line": 10,
+                                "line": 37,
                                 "column": 23
                               },
                               "identifierName": "_triangles"
                             },
                             "name": "_triangles"
                           },
-                          "computed": false
+                          "computed": false,
+                          "leadingComments": null
                         },
                         "right": {
                           "type": "Identifier",
-                          "start": 214,
-                          "end": 223,
+                          "start": 1460,
+                          "end": 1469,
                           "loc": {
                             "start": {
-                              "line": 10,
+                              "line": 37,
                               "column": 26
                             },
                             "end": {
-                              "line": 10,
+                              "line": 37,
                               "column": 35
                             },
                             "identifierName": "triangles"
                           },
                           "name": "triangles"
+                        },
+                        "leadingComments": null
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "*\r\n         * Number of triangles associated with this Feature.\r\n         * @type {{itemSize: number, numItems: number}}\r\n         ",
+                          "start": 1297,
+                          "end": 1432,
+                          "loc": {
+                            "start": {
+                              "line": 33,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 36,
+                              "column": 11
+                            }
+                          }
                         }
-                      }
+                      ],
+                      "trailingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "*\r\n         * Number of borders associated with this Feature.\r\n         * @type {{itemSize: number, numItems: number}}\r\n         ",
+                          "start": 1480,
+                          "end": 1613,
+                          "loc": {
+                            "start": {
+                              "line": 38,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 41,
+                              "column": 11
+                            }
+                          }
+                        }
+                      ]
                     },
                     {
                       "type": "ExpressionStatement",
-                      "start": 234,
-                      "end": 258,
+                      "start": 1623,
+                      "end": 1647,
                       "loc": {
                         "start": {
-                          "line": 11,
+                          "line": 42,
                           "column": 8
                         },
                         "end": {
-                          "line": 11,
+                          "line": 42,
                           "column": 32
                         }
                       },
                       "expression": {
                         "type": "AssignmentExpression",
-                        "start": 234,
-                        "end": 257,
+                        "start": 1623,
+                        "end": 1646,
                         "loc": {
                           "start": {
-                            "line": 11,
+                            "line": 42,
                             "column": 8
                           },
                           "end": {
-                            "line": 11,
+                            "line": 42,
                             "column": 31
                           }
                         },
                         "operator": "=",
                         "left": {
                           "type": "MemberExpression",
-                          "start": 234,
-                          "end": 247,
+                          "start": 1623,
+                          "end": 1636,
                           "loc": {
                             "start": {
-                              "line": 11,
+                              "line": 42,
                               "column": 8
                             },
                             "end": {
-                              "line": 11,
+                              "line": 42,
                               "column": 21
                             }
                           },
                           "object": {
                             "type": "ThisExpression",
-                            "start": 234,
-                            "end": 238,
+                            "start": 1623,
+                            "end": 1627,
                             "loc": {
                               "start": {
-                                "line": 11,
+                                "line": 42,
                                 "column": 8
                               },
                               "end": {
-                                "line": 11,
+                                "line": 42,
                                 "column": 12
                               }
-                            }
+                            },
+                            "leadingComments": null
                           },
                           "property": {
                             "type": "Identifier",
-                            "start": 239,
-                            "end": 247,
+                            "start": 1628,
+                            "end": 1636,
                             "loc": {
                               "start": {
-                                "line": 11,
+                                "line": 42,
                                 "column": 13
                               },
                               "end": {
-                                "line": 11,
+                                "line": 42,
                                 "column": 21
                               },
                               "identifierName": "_borders"
                             },
                             "name": "_borders"
                           },
-                          "computed": false
+                          "computed": false,
+                          "leadingComments": null
                         },
                         "right": {
                           "type": "Identifier",
-                          "start": 250,
-                          "end": 257,
+                          "start": 1639,
+                          "end": 1646,
                           "loc": {
                             "start": {
-                              "line": 11,
+                              "line": 42,
                               "column": 24
                             },
                             "end": {
-                              "line": 11,
+                              "line": 42,
                               "column": 31
                             },
                             "identifierName": "borders"
                           },
                           "name": "borders"
+                        },
+                        "leadingComments": null
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "*\r\n         * Number of borders associated with this Feature.\r\n         * @type {{itemSize: number, numItems: number}}\r\n         ",
+                          "start": 1480,
+                          "end": 1613,
+                          "loc": {
+                            "start": {
+                              "line": 38,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 41,
+                              "column": 11
+                            }
+                          }
                         }
-                      }
+                      ],
+                      "trailingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "*\r\n         * The points that belong to this Feature.\r\n         * @type {number[]}\r\n         ",
+                          "start": 1657,
+                          "end": 1754,
+                          "loc": {
+                            "start": {
+                              "line": 43,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 46,
+                              "column": 11
+                            }
+                          }
+                        }
+                      ]
                     },
                     {
                       "type": "ExpressionStatement",
-                      "start": 268,
-                      "end": 290,
+                      "start": 1764,
+                      "end": 1786,
                       "loc": {
                         "start": {
-                          "line": 12,
+                          "line": 47,
                           "column": 8
                         },
                         "end": {
-                          "line": 12,
+                          "line": 47,
                           "column": 30
                         }
                       },
                       "expression": {
                         "type": "AssignmentExpression",
-                        "start": 268,
-                        "end": 289,
+                        "start": 1764,
+                        "end": 1785,
                         "loc": {
                           "start": {
-                            "line": 12,
+                            "line": 47,
                             "column": 8
                           },
                           "end": {
-                            "line": 12,
+                            "line": 47,
                             "column": 29
                           }
                         },
                         "operator": "=",
                         "left": {
                           "type": "MemberExpression",
-                          "start": 268,
-                          "end": 280,
+                          "start": 1764,
+                          "end": 1776,
                           "loc": {
                             "start": {
-                              "line": 12,
+                              "line": 47,
                               "column": 8
                             },
                             "end": {
-                              "line": 12,
+                              "line": 47,
                               "column": 20
                             }
                           },
                           "object": {
                             "type": "ThisExpression",
-                            "start": 268,
-                            "end": 272,
+                            "start": 1764,
+                            "end": 1768,
                             "loc": {
                               "start": {
-                                "line": 12,
+                                "line": 47,
                                 "column": 8
                               },
                               "end": {
-                                "line": 12,
+                                "line": 47,
                                 "column": 12
                               }
-                            }
+                            },
+                            "leadingComments": null
                           },
                           "property": {
                             "type": "Identifier",
-                            "start": 273,
-                            "end": 280,
+                            "start": 1769,
+                            "end": 1776,
                             "loc": {
                               "start": {
-                                "line": 12,
+                                "line": 47,
                                 "column": 13
                               },
                               "end": {
-                                "line": 12,
+                                "line": 47,
                                 "column": 20
                               },
                               "identifierName": "_points"
                             },
                             "name": "_points"
                           },
-                          "computed": false
+                          "computed": false,
+                          "leadingComments": null
                         },
                         "right": {
                           "type": "Identifier",
-                          "start": 283,
-                          "end": 289,
+                          "start": 1779,
+                          "end": 1785,
                           "loc": {
                             "start": {
-                              "line": 12,
+                              "line": 47,
                               "column": 23
                             },
                             "end": {
-                              "line": 12,
+                              "line": 47,
                               "column": 29
                             },
                             "identifierName": "points"
                           },
                           "name": "points"
+                        },
+                        "leadingComments": null
+                      },
+                      "leadingComments": [
+                        {
+                          "type": "CommentBlock",
+                          "value": "*\r\n         * The points that belong to this Feature.\r\n         * @type {number[]}\r\n         ",
+                          "start": 1657,
+                          "end": 1754,
+                          "loc": {
+                            "start": {
+                              "line": 43,
+                              "column": 8
+                            },
+                            "end": {
+                              "line": 46,
+                              "column": 11
+                            }
+                          }
                         }
-                      }
+                      ]
                     },
                     {
                       "type": "ReturnStatement",
-                      "start": 300,
-                      "end": 312,
+                      "start": 1796,
+                      "end": 1808,
                       "loc": {
                         "start": {
-                          "line": 13,
+                          "line": 48,
                           "column": 8
                         },
                         "end": {
-                          "line": 13,
+                          "line": 48,
                           "column": 20
                         }
                       },
                       "argument": {
                         "type": "ThisExpression",
-                        "start": 307,
-                        "end": 311,
+                        "start": 1803,
+                        "end": 1807,
                         "loc": {
                           "start": {
-                            "line": 13,
+                            "line": 48,
                             "column": 15
                           },
                           "end": {
-                            "line": 13,
+                            "line": 48,
                             "column": 19
                           }
                         }
-                      }
+                      },
+                      "trailingComments": [
+                        {
+                          "type": "CommentLine",
+                          "value": " @Rui Remover this",
+                          "start": 1808,
+                          "end": 1828,
+                          "loc": {
+                            "start": {
+                              "line": 48,
+                              "column": 20
+                            },
+                            "end": {
+                              "line": 48,
+                              "column": 40
+                            }
+                          }
+                        }
+                      ]
                     }
                   ],
                   "directives": []
-                }
+                },
+                "leadingComments": [
+                  {
+                    "type": "CommentBlock",
+                    "value": "*\r\n     * Creates an instance of Feature.\r\n     * @example 1-> {\"id\":0,\"properties\":{\"f1\":\"Alabama\",\"f2\":\"Autauga\",\"f3\":150,\"_gisplayid\":0},\r\n                     \"triangles\":[{\"itemSize\":2,\"numItems\":417}],\"borders\":[{\"itemSize\":2,\"numItems\":141}],\"points\":[]}\r\n     * @param {number} id - This Feature id.\r\n     * @param {{fx: string, _gisplayid:number}} properties - Properties associated with this Feature.  \r\n     * @param {{itemSize: number, numItems: number}} triangles - Number of triangles associated with this Feature. \r\n     * @param {{itemSize: number, numItems: number}} borders - Number of borders associated with this Feature.\r\n     * @param {number[]} points - The points that belong to this Feature.\r\n     * \r\n     * @memberOf Feature\r\n     ",
+                    "start": 180,
+                    "end": 942,
+                    "loc": {
+                      "start": {
+                        "line": 10,
+                        "column": 4
+                      },
+                      "end": {
+                        "line": 21,
+                        "column": 7
+                      }
+                    }
+                  }
+                ]
               }
-            ]
+            ],
+            "trailingComments": null
           },
           "leadingComments": [
             {
@@ -767,22 +982,39 @@
             },
             {
               "type": "CommentBlock",
-              "value": "*\r\n * \r\n ",
-              "start": 20,
-              "end": 33,
+              "value": "*\r\n * This class represents a Feature. Each feature belongs to one Aesthetic element.\r\n * \r\n * @export\r\n * @class Feature\r\n ",
+              "start": 22,
+              "end": 150,
               "loc": {
                 "start": {
-                  "line": 2,
+                  "line": 3,
                   "column": 0
                 },
                 "end": {
-                  "line": 4,
+                  "line": 8,
                   "column": 3
                 }
               }
             }
           ],
-          "trailingComments": []
+          "trailingComments": [
+            {
+              "type": "CommentBlock",
+              "value": " if (window.count == 0) {\r\n            var obj = {\r\n                i: id,\r\n                prs: properties,\r\n                ts: triangles,\r\n                bs: borders,\r\n                pts: points,\r\n            }\r\n            window.count++;\r\n            console.log(JSON.stringify(obj))\r\n        }",
+              "start": 1841,
+              "end": 2146,
+              "loc": {
+                "start": {
+                  "line": 51,
+                  "column": 1
+                },
+                "end": {
+                  "line": 61,
+                  "column": 11
+                }
+              }
+            }
+          ]
         },
         "leadingComments": [
           {
@@ -803,17 +1035,35 @@
           },
           {
             "type": "CommentBlock",
-            "value": "*\r\n * \r\n ",
-            "start": 20,
-            "end": 33,
+            "value": "*\r\n * This class represents a Feature. Each feature belongs to one Aesthetic element.\r\n * \r\n * @export\r\n * @class Feature\r\n ",
+            "start": 22,
+            "end": 150,
             "loc": {
               "start": {
-                "line": 2,
+                "line": 3,
                 "column": 0
               },
               "end": {
-                "line": 4,
+                "line": 8,
                 "column": 3
+              }
+            }
+          }
+        ],
+        "trailingComments": [
+          {
+            "type": "CommentBlock",
+            "value": " if (window.count == 0) {\r\n            var obj = {\r\n                i: id,\r\n                prs: properties,\r\n                ts: triangles,\r\n                bs: borders,\r\n                pts: points,\r\n            }\r\n            window.count++;\r\n            console.log(JSON.stringify(obj))\r\n        }",
+            "start": 1841,
+            "end": 2146,
+            "loc": {
+              "start": {
+                "line": 51,
+                "column": 1
+              },
+              "end": {
+                "line": 61,
+                "column": 11
               }
             }
           }
@@ -841,17 +1091,145 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\r\n * \r\n ",
-      "start": 20,
-      "end": 33,
+      "value": "*\r\n * This class represents a Feature. Each feature belongs to one Aesthetic element.\r\n * \r\n * @export\r\n * @class Feature\r\n ",
+      "start": 22,
+      "end": 150,
       "loc": {
         "start": {
-          "line": 2,
+          "line": 3,
           "column": 0
         },
         "end": {
-          "line": 4,
+          "line": 8,
           "column": 3
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n     * Creates an instance of Feature.\r\n     * @example 1-> {\"id\":0,\"properties\":{\"f1\":\"Alabama\",\"f2\":\"Autauga\",\"f3\":150,\"_gisplayid\":0},\r\n                     \"triangles\":[{\"itemSize\":2,\"numItems\":417}],\"borders\":[{\"itemSize\":2,\"numItems\":141}],\"points\":[]}\r\n     * @param {number} id - This Feature id.\r\n     * @param {{fx: string, _gisplayid:number}} properties - Properties associated with this Feature.  \r\n     * @param {{itemSize: number, numItems: number}} triangles - Number of triangles associated with this Feature. \r\n     * @param {{itemSize: number, numItems: number}} borders - Number of borders associated with this Feature.\r\n     * @param {number[]} points - The points that belong to this Feature.\r\n     * \r\n     * @memberOf Feature\r\n     ",
+      "start": 180,
+      "end": 942,
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 4
+        },
+        "end": {
+          "line": 21,
+          "column": 7
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n         * This Feature id.\r\n         * @type {number} \r\n         ",
+      "start": 1015,
+      "end": 1088,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 8
+        },
+        "end": {
+          "line": 26,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n         * Properties associated with this Feature.  \r\n         * @type {{fx: string, _gisplayid:number}}  \r\n         ",
+      "start": 1122,
+      "end": 1247,
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 8
+        },
+        "end": {
+          "line": 31,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n         * Number of triangles associated with this Feature.\r\n         * @type {{itemSize: number, numItems: number}}\r\n         ",
+      "start": 1297,
+      "end": 1432,
+      "loc": {
+        "start": {
+          "line": 33,
+          "column": 8
+        },
+        "end": {
+          "line": 36,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n         * Number of borders associated with this Feature.\r\n         * @type {{itemSize: number, numItems: number}}\r\n         ",
+      "start": 1480,
+      "end": 1613,
+      "loc": {
+        "start": {
+          "line": 38,
+          "column": 8
+        },
+        "end": {
+          "line": 41,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n         * The points that belong to this Feature.\r\n         * @type {number[]}\r\n         ",
+      "start": 1657,
+      "end": 1754,
+      "loc": {
+        "start": {
+          "line": 43,
+          "column": 8
+        },
+        "end": {
+          "line": 46,
+          "column": 11
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " @Rui Remover this",
+      "start": 1808,
+      "end": 1828,
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 20
+        },
+        "end": {
+          "line": 48,
+          "column": 40
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " if (window.count == 0) {\r\n            var obj = {\r\n                i: id,\r\n                prs: properties,\r\n                ts: triangles,\r\n                bs: borders,\r\n                pts: points,\r\n            }\r\n            window.count++;\r\n            console.log(JSON.stringify(obj))\r\n        }",
+      "start": 1841,
+      "end": 2146,
+      "loc": {
+        "start": {
+          "line": 51,
+          "column": 1
+        },
+        "end": {
+          "line": 61,
+          "column": 11
         }
       }
     }
@@ -875,16 +1253,16 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\r\n * \r\n ",
-      "start": 20,
-      "end": 33,
+      "value": "*\r\n * This class represents a Feature. Each feature belongs to one Aesthetic element.\r\n * \r\n * @export\r\n * @class Feature\r\n ",
+      "start": 22,
+      "end": 150,
       "loc": {
         "start": {
-          "line": 2,
+          "line": 3,
           "column": 0
         },
         "end": {
-          "line": 4,
+          "line": 8,
           "column": 3
         }
       }
@@ -904,15 +1282,15 @@
         "updateContext": null
       },
       "value": "export",
-      "start": 35,
-      "end": 41,
+      "start": 152,
+      "end": 158,
       "loc": {
         "start": {
-          "line": 5,
+          "line": 9,
           "column": 0
         },
         "end": {
-          "line": 5,
+          "line": 9,
           "column": 6
         }
       }
@@ -932,15 +1310,15 @@
         "updateContext": null
       },
       "value": "class",
-      "start": 42,
-      "end": 47,
+      "start": 159,
+      "end": 164,
       "loc": {
         "start": {
-          "line": 5,
+          "line": 9,
           "column": 7
         },
         "end": {
-          "line": 5,
+          "line": 9,
           "column": 12
         }
       }
@@ -958,15 +1336,15 @@
         "binop": null
       },
       "value": "Feature",
-      "start": 48,
-      "end": 55,
+      "start": 165,
+      "end": 172,
       "loc": {
         "start": {
-          "line": 5,
+          "line": 9,
           "column": 13
         },
         "end": {
-          "line": 5,
+          "line": 9,
           "column": 20
         }
       }
@@ -983,16 +1361,32 @@
         "postfix": false,
         "binop": null
       },
-      "start": 56,
-      "end": 57,
+      "start": 173,
+      "end": 174,
       "loc": {
         "start": {
-          "line": 5,
+          "line": 9,
           "column": 21
         },
         "end": {
-          "line": 5,
+          "line": 9,
           "column": 22
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n     * Creates an instance of Feature.\r\n     * @example 1-> {\"id\":0,\"properties\":{\"f1\":\"Alabama\",\"f2\":\"Autauga\",\"f3\":150,\"_gisplayid\":0},\r\n                     \"triangles\":[{\"itemSize\":2,\"numItems\":417}],\"borders\":[{\"itemSize\":2,\"numItems\":141}],\"points\":[]}\r\n     * @param {number} id - This Feature id.\r\n     * @param {{fx: string, _gisplayid:number}} properties - Properties associated with this Feature.  \r\n     * @param {{itemSize: number, numItems: number}} triangles - Number of triangles associated with this Feature. \r\n     * @param {{itemSize: number, numItems: number}} borders - Number of borders associated with this Feature.\r\n     * @param {number[]} points - The points that belong to this Feature.\r\n     * \r\n     * @memberOf Feature\r\n     ",
+      "start": 180,
+      "end": 942,
+      "loc": {
+        "start": {
+          "line": 10,
+          "column": 4
+        },
+        "end": {
+          "line": 21,
+          "column": 7
         }
       }
     },
@@ -1009,15 +1403,15 @@
         "binop": null
       },
       "value": "constructor",
-      "start": 65,
-      "end": 76,
+      "start": 948,
+      "end": 959,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 22,
           "column": 4
         },
         "end": {
-          "line": 7,
+          "line": 22,
           "column": 15
         }
       }
@@ -1034,15 +1428,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 76,
-      "end": 77,
+      "start": 959,
+      "end": 960,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 22,
           "column": 15
         },
         "end": {
-          "line": 7,
+          "line": 22,
           "column": 16
         }
       }
@@ -1060,15 +1454,15 @@
         "binop": null
       },
       "value": "id",
-      "start": 77,
-      "end": 79,
+      "start": 960,
+      "end": 962,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 22,
           "column": 16
         },
         "end": {
-          "line": 7,
+          "line": 22,
           "column": 18
         }
       }
@@ -1086,15 +1480,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 79,
-      "end": 80,
+      "start": 962,
+      "end": 963,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 22,
           "column": 18
         },
         "end": {
-          "line": 7,
+          "line": 22,
           "column": 19
         }
       }
@@ -1112,15 +1506,15 @@
         "binop": null
       },
       "value": "properties",
-      "start": 81,
-      "end": 91,
+      "start": 964,
+      "end": 974,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 22,
           "column": 20
         },
         "end": {
-          "line": 7,
+          "line": 22,
           "column": 30
         }
       }
@@ -1138,15 +1532,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 91,
-      "end": 92,
+      "start": 974,
+      "end": 975,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 22,
           "column": 30
         },
         "end": {
-          "line": 7,
+          "line": 22,
           "column": 31
         }
       }
@@ -1164,15 +1558,15 @@
         "binop": null
       },
       "value": "triangles",
-      "start": 93,
-      "end": 102,
+      "start": 976,
+      "end": 985,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 22,
           "column": 32
         },
         "end": {
-          "line": 7,
+          "line": 22,
           "column": 41
         }
       }
@@ -1190,15 +1584,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 102,
-      "end": 103,
+      "start": 985,
+      "end": 986,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 22,
           "column": 41
         },
         "end": {
-          "line": 7,
+          "line": 22,
           "column": 42
         }
       }
@@ -1216,15 +1610,15 @@
         "binop": null
       },
       "value": "borders",
-      "start": 104,
-      "end": 111,
+      "start": 987,
+      "end": 994,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 22,
           "column": 43
         },
         "end": {
-          "line": 7,
+          "line": 22,
           "column": 50
         }
       }
@@ -1242,15 +1636,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 111,
-      "end": 112,
+      "start": 994,
+      "end": 995,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 22,
           "column": 50
         },
         "end": {
-          "line": 7,
+          "line": 22,
           "column": 51
         }
       }
@@ -1268,15 +1662,15 @@
         "binop": null
       },
       "value": "points",
-      "start": 113,
-      "end": 119,
+      "start": 996,
+      "end": 1002,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 22,
           "column": 52
         },
         "end": {
-          "line": 7,
+          "line": 22,
           "column": 58
         }
       }
@@ -1293,15 +1687,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 119,
-      "end": 120,
+      "start": 1002,
+      "end": 1003,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 22,
           "column": 58
         },
         "end": {
-          "line": 7,
+          "line": 22,
           "column": 59
         }
       }
@@ -1318,16 +1712,32 @@
         "postfix": false,
         "binop": null
       },
-      "start": 121,
-      "end": 122,
+      "start": 1004,
+      "end": 1005,
       "loc": {
         "start": {
-          "line": 7,
+          "line": 22,
           "column": 60
         },
         "end": {
-          "line": 7,
+          "line": 22,
           "column": 61
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n         * This Feature id.\r\n         * @type {number} \r\n         ",
+      "start": 1015,
+      "end": 1088,
+      "loc": {
+        "start": {
+          "line": 23,
+          "column": 8
+        },
+        "end": {
+          "line": 26,
+          "column": 11
         }
       }
     },
@@ -1346,15 +1756,15 @@
         "updateContext": null
       },
       "value": "this",
-      "start": 132,
-      "end": 136,
+      "start": 1098,
+      "end": 1102,
       "loc": {
         "start": {
-          "line": 8,
+          "line": 27,
           "column": 8
         },
         "end": {
-          "line": 8,
+          "line": 27,
           "column": 12
         }
       }
@@ -1372,15 +1782,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 136,
-      "end": 137,
+      "start": 1102,
+      "end": 1103,
       "loc": {
         "start": {
-          "line": 8,
+          "line": 27,
           "column": 12
         },
         "end": {
-          "line": 8,
+          "line": 27,
           "column": 13
         }
       }
@@ -1398,15 +1808,15 @@
         "binop": null
       },
       "value": "_id",
-      "start": 137,
-      "end": 140,
+      "start": 1103,
+      "end": 1106,
       "loc": {
         "start": {
-          "line": 8,
+          "line": 27,
           "column": 13
         },
         "end": {
-          "line": 8,
+          "line": 27,
           "column": 16
         }
       }
@@ -1425,15 +1835,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 141,
-      "end": 142,
+      "start": 1107,
+      "end": 1108,
       "loc": {
         "start": {
-          "line": 8,
+          "line": 27,
           "column": 17
         },
         "end": {
-          "line": 8,
+          "line": 27,
           "column": 18
         }
       }
@@ -1451,15 +1861,15 @@
         "binop": null
       },
       "value": "id",
-      "start": 143,
-      "end": 145,
+      "start": 1109,
+      "end": 1111,
       "loc": {
         "start": {
-          "line": 8,
+          "line": 27,
           "column": 19
         },
         "end": {
-          "line": 8,
+          "line": 27,
           "column": 21
         }
       }
@@ -1477,16 +1887,32 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 145,
-      "end": 146,
+      "start": 1111,
+      "end": 1112,
       "loc": {
         "start": {
-          "line": 8,
+          "line": 27,
           "column": 21
         },
         "end": {
-          "line": 8,
+          "line": 27,
           "column": 22
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n         * Properties associated with this Feature.  \r\n         * @type {{fx: string, _gisplayid:number}}  \r\n         ",
+      "start": 1122,
+      "end": 1247,
+      "loc": {
+        "start": {
+          "line": 28,
+          "column": 8
+        },
+        "end": {
+          "line": 31,
+          "column": 11
         }
       }
     },
@@ -1505,15 +1931,15 @@
         "updateContext": null
       },
       "value": "this",
-      "start": 156,
-      "end": 160,
+      "start": 1257,
+      "end": 1261,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 32,
           "column": 8
         },
         "end": {
-          "line": 9,
+          "line": 32,
           "column": 12
         }
       }
@@ -1531,15 +1957,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 160,
-      "end": 161,
+      "start": 1261,
+      "end": 1262,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 32,
           "column": 12
         },
         "end": {
-          "line": 9,
+          "line": 32,
           "column": 13
         }
       }
@@ -1557,15 +1983,15 @@
         "binop": null
       },
       "value": "_properties",
-      "start": 161,
-      "end": 172,
+      "start": 1262,
+      "end": 1273,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 32,
           "column": 13
         },
         "end": {
-          "line": 9,
+          "line": 32,
           "column": 24
         }
       }
@@ -1584,15 +2010,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 173,
-      "end": 174,
+      "start": 1274,
+      "end": 1275,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 32,
           "column": 25
         },
         "end": {
-          "line": 9,
+          "line": 32,
           "column": 26
         }
       }
@@ -1610,15 +2036,15 @@
         "binop": null
       },
       "value": "properties",
-      "start": 175,
-      "end": 185,
+      "start": 1276,
+      "end": 1286,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 32,
           "column": 27
         },
         "end": {
-          "line": 9,
+          "line": 32,
           "column": 37
         }
       }
@@ -1636,16 +2062,32 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 185,
-      "end": 186,
+      "start": 1286,
+      "end": 1287,
       "loc": {
         "start": {
-          "line": 9,
+          "line": 32,
           "column": 37
         },
         "end": {
-          "line": 9,
+          "line": 32,
           "column": 38
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n         * Number of triangles associated with this Feature.\r\n         * @type {{itemSize: number, numItems: number}}\r\n         ",
+      "start": 1297,
+      "end": 1432,
+      "loc": {
+        "start": {
+          "line": 33,
+          "column": 8
+        },
+        "end": {
+          "line": 36,
+          "column": 11
         }
       }
     },
@@ -1664,15 +2106,15 @@
         "updateContext": null
       },
       "value": "this",
-      "start": 196,
-      "end": 200,
+      "start": 1442,
+      "end": 1446,
       "loc": {
         "start": {
-          "line": 10,
+          "line": 37,
           "column": 8
         },
         "end": {
-          "line": 10,
+          "line": 37,
           "column": 12
         }
       }
@@ -1690,15 +2132,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 200,
-      "end": 201,
+      "start": 1446,
+      "end": 1447,
       "loc": {
         "start": {
-          "line": 10,
+          "line": 37,
           "column": 12
         },
         "end": {
-          "line": 10,
+          "line": 37,
           "column": 13
         }
       }
@@ -1716,15 +2158,15 @@
         "binop": null
       },
       "value": "_triangles",
-      "start": 201,
-      "end": 211,
+      "start": 1447,
+      "end": 1457,
       "loc": {
         "start": {
-          "line": 10,
+          "line": 37,
           "column": 13
         },
         "end": {
-          "line": 10,
+          "line": 37,
           "column": 23
         }
       }
@@ -1743,15 +2185,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 212,
-      "end": 213,
+      "start": 1458,
+      "end": 1459,
       "loc": {
         "start": {
-          "line": 10,
+          "line": 37,
           "column": 24
         },
         "end": {
-          "line": 10,
+          "line": 37,
           "column": 25
         }
       }
@@ -1769,15 +2211,15 @@
         "binop": null
       },
       "value": "triangles",
-      "start": 214,
-      "end": 223,
+      "start": 1460,
+      "end": 1469,
       "loc": {
         "start": {
-          "line": 10,
+          "line": 37,
           "column": 26
         },
         "end": {
-          "line": 10,
+          "line": 37,
           "column": 35
         }
       }
@@ -1795,16 +2237,32 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 223,
-      "end": 224,
+      "start": 1469,
+      "end": 1470,
       "loc": {
         "start": {
-          "line": 10,
+          "line": 37,
           "column": 35
         },
         "end": {
-          "line": 10,
+          "line": 37,
           "column": 36
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n         * Number of borders associated with this Feature.\r\n         * @type {{itemSize: number, numItems: number}}\r\n         ",
+      "start": 1480,
+      "end": 1613,
+      "loc": {
+        "start": {
+          "line": 38,
+          "column": 8
+        },
+        "end": {
+          "line": 41,
+          "column": 11
         }
       }
     },
@@ -1823,15 +2281,15 @@
         "updateContext": null
       },
       "value": "this",
-      "start": 234,
-      "end": 238,
+      "start": 1623,
+      "end": 1627,
       "loc": {
         "start": {
-          "line": 11,
+          "line": 42,
           "column": 8
         },
         "end": {
-          "line": 11,
+          "line": 42,
           "column": 12
         }
       }
@@ -1849,15 +2307,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 238,
-      "end": 239,
+      "start": 1627,
+      "end": 1628,
       "loc": {
         "start": {
-          "line": 11,
+          "line": 42,
           "column": 12
         },
         "end": {
-          "line": 11,
+          "line": 42,
           "column": 13
         }
       }
@@ -1875,15 +2333,15 @@
         "binop": null
       },
       "value": "_borders",
-      "start": 239,
-      "end": 247,
+      "start": 1628,
+      "end": 1636,
       "loc": {
         "start": {
-          "line": 11,
+          "line": 42,
           "column": 13
         },
         "end": {
-          "line": 11,
+          "line": 42,
           "column": 21
         }
       }
@@ -1902,15 +2360,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 248,
-      "end": 249,
+      "start": 1637,
+      "end": 1638,
       "loc": {
         "start": {
-          "line": 11,
+          "line": 42,
           "column": 22
         },
         "end": {
-          "line": 11,
+          "line": 42,
           "column": 23
         }
       }
@@ -1928,15 +2386,15 @@
         "binop": null
       },
       "value": "borders",
-      "start": 250,
-      "end": 257,
+      "start": 1639,
+      "end": 1646,
       "loc": {
         "start": {
-          "line": 11,
+          "line": 42,
           "column": 24
         },
         "end": {
-          "line": 11,
+          "line": 42,
           "column": 31
         }
       }
@@ -1954,16 +2412,32 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 257,
-      "end": 258,
+      "start": 1646,
+      "end": 1647,
       "loc": {
         "start": {
-          "line": 11,
+          "line": 42,
           "column": 31
         },
         "end": {
-          "line": 11,
+          "line": 42,
           "column": 32
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": "*\r\n         * The points that belong to this Feature.\r\n         * @type {number[]}\r\n         ",
+      "start": 1657,
+      "end": 1754,
+      "loc": {
+        "start": {
+          "line": 43,
+          "column": 8
+        },
+        "end": {
+          "line": 46,
+          "column": 11
         }
       }
     },
@@ -1982,15 +2456,15 @@
         "updateContext": null
       },
       "value": "this",
-      "start": 268,
-      "end": 272,
+      "start": 1764,
+      "end": 1768,
       "loc": {
         "start": {
-          "line": 12,
+          "line": 47,
           "column": 8
         },
         "end": {
-          "line": 12,
+          "line": 47,
           "column": 12
         }
       }
@@ -2008,15 +2482,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 272,
-      "end": 273,
+      "start": 1768,
+      "end": 1769,
       "loc": {
         "start": {
-          "line": 12,
+          "line": 47,
           "column": 12
         },
         "end": {
-          "line": 12,
+          "line": 47,
           "column": 13
         }
       }
@@ -2034,15 +2508,15 @@
         "binop": null
       },
       "value": "_points",
-      "start": 273,
-      "end": 280,
+      "start": 1769,
+      "end": 1776,
       "loc": {
         "start": {
-          "line": 12,
+          "line": 47,
           "column": 13
         },
         "end": {
-          "line": 12,
+          "line": 47,
           "column": 20
         }
       }
@@ -2061,15 +2535,15 @@
         "updateContext": null
       },
       "value": "=",
-      "start": 281,
-      "end": 282,
+      "start": 1777,
+      "end": 1778,
       "loc": {
         "start": {
-          "line": 12,
+          "line": 47,
           "column": 21
         },
         "end": {
-          "line": 12,
+          "line": 47,
           "column": 22
         }
       }
@@ -2087,15 +2561,15 @@
         "binop": null
       },
       "value": "points",
-      "start": 283,
-      "end": 289,
+      "start": 1779,
+      "end": 1785,
       "loc": {
         "start": {
-          "line": 12,
+          "line": 47,
           "column": 23
         },
         "end": {
-          "line": 12,
+          "line": 47,
           "column": 29
         }
       }
@@ -2113,15 +2587,15 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 289,
-      "end": 290,
+      "start": 1785,
+      "end": 1786,
       "loc": {
         "start": {
-          "line": 12,
+          "line": 47,
           "column": 29
         },
         "end": {
-          "line": 12,
+          "line": 47,
           "column": 30
         }
       }
@@ -2141,15 +2615,15 @@
         "updateContext": null
       },
       "value": "return",
-      "start": 300,
-      "end": 306,
+      "start": 1796,
+      "end": 1802,
       "loc": {
         "start": {
-          "line": 13,
+          "line": 48,
           "column": 8
         },
         "end": {
-          "line": 13,
+          "line": 48,
           "column": 14
         }
       }
@@ -2169,15 +2643,15 @@
         "updateContext": null
       },
       "value": "this",
-      "start": 307,
-      "end": 311,
+      "start": 1803,
+      "end": 1807,
       "loc": {
         "start": {
-          "line": 13,
+          "line": 48,
           "column": 15
         },
         "end": {
-          "line": 13,
+          "line": 48,
           "column": 19
         }
       }
@@ -2195,16 +2669,32 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 311,
-      "end": 312,
+      "start": 1807,
+      "end": 1808,
       "loc": {
         "start": {
-          "line": 13,
+          "line": 48,
           "column": 19
         },
         "end": {
-          "line": 13,
+          "line": 48,
           "column": 20
+        }
+      }
+    },
+    {
+      "type": "CommentLine",
+      "value": " @Rui Remover this",
+      "start": 1808,
+      "end": 1828,
+      "loc": {
+        "start": {
+          "line": 48,
+          "column": 20
+        },
+        "end": {
+          "line": 48,
+          "column": 40
         }
       }
     },
@@ -2220,15 +2710,15 @@
         "postfix": false,
         "binop": null
       },
-      "start": 318,
-      "end": 319,
+      "start": 1834,
+      "end": 1835,
       "loc": {
         "start": {
-          "line": 14,
+          "line": 49,
           "column": 4
         },
         "end": {
-          "line": 14,
+          "line": 49,
           "column": 5
         }
       }
@@ -2245,16 +2735,32 @@
         "postfix": false,
         "binop": null
       },
-      "start": 327,
-      "end": 328,
+      "start": 1837,
+      "end": 1838,
       "loc": {
         "start": {
-          "line": 16,
+          "line": 50,
           "column": 0
         },
         "end": {
-          "line": 16,
+          "line": 50,
           "column": 1
+        }
+      }
+    },
+    {
+      "type": "CommentBlock",
+      "value": " if (window.count == 0) {\r\n            var obj = {\r\n                i: id,\r\n                prs: properties,\r\n                ts: triangles,\r\n                bs: borders,\r\n                pts: points,\r\n            }\r\n            window.count++;\r\n            console.log(JSON.stringify(obj))\r\n        }",
+      "start": 1841,
+      "end": 2146,
+      "loc": {
+        "start": {
+          "line": 51,
+          "column": 1
+        },
+        "end": {
+          "line": 61,
+          "column": 11
         }
       }
     },
@@ -2271,16 +2777,16 @@
         "binop": null,
         "updateContext": null
       },
-      "start": 334,
-      "end": 334,
+      "start": 2146,
+      "end": 2146,
       "loc": {
         "start": {
-          "line": 19,
-          "column": 0
+          "line": 61,
+          "column": 11
         },
         "end": {
-          "line": 19,
-          "column": 0
+          "line": 61,
+          "column": 11
         }
       }
     }

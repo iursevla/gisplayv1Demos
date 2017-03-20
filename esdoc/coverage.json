@@ -1,32 +1,19 @@
 {
-  "coverage": "22.72%",
+  "coverage": "29.54%",
   "expectCount": 176,
-  "actualCount": 40,
+  "actualCount": 52,
   "files": {
     "src/Gisplay/Aesthetic.js": {
       "expectCount": 17,
-      "actualCount": 15,
-      "undocumentLines": [
-        126,
-        140
-      ]
+      "actualCount": 17,
+      "undocumentLines": []
     },
     "src/Gisplay/Maps/BGMapWrapper.js": {
       "expectCount": 12,
-      "actualCount": 0,
+      "actualCount": 10,
       "undocumentLines": [
-        2,
-        3,
-        13,
-        65,
-        9,
-        38,
-        34,
-        30,
-        46,
-        79,
-        5,
-        42
+        118,
+        13
       ]
     },
     "src/Gisplay/Maps/ChangeMap.js": {

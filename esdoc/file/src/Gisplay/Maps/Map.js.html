@@ -535,7 +535,7 @@ export class Map {
         if (this.treepoints != null)
             this.kdtree = new kdTree(this.treepoints, (a, b) =&gt; (a.lon - b.lon) ** 2 + (a.lat - b.lat) ** 2, [&quot;lon&quot;, &quot;lat&quot;, &quot;properties&quot;]);
         if (this.hasPolygons == true)
-            this.rtree = new PolygonLookup(geojson);//console.log(&quot;@Rui LOOK I WAS REMOVED&quot;);
+            this.rtree = new PolygonLookup(geojson);
     }
 
     loadGeoJSON(geojson) {
