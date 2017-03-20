@@ -402,6 +402,24 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/gisplay/aesthetic.js~aesthetic#_allfeatures",
+    "class/src/Gisplay/Aesthetic.js~Aesthetic.html#instance-member-_allFeatures",
+    "src/Gisplay/Aesthetic.js~Aesthetic#_allFeatures",
+    "member"
+  ],
+  [
+    "src/gisplay/aesthetic.js~aesthetic#_attr",
+    "class/src/Gisplay/Aesthetic.js~Aesthetic.html#instance-member-_attr",
+    "src/Gisplay/Aesthetic.js~Aesthetic#_attr",
+    "member"
+  ],
+  [
+    "src/gisplay/aesthetic.js~aesthetic#_features",
+    "class/src/Gisplay/Aesthetic.js~Aesthetic.html#instance-member-_features",
+    "src/Gisplay/Aesthetic.js~Aesthetic#_features",
+    "member"
+  ],
+  [
     "src/gisplay/aesthetic.js~aesthetic#addfeature",
     "class/src/Gisplay/Aesthetic.js~Aesthetic.html#instance-method-addFeature",
     "src/Gisplay/Aesthetic.js~Aesthetic#addFeature",
@@ -486,6 +504,36 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/gisplay/feature.js~feature#_borders",
+    "class/src/Gisplay/Feature.js~Feature.html#instance-member-_borders",
+    "src/Gisplay/Feature.js~Feature#_borders",
+    "member"
+  ],
+  [
+    "src/gisplay/feature.js~feature#_id",
+    "class/src/Gisplay/Feature.js~Feature.html#instance-member-_id",
+    "src/Gisplay/Feature.js~Feature#_id",
+    "member"
+  ],
+  [
+    "src/gisplay/feature.js~feature#_points",
+    "class/src/Gisplay/Feature.js~Feature.html#instance-member-_points",
+    "src/Gisplay/Feature.js~Feature#_points",
+    "member"
+  ],
+  [
+    "src/gisplay/feature.js~feature#_properties",
+    "class/src/Gisplay/Feature.js~Feature.html#instance-member-_properties",
+    "src/Gisplay/Feature.js~Feature#_properties",
+    "member"
+  ],
+  [
+    "src/gisplay/feature.js~feature#_triangles",
+    "class/src/Gisplay/Feature.js~Feature.html#instance-member-_triangles",
+    "src/Gisplay/Feature.js~Feature#_triangles",
+    "member"
+  ],
+  [
     "src/gisplay/feature.js~feature#constructor",
     "class/src/Gisplay/Feature.js~Feature.html#instance-constructor-constructor",
     "src/Gisplay/Feature.js~Feature#constructor",
@@ -496,12 +544,6 @@ window.esdocSearchIndex = [
     "file/src/Gisplay/Gisplay.js.html",
     "src/Gisplay/Gisplay.js",
     "file"
-  ],
-  [
-    "src/gisplay/gisplay.js~gisplay#changemapdefaults",
-    "class/src/Gisplay/Gisplay.js~Gisplay.html#instance-method-changemapDefaults",
-    "src/Gisplay/Gisplay.js~Gisplay#changemapDefaults",
-    "method"
   ],
   [
     "src/gisplay/gisplay.js~gisplay#constructor",
@@ -952,6 +994,12 @@ window.esdocSearchIndex = [
     "file/src/Gisplay/Maps/Map.js.html",
     "src/Gisplay/Maps/Map.js",
     "file"
+  ],
+  [
+    "src/gisplay/maps/map.js~map#_webgl",
+    "class/src/Gisplay/Maps/Map.js~Map.html#instance-member-_webgl",
+    "src/Gisplay/Maps/Map.js~Map#_webgl",
+    "member"
   ],
   [
     "src/gisplay/maps/map.js~map#addaesthetic",

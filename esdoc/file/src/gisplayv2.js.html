@@ -64,6 +64,7 @@ module.exports = {
     },
 
     startChoropleth: function () {
+        /*window.count = 0;*/
         var gisplay = new Gisplay();
         var options = {
             colorScheme: [&quot;white&quot;, &quot;yellow&quot;, &quot;orange&quot;, &quot;red&quot;],
@@ -71,15 +72,11 @@ module.exports = {
             attr: &apos;f3&apos;,
             legendTitle: &apos;Fatals&apos;
         };
-        //var data = new Array();
         var time = Date.now();
 
         var reader = new FileReader();
         reader.onloadend = function () {
-            //new Choropleth(map, null,options);
-
             var data = JSON.parse(reader.result);
-            //console.log(data);
             var datareadtimestamp = Date.now();
             console.log(&quot;tempo de leitura do ficheiro: &quot; + (datareadtimestamp - time) / 1000 + &quot; segundos&quot;);
 

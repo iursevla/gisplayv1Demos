@@ -55,68 +55,138 @@ import { ProportionalSymbolsMap } from &apos;./Maps/ProportionalSymbolsMap&apos;
 import { ChorochromaticMap } from &apos;./Maps/ChorochromaticMap&apos;;
 
 /**
- * Gisplay API with one method for each map available.
+ * Gisplay API entry point with one method for each map available.
  */
 export class Gisplay {
 
+    /**
+     * Creates an instance of the Gisplay API.
+     * 
+     * @memberOf Gisplay
+     */
     constructor() {
         console.log(&quot;Gisplay Class constructor&quot;);
+        /**
+         * TimeStamp at the beginning.
+         * @type {number} 
+         */
+        this.startTimeStamp = 0;
+
+        /**
+         * Whether or not it  should profile the API.
+         * @type {string} - Whether or not it  should profile the API.
+         */
         window.profiling = true;
+        /**
+         * @type {Array} - Array of maps. @WHY?
+         */
         window.maps = new Array();
+        /**
+         * @type {number} - The number of maps. @WHY?
+         */
         window.mapcount = 0;
 
         //WebGL API
+        /**
+        * @type {number} - The number of vertices produced. @WHY?
+        */
         window._vertexcount = 0;
+        /**
+        * @type {number} - The number of ???. @WHY?
+        */
         window._tricount = 0;
-        /*return this;*/
     }
 
+    /**
+     * Creates a map of type Choropleth.
+     * @param {Object} bgmap - Background map object be used(atm only MapBox being used).- Background map object be used(atm only MapBox being used).
+     * @param {JSON} geometry - The geometry was read from the file.
+     * @param {Object} options - User personalization options.
+     * 
+     * @memberOf Gisplay
+     */
     makeChoropleth(bgmap, geometry, options) {
-        if (this.profiling == true)
+        console.log(bgmap);
+        if (window.profiling == true)
             this.startTimeStamp = Date.now();
-        /*console.log(options)*/
         const gismap = new Choropleth(bgmap, geometry, options);
-        this.makeMap(gismap, options);//options.defaultid);
+        this.makeMap(gismap, options);
     }
 
+    /**
+     * Creates a Dot Map.
+     * @param {Object} bgmap - Background map object be used(atm only MapBox being used).
+     * @param {JSON} geometry - The geometry was read from the file.
+     * @param {Object} options - User personalization options.
+     * 
+     * @memberOf Gisplay
+     */
     makeDotMap(bgmap, geometry, options) {
-        if (this.profiling == true)
+        if (window.profiling == true)
             this.startTimeStamp = Date.now();
         const gismap = new DotMap(bgmap, geometry, options);
         this.makeMap(gismap, options);
-
     }
 
+    /**
+     * Creates a Change Map.
+     * @param {Object} bgmap - Background map object be used(atm only MapBox being used).
+     * @param {JSON} geometry - The geometry was read from the file.
+     * @param {Object} options - User personalization options.
+     * 
+     * @memberOf Gisplay
+     */
     makeChangeMap(bgmap, geometry, options) {
-        if (this.profiling == true)
+        if (window.profiling == true)
             this.startTimeStamp = Date.now();
         const gismap = new ChangeMap(bgmap, geometry, options);
         this.makeMap(gismap, options);
     }
 
+    /**
+     * Creates a Proportional Symbols Map.
+     * @param {Object} bgmap - Background map object be used(atm only MapBox being used).
+     * @param {JSON} geometry - The geometry was read from the file.
+     * @param {Object} options - User personalization options.
+     * 
+     * @memberOf Gisplay
+     */
     makeProportionalSymbolsMap(bgmap, geometry, options) {
-        if (this.profiling == true)
+        if (window.profiling == true)
             this.startTimeStamp = Date.now();
         const gismap = new ProportionalSymbolsMap(bgmap, geometry, options);
         this.makeMap(gismap, options); //@Rui add options (n tinha WUT)
-
     }
 
+    /**
+     * Creates a Chorocromatic Map.
+     * @param {Object} bgmap - Background map object be used(atm only MapBox being used).
+     * @param {JSON} geometry - The geometry was read from the file.
+     * @param {Object} options - User personalization options.
+     * 
+     * @memberOf Gisplay
+     */
     makeChorochromaticMap(bgmap, geometry, options) {
-        if (this.profiling == true)
+        if (window.profiling == true)
             this.startTimeStamp = Date.now();
         const gismap = new ChorochromaticMap(bgmap, geometry, options);
         this.makeMap(gismap, options);//@Rui .defaultid);
     }
 
+    /**
+     * Starts the construction of the map.
+     * @todo Should clean up this removing profiling code?
+     * @param {Map} gismap - The Gisplay Map to use (Choropleth, DotMap,etc).
+     * @param {Object} options - User personalization options.
+     * 
+     * @memberOf Gisplay
+     */
     makeMap(gismap, options) {
         let defaultid = options.defaultid != null ? defaultid : 1;
         setTimeout(console =&gt; {
-            /*alert(this.profiling);*/
             let start = 0;
-            if (this.profiling == true)
+            if (window.profiling == true)
                 start = Date.now();
-            /*defaultid = defaultid != null ? defaultid : 1;*/
             if (gismap.colorscheme == undefined)
                 gismap.colorscheme = gismap.defaults(defaultid).colorScheme;
             if (gismap.classbreaks == undefined) {
@@ -129,14 +199,14 @@ export class Gisplay {
             //gismap.processData(gismap.geometry);
             gismap.loadGeoJSON(gismap.geometry);
             let start2 = 0;
-            if (this.profiling == true) {
+            if (window.profiling == true) {
                 start2 = Date.now();
                 window.console.log(`Tempo de processamento do dados (segundos): ${(start2 - start) / 1000}`);
             }
             gismap.draw();
 
             let end = 0;
-            if (this.profiling == true) {
+            if (window.profiling == true) {
                 end = Date.now();
                 window.console.log(`Tempo de desenho do mapa (segundos): ${(end - start2) / 1000}`);
             }
@@ -145,22 +215,11 @@ export class Gisplay {
             if (options.loader != false) {
                 gismap.loader();
             }
-            if (this.profiling == true) {
+            if (window.profiling == true) {
                 end = Date.now();
                 window.console.log(`Tempo total (segundos): ${(end - this.startTimeStamp) / 1000}`);
             }
         }, 1);
-    }
-
-    changemapDefaults(defaultid) {
-        const options = {};
-        switch (defaultid) {
-            case 1:
-                break;
-            default:
-                break;
-        }
-        return options;
     }
 }</code></pre>
 

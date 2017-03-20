@@ -3,7 +3,7 @@
     "__docId__": 0,
     "kind": "file",
     "name": "src/Gisplay/Aesthetic.js",
-    "content": "import {Feature} from './Feature';\r\n\r\nexport class Aesthetic {\r\n    \r\n    constructor(id, attr, fcolor, stroke, pointsize, range) {\r\n        this.id = id;\r\n        this.fillColor = fcolor;\r\n        this.strokeColor = stroke;\r\n        this.range = range;\r\n        this._attr = attr;\r\n        this.pointSize = pointsize == null ? 1.0 : parseFloat(pointsize);\r\n        this._features = new Array();\r\n        this._allFeatures = null;\r\n        this.enabled = true;\r\n        this.outer = false;\r\n        return this;\r\n    }\r\n\r\n    addFeature(id, properties, triangles, borders, points) {\r\n        this._features.push(new Feature(id, properties, triangles, borders, points));\r\n    }\r\n\r\n    getAttr() {\r\n        return this._attr;\r\n    }\r\n\r\n    checkProperty(value) {\r\n        if (this.range == null)\r\n            return true;\r\n        else {\r\n            if (typeof value === 'number') {\r\n\r\n                return ((this.range[0] == null || value >= this.range[0])\r\n                    && (this.range[1] == null ||\r\n                        (value < this.range[1] || (value <= this.range[1] && this.outer == true))));\r\n            }\r\n            else\r\n                return (value == this.range[0]);\r\n        }\r\n    }\r\n\r\n    addGroupedFeature(id, triangles, borders, points) {\r\n        if (this._allFeatures == null) {\r\n            this._allFeatures = new Array();\r\n            this._allFeatures.push(new Feature(id, null, triangles, borders, points));\r\n        }\r\n        else {\r\n            const cursor = 0; //TODO\r\n            //this._allFeatures[0]._properties.push(properties);\r\n            this._allFeatures[cursor].push(new Feature(id, null, triangles, borders, points));\r\n            //this._allFeatures[cursor]._triangles.concat(triangles);\r\n            //this._allFeatures[cursor]._borders.concat(borders);\r\n        }\r\n    }\r\n\r\n    enableDisable() {\r\n        this.enabled = !this.enabled;\r\n        return this.enabled;\r\n    }\r\n}",
+    "content": "import { Feature } from './Feature';\r\n\r\n/**\r\n * Class that represents an aesthetic element. There will be one Aesthetic class for each class on the Legend.\r\n * \r\n * @export\r\n * @class Aesthetic\r\n */\r\nexport class Aesthetic {\r\n\r\n    /**\r\n     * Creates an instance of Aesthetic. \r\n     * There will be as many Aesthetic objects as the number of classes on the Legend. \r\n     * @example 1-> {\"id\":0,\"attr\":\"f3\",\"fcolor\":[255,255,255,0.8],\r\n     *         \"stroke\":[0,0,0,1],\"pointsize\":null,\"range\":[1,37]}\r\n     * @example 2-> {\"id\":1,\"attr\":\"f3\",\"fcolor\":[255,255,0,0.8],\r\n     *         \"stroke\":[0,0,0,1],\"pointsize\":null,\"range\":[37,78]}\r\n     * @param {number} id - The unique id of the Aesthetic object.\r\n     * @param {string} attr - The attribute being mapped on this Aesthetic.\r\n     * @param {number[]} fcolor - The color to fill the Aesthetic element(RGBA).\r\n     * @param {number[]} stroke - Stroke color values(RGBA).\r\n     * @param {number|null} pointsize - Size of the Aesthetic point to be drawn (Used only in maps that require dots to be drawn).\r\n     * @param {number[]} range - The range for this particular Aesthetic element.\r\n     * \r\n     * @memberOf Aesthetic\r\n     */\r\n    constructor(id, attr, fcolor, stroke, pointsize, range) {\r\n        /**\r\n         * The unique id of the Aesthetic object. \r\n         * @type {number}\r\n         */\r\n        this.id = id;\r\n        /**\r\n         * The attribute being mapped on the Aesthetic.\r\n         * @type {string}\r\n         */\r\n        this._attr = attr;\r\n        /**\r\n         * The color to fill the Aesthetic element(RGBA).\r\n         * @type {number[4]}\r\n         */\r\n        this.fillColor = fcolor;\r\n        /**\r\n         * Stroke color values(RGBA).\r\n         * @type {number[4]}\r\n         */\r\n        this.strokeColor = stroke;\r\n        /**\r\n         * The size of the Aesthetic point to be drawn (Used only in maps that require dots to be drawn).\r\n         * @type {number|null}\r\n         */\r\n        this.pointSize = pointsize == null ? 1.0 : parseFloat(pointsize);\r\n        /**\r\n         * The range for this particular Aesthetic element.\r\n         * @type {number[2]}\r\n         */\r\n        this.range = range;\r\n        /**\r\n         * This Array will keep track of all Features associated with this Aesthetic object.\r\n         * @type {Array<Feature>}\r\n         */\r\n        this._features = new Array();\r\n        /**\r\n         * This Array is used for? \r\n         * @todo\r\n         * @type {Array<Feature>}\r\n         */\r\n        this._allFeatures = null;\r\n        /**\r\n         * This particular element will be active or not in the Legend.\r\n         * @type {boolean}\r\n         */\r\n        this.enabled = true;//Elemento da legenda ativado ou desativado\r\n        /**\r\n         * Outer of? This is used for what?\r\n         * @type {boolean}\r\n         */\r\n        this.outer = false;\r\n        return this; //@TODO remove this\r\n    }\r\n\r\n    /**\r\n     * Adds a new feature to this Aesthetic object.\r\n     * @param {number} id - The Feature id. Each feature will have a different id inside this Aesthetic object.\r\n     * @param {{fx: string, _gisplayid:number}} properties - Properties associated with the Feature.\r\n     * @param {{itemSize: number, numItems: number}} triangles - Number of triangles associated with the Feature.\r\n     * @param {{itemSize: number, numItems: number}} borders - Number of borders associated with the Feature.\r\n     * @param {number[]} points - The points that belong to the Feature.\r\n     * \r\n     * @memberOf Aesthetic\r\n     */\r\n    addFeature(id, properties, triangles, borders, points) {\r\n        this._features.push(new Feature(id, properties, triangles, borders, points));\r\n    }\r\n\r\n    /**\r\n     * Gets this Aesthetic attribute.\r\n     * @returns {Aesthetic._attr} - The string representing the attr of this Aesthetic.\r\n     * \r\n     * @memberOf Aesthetic\r\n     */\r\n    getAttr() {\r\n        return this._attr;\r\n    }\r\n\r\n    /**\r\n     * Checks the existence or not ? of {Aesthethic._attr}\r\n     * \r\n     * @param {string} value - The attribute  \r\n     * @returns {boolean} - True if the value is ?\r\n     * \r\n     * @memberOf Aesthetic\r\n     */\r\n    checkProperty(value) {\r\n        if (this.range == null)\r\n            return true;\r\n        else {\r\n            if (typeof value === 'number') \r\n                return ((this.range[0] == null || value >= this.range[0]) &&\r\n                    (this.range[1] == null || (value < this.range[1] || (value <= this.range[1] && this.outer == true))));\r\n            else\r\n                return (value == this.range[0]);\r\n        }\r\n    }\r\n\r\n    addGroupedFeature(id, triangles, borders, points) {\r\n        if (this._allFeatures == null) {\r\n            this._allFeatures = new Array();\r\n            this._allFeatures.push(new Feature(id, null, triangles, borders, points));\r\n        }\r\n        else {\r\n            const cursor = 0; //TODO\r\n            //this._allFeatures[0]._properties.push(properties);\r\n            this._allFeatures[cursor].push(new Feature(id, null, triangles, borders, points));\r\n            //this._allFeatures[cursor]._triangles.concat(triangles);\r\n            //this._allFeatures[cursor]._borders.concat(borders);\r\n        }\r\n    }\r\n\r\n    enableDisable() {\r\n        this.enabled = !this.enabled;\r\n        return this.enabled;\r\n    }\r\n}\r\n\r\n /*var obj = {\r\n            i: id,\r\n            a: attr,\r\n            f: fcolor,\r\n            s: stroke,\r\n            p: pointsize,\r\n            r: range\r\n        }\r\n        console.warn(\"Aest called constructor!!! == \" + JSON.stringify(obj));*/",
     "static": true,
     "longname": "src/Gisplay/Aesthetic.js",
     "access": null,
@@ -21,13 +21,12 @@
     "export": true,
     "importPath": "gisplay-es6-webpack/src/Gisplay/Aesthetic.js",
     "importStyle": "{Aesthetic}",
-    "description": null,
-    "lineNumber": 3,
-    "undocument": true,
+    "description": "Class that represents an aesthetic element. There will be one Aesthetic class for each class on the Legend.",
+    "lineNumber": 9,
     "unknown": [
       {
-        "tagName": "@_undocument",
-        "tagValue": ""
+        "tagName": "@class",
+        "tagValue": "Aesthetic"
       }
     ],
     "interface": false
@@ -42,51 +41,79 @@
     "static": false,
     "longname": "src/Gisplay/Aesthetic.js~Aesthetic#constructor",
     "access": null,
-    "description": null,
-    "lineNumber": 5,
-    "undocument": true,
+    "description": "Creates an instance of Aesthetic. \nThere will be as many Aesthetic objects as the number of classes on the Legend. ",
+    "examples": [
+      "1-> {\"id\":0,\"attr\":\"f3\",\"fcolor\":[255,255,255,0.8],\n        \"stroke\":[0,0,0,1],\"pointsize\":null,\"range\":[1,37]}",
+      "2-> {\"id\":1,\"attr\":\"f3\",\"fcolor\":[255,255,0,0.8],\n        \"stroke\":[0,0,0,1],\"pointsize\":null,\"range\":[37,78]}"
+    ],
+    "lineNumber": 27,
     "unknown": [
       {
-        "tagName": "@_undocument",
-        "tagValue": ""
+        "tagName": "@memberOf",
+        "tagValue": "Aesthetic"
       }
     ],
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "id",
-        "types": [
-          "*"
-        ]
+        "description": "The unique id of the Aesthetic object."
       },
       {
+        "nullable": null,
+        "types": [
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "attr",
-        "types": [
-          "*"
-        ]
+        "description": "The attribute being mapped on this Aesthetic."
       },
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "fcolor",
-        "types": [
-          "*"
-        ]
+        "description": "The color to fill the Aesthetic element(RGBA)."
       },
       {
+        "nullable": null,
+        "types": [
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "stroke",
-        "types": [
-          "*"
-        ]
+        "description": "Stroke color values(RGBA)."
       },
       {
+        "nullable": null,
+        "types": [
+          "number",
+          "null"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "pointsize",
-        "types": [
-          "*"
-        ]
+        "description": "Size of the Aesthetic point to be drawn (Used only in maps that require dots to be drawn)."
       },
       {
-        "name": "range",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "range",
+        "description": "The range for this particular Aesthetic element."
       }
     ]
   },
@@ -98,134 +125,111 @@
     "static": false,
     "longname": "src/Gisplay/Aesthetic.js~Aesthetic#id",
     "access": null,
-    "description": null,
-    "lineNumber": 6,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
+    "description": "The unique id of the Aesthetic object. ",
+    "lineNumber": 32,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
     "__docId__": 4,
-    "kind": "member",
-    "name": "fillColor",
-    "memberof": "src/Gisplay/Aesthetic.js~Aesthetic",
-    "static": false,
-    "longname": "src/Gisplay/Aesthetic.js~Aesthetic#fillColor",
-    "access": null,
-    "description": null,
-    "lineNumber": 7,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 5,
-    "kind": "member",
-    "name": "strokeColor",
-    "memberof": "src/Gisplay/Aesthetic.js~Aesthetic",
-    "static": false,
-    "longname": "src/Gisplay/Aesthetic.js~Aesthetic#strokeColor",
-    "access": null,
-    "description": null,
-    "lineNumber": 8,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 6,
-    "kind": "member",
-    "name": "range",
-    "memberof": "src/Gisplay/Aesthetic.js~Aesthetic",
-    "static": false,
-    "longname": "src/Gisplay/Aesthetic.js~Aesthetic#range",
-    "access": null,
-    "description": null,
-    "lineNumber": 9,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
-    "type": {
-      "types": [
-        "*"
-      ]
-    }
-  },
-  {
-    "__docId__": 7,
     "kind": "member",
     "name": "_attr",
     "memberof": "src/Gisplay/Aesthetic.js~Aesthetic",
     "static": false,
     "longname": "src/Gisplay/Aesthetic.js~Aesthetic#_attr",
     "access": null,
-    "description": null,
-    "lineNumber": 10,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
+    "description": "The attribute being mapped on the Aesthetic.",
+    "lineNumber": 37,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "string"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
-    "__docId__": 8,
+    "__docId__": 5,
+    "kind": "member",
+    "name": "fillColor",
+    "memberof": "src/Gisplay/Aesthetic.js~Aesthetic",
+    "static": false,
+    "longname": "src/Gisplay/Aesthetic.js~Aesthetic#fillColor",
+    "access": null,
+    "description": "The color to fill the Aesthetic element(RGBA).",
+    "lineNumber": 42,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number[4]"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 6,
+    "kind": "member",
+    "name": "strokeColor",
+    "memberof": "src/Gisplay/Aesthetic.js~Aesthetic",
+    "static": false,
+    "longname": "src/Gisplay/Aesthetic.js~Aesthetic#strokeColor",
+    "access": null,
+    "description": "Stroke color values(RGBA).",
+    "lineNumber": 47,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number[4]"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 7,
     "kind": "member",
     "name": "pointSize",
     "memberof": "src/Gisplay/Aesthetic.js~Aesthetic",
     "static": false,
     "longname": "src/Gisplay/Aesthetic.js~Aesthetic#pointSize",
     "access": null,
-    "description": null,
-    "lineNumber": 11,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
+    "description": "The size of the Aesthetic point to be drawn (Used only in maps that require dots to be drawn).",
+    "lineNumber": 52,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number",
+        "null"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 8,
+    "kind": "member",
+    "name": "range",
+    "memberof": "src/Gisplay/Aesthetic.js~Aesthetic",
+    "static": false,
+    "longname": "src/Gisplay/Aesthetic.js~Aesthetic#range",
+    "access": null,
+    "description": "The range for this particular Aesthetic element.",
+    "lineNumber": 57,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number[2]"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -236,19 +240,15 @@
     "static": false,
     "longname": "src/Gisplay/Aesthetic.js~Aesthetic#_features",
     "access": null,
-    "description": null,
-    "lineNumber": 12,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
+    "description": "This Array will keep track of all Features associated with this Aesthetic object.",
+    "lineNumber": 62,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Array<Feature>"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -259,19 +259,18 @@
     "static": false,
     "longname": "src/Gisplay/Aesthetic.js~Aesthetic#_allFeatures",
     "access": null,
-    "description": null,
-    "lineNumber": 13,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
+    "description": "This Array is used for? ",
+    "lineNumber": 68,
+    "todo": [
+      ""
     ],
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Array<Feature>"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -282,19 +281,15 @@
     "static": false,
     "longname": "src/Gisplay/Aesthetic.js~Aesthetic#enabled",
     "access": null,
-    "description": null,
-    "lineNumber": 14,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
+    "description": "This particular element will be active or not in the Legend.",
+    "lineNumber": 73,
     "type": {
+      "nullable": null,
       "types": [
         "boolean"
-      ]
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -305,19 +300,15 @@
     "static": false,
     "longname": "src/Gisplay/Aesthetic.js~Aesthetic#outer",
     "access": null,
-    "description": null,
-    "lineNumber": 15,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
+    "description": "Outer of? This is used for what?",
+    "lineNumber": 78,
     "type": {
+      "nullable": null,
       "types": [
         "boolean"
-      ]
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -330,45 +321,64 @@
     "static": false,
     "longname": "src/Gisplay/Aesthetic.js~Aesthetic#addFeature",
     "access": null,
-    "description": null,
-    "lineNumber": 19,
-    "undocument": true,
+    "description": "Adds a new feature to this Aesthetic object.",
+    "lineNumber": 92,
     "unknown": [
       {
-        "tagName": "@_undocument",
-        "tagValue": ""
+        "tagName": "@memberOf",
+        "tagValue": "Aesthetic"
       }
     ],
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "id",
-        "types": [
-          "*"
-        ]
+        "description": "The Feature id. Each feature will have a different id inside this Aesthetic object."
       },
       {
+        "nullable": null,
+        "types": [
+          "{fx: string, _gisplayid:number}"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "properties",
-        "types": [
-          "*"
-        ]
+        "description": "Properties associated with the Feature."
       },
       {
+        "nullable": null,
+        "types": [
+          "{itemSize: number, numItems: number}"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "triangles",
-        "types": [
-          "*"
-        ]
+        "description": "Number of triangles associated with the Feature."
       },
       {
+        "nullable": null,
+        "types": [
+          "{itemSize: number, numItems: number}"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "borders",
-        "types": [
-          "*"
-        ]
+        "description": "Number of borders associated with the Feature."
       },
       {
-        "name": "points",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "points",
+        "description": "The points that belong to the Feature."
       }
     ]
   },
@@ -382,20 +392,26 @@
     "static": false,
     "longname": "src/Gisplay/Aesthetic.js~Aesthetic#getAttr",
     "access": null,
-    "description": null,
-    "lineNumber": 23,
-    "undocument": true,
+    "description": "Gets this Aesthetic attribute.",
+    "lineNumber": 102,
     "unknown": [
       {
-        "tagName": "@_undocument",
-        "tagValue": ""
+        "tagName": "@returns",
+        "tagValue": "{Aesthetic._attr} - The string representing the attr of this Aesthetic."
+      },
+      {
+        "tagName": "@memberOf",
+        "tagValue": "Aesthetic"
       }
     ],
     "params": [],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Aesthetic._attr"
+      ],
+      "spread": false,
+      "description": "The string representing the attr of this Aesthetic."
     }
   },
   {
@@ -408,27 +424,37 @@
     "static": false,
     "longname": "src/Gisplay/Aesthetic.js~Aesthetic#checkProperty",
     "access": null,
-    "description": null,
-    "lineNumber": 27,
-    "undocument": true,
+    "description": "Checks the existence or not ? of {Aesthethic._attr}",
+    "lineNumber": 114,
     "unknown": [
       {
-        "tagName": "@_undocument",
-        "tagValue": ""
+        "tagName": "@returns",
+        "tagValue": "{boolean} - True if the value is ?"
+      },
+      {
+        "tagName": "@memberOf",
+        "tagValue": "Aesthetic"
       }
     ],
     "params": [
       {
-        "name": "value",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "value",
+        "description": "The attribute"
       }
     ],
     "return": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "boolean"
+      ],
+      "spread": false,
+      "description": "True if the value is ?"
     }
   },
   {
@@ -442,7 +468,7 @@
     "longname": "src/Gisplay/Aesthetic.js~Aesthetic#addGroupedFeature",
     "access": null,
     "description": null,
-    "lineNumber": 42,
+    "lineNumber": 126,
     "undocument": true,
     "unknown": [
       {
@@ -486,7 +512,7 @@
     "longname": "src/Gisplay/Aesthetic.js~Aesthetic#_allFeatures",
     "access": null,
     "description": null,
-    "lineNumber": 44,
+    "lineNumber": 128,
     "undocument": true,
     "unknown": [
       {
@@ -511,7 +537,7 @@
     "longname": "src/Gisplay/Aesthetic.js~Aesthetic#enableDisable",
     "access": null,
     "description": null,
-    "lineNumber": 56,
+    "lineNumber": 140,
     "undocument": true,
     "unknown": [
       {
@@ -535,7 +561,7 @@
     "longname": "src/Gisplay/Aesthetic.js~Aesthetic#enabled",
     "access": null,
     "description": null,
-    "lineNumber": 57,
+    "lineNumber": 141,
     "undocument": true,
     "unknown": [
       {
@@ -553,7 +579,7 @@
     "__docId__": 20,
     "kind": "file",
     "name": "src/Gisplay/Feature.js",
-    "content": "//Intermediate API\r\n/**\r\n * \r\n */\r\nexport class Feature {\r\n\r\n    constructor(id, properties, triangles, borders, points) {\r\n        this._id = id;\r\n        this._properties = properties;\r\n        this._triangles = triangles;\r\n        this._borders = borders;\r\n        this._points = points;\r\n        return this;\r\n    }\r\n    \r\n}\r\n\r\n\r\n",
+    "content": "//Intermediate API\r\n\r\n/**\r\n * This class represents a Feature. Each feature belongs to one Aesthetic element.\r\n * \r\n * @export\r\n * @class Feature\r\n */\r\nexport class Feature {\r\n    /**\r\n     * Creates an instance of Feature.\r\n     * @example 1-> {\"id\":0,\"properties\":{\"f1\":\"Alabama\",\"f2\":\"Autauga\",\"f3\":150,\"_gisplayid\":0},\r\n                     \"triangles\":[{\"itemSize\":2,\"numItems\":417}],\"borders\":[{\"itemSize\":2,\"numItems\":141}],\"points\":[]}\r\n     * @param {number} id - This Feature id.\r\n     * @param {{fx: string, _gisplayid:number}} properties - Properties associated with this Feature.  \r\n     * @param {{itemSize: number, numItems: number}} triangles - Number of triangles associated with this Feature. \r\n     * @param {{itemSize: number, numItems: number}} borders - Number of borders associated with this Feature.\r\n     * @param {number[]} points - The points that belong to this Feature.\r\n     * \r\n     * @memberOf Feature\r\n     */\r\n    constructor(id, properties, triangles, borders, points) {\r\n        /**\r\n         * This Feature id.\r\n         * @type {number} \r\n         */\r\n        this._id = id;\r\n        /**\r\n         * Properties associated with this Feature.  \r\n         * @type {{fx: string, _gisplayid:number}}  \r\n         */\r\n        this._properties = properties;\r\n        /**\r\n         * Number of triangles associated with this Feature.\r\n         * @type {{itemSize: number, numItems: number}}\r\n         */\r\n        this._triangles = triangles;\r\n        /**\r\n         * Number of borders associated with this Feature.\r\n         * @type {{itemSize: number, numItems: number}}\r\n         */\r\n        this._borders = borders;\r\n        /**\r\n         * The points that belong to this Feature.\r\n         * @type {number[]}\r\n         */\r\n        this._points = points;\r\n        return this;// @Rui Remover this\r\n    }\r\n}\r\n /* if (window.count == 0) {\r\n            var obj = {\r\n                i: id,\r\n                prs: properties,\r\n                ts: triangles,\r\n                bs: borders,\r\n                pts: points,\r\n            }\r\n            window.count++;\r\n            console.log(JSON.stringify(obj))\r\n        }*/",
     "static": true,
     "longname": "src/Gisplay/Feature.js",
     "access": null,
@@ -571,8 +597,14 @@
     "export": true,
     "importPath": "gisplay-es6-webpack/src/Gisplay/Feature.js",
     "importStyle": "{Feature}",
-    "description": "",
-    "lineNumber": 5,
+    "description": "This class represents a Feature. Each feature belongs to one Aesthetic element.",
+    "lineNumber": 9,
+    "unknown": [
+      {
+        "tagName": "@class",
+        "tagValue": "Feature"
+      }
+    ],
     "interface": false
   },
   {
@@ -585,45 +617,67 @@
     "static": false,
     "longname": "src/Gisplay/Feature.js~Feature#constructor",
     "access": null,
-    "description": null,
-    "lineNumber": 7,
-    "undocument": true,
+    "description": "Creates an instance of Feature.",
+    "examples": [
+      "1-> {\"id\":0,\"properties\":{\"f1\":\"Alabama\",\"f2\":\"Autauga\",\"f3\":150,\"_gisplayid\":0},\n\"triangles\":[{\"itemSize\":2,\"numItems\":417}],\"borders\":[{\"itemSize\":2,\"numItems\":141}],\"points\":[]}"
+    ],
+    "lineNumber": 22,
     "unknown": [
       {
-        "tagName": "@_undocument",
-        "tagValue": ""
+        "tagName": "@memberOf",
+        "tagValue": "Feature"
       }
     ],
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "id",
-        "types": [
-          "*"
-        ]
+        "description": "This Feature id."
       },
       {
+        "nullable": null,
+        "types": [
+          "{fx: string, _gisplayid:number}"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "properties",
-        "types": [
-          "*"
-        ]
+        "description": "Properties associated with this Feature."
       },
       {
+        "nullable": null,
+        "types": [
+          "{itemSize: number, numItems: number}"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "triangles",
-        "types": [
-          "*"
-        ]
+        "description": "Number of triangles associated with this Feature."
       },
       {
+        "nullable": null,
+        "types": [
+          "{itemSize: number, numItems: number}"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "borders",
-        "types": [
-          "*"
-        ]
+        "description": "Number of borders associated with this Feature."
       },
       {
-        "name": "points",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number[]"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "points",
+        "description": "The points that belong to this Feature."
       }
     ]
   },
@@ -635,19 +689,15 @@
     "static": false,
     "longname": "src/Gisplay/Feature.js~Feature#_id",
     "access": null,
-    "description": null,
-    "lineNumber": 8,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
+    "description": "This Feature id.",
+    "lineNumber": 27,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -658,19 +708,15 @@
     "static": false,
     "longname": "src/Gisplay/Feature.js~Feature#_properties",
     "access": null,
-    "description": null,
-    "lineNumber": 9,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
+    "description": "Properties associated with this Feature.  ",
+    "lineNumber": 32,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "{fx: string, _gisplayid:number}"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -681,19 +727,15 @@
     "static": false,
     "longname": "src/Gisplay/Feature.js~Feature#_triangles",
     "access": null,
-    "description": null,
-    "lineNumber": 10,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
+    "description": "Number of triangles associated with this Feature.",
+    "lineNumber": 37,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "{itemSize: number, numItems: number}"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -704,19 +746,15 @@
     "static": false,
     "longname": "src/Gisplay/Feature.js~Feature#_borders",
     "access": null,
-    "description": null,
-    "lineNumber": 11,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
+    "description": "Number of borders associated with this Feature.",
+    "lineNumber": 42,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "{itemSize: number, numItems: number}"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -727,26 +765,22 @@
     "static": false,
     "longname": "src/Gisplay/Feature.js~Feature#_points",
     "access": null,
-    "description": null,
-    "lineNumber": 12,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
+    "description": "The points that belong to this Feature.",
+    "lineNumber": 47,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "number[]"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
     "__docId__": 28,
     "kind": "file",
     "name": "src/Gisplay/Gisplay.js",
-    "content": "import { Choropleth } from './Maps/Choropleth';\r\nimport { DotMap } from './Maps/DotMap';\r\nimport { ChangeMap } from './Maps/ChangeMap';\r\nimport { ProportionalSymbolsMap } from './Maps/ProportionalSymbolsMap'\r\nimport { ChorochromaticMap } from './Maps/ChorochromaticMap';\r\n\r\n/**\r\n * Gisplay API with one method for each map available.\r\n */\r\nexport class Gisplay {\r\n\r\n    constructor() {\r\n        console.log(\"Gisplay Class constructor\");\r\n        window.profiling = true;\r\n        window.maps = new Array();\r\n        window.mapcount = 0;\r\n\r\n        //WebGL API\r\n        window._vertexcount = 0;\r\n        window._tricount = 0;\r\n        /*return this;*/\r\n    }\r\n\r\n    makeChoropleth(bgmap, geometry, options) {\r\n        if (this.profiling == true)\r\n            this.startTimeStamp = Date.now();\r\n        /*console.log(options)*/\r\n        const gismap = new Choropleth(bgmap, geometry, options);\r\n        this.makeMap(gismap, options);//options.defaultid);\r\n    }\r\n\r\n    makeDotMap(bgmap, geometry, options) {\r\n        if (this.profiling == true)\r\n            this.startTimeStamp = Date.now();\r\n        const gismap = new DotMap(bgmap, geometry, options);\r\n        this.makeMap(gismap, options);\r\n\r\n    }\r\n\r\n    makeChangeMap(bgmap, geometry, options) {\r\n        if (this.profiling == true)\r\n            this.startTimeStamp = Date.now();\r\n        const gismap = new ChangeMap(bgmap, geometry, options);\r\n        this.makeMap(gismap, options);\r\n    }\r\n\r\n    makeProportionalSymbolsMap(bgmap, geometry, options) {\r\n        if (this.profiling == true)\r\n            this.startTimeStamp = Date.now();\r\n        const gismap = new ProportionalSymbolsMap(bgmap, geometry, options);\r\n        this.makeMap(gismap, options); //@Rui add options (n tinha WUT)\r\n\r\n    }\r\n\r\n    makeChorochromaticMap(bgmap, geometry, options) {\r\n        if (this.profiling == true)\r\n            this.startTimeStamp = Date.now();\r\n        const gismap = new ChorochromaticMap(bgmap, geometry, options);\r\n        this.makeMap(gismap, options);//@Rui .defaultid);\r\n    }\r\n\r\n    makeMap(gismap, options) {\r\n        let defaultid = options.defaultid != null ? defaultid : 1;\r\n        setTimeout(console => {\r\n            /*alert(this.profiling);*/\r\n            let start = 0;\r\n            if (this.profiling == true)\r\n                start = Date.now();\r\n            /*defaultid = defaultid != null ? defaultid : 1;*/\r\n            if (gismap.colorscheme == undefined)\r\n                gismap.colorscheme = gismap.defaults(defaultid).colorScheme;\r\n            if (gismap.classbreaks == undefined) {\r\n                if (gismap.numberofclasses == undefined) {\r\n                    gismap.numberofclasses = gismap.defaults(defaultid).numberOfClasses;\r\n                }\r\n                gismap.preProcessData(gismap.geometry, gismap.numberofclasses, gismap.algorithm, gismap.colorscheme);\r\n            }\r\n\r\n            //gismap.processData(gismap.geometry);\r\n            gismap.loadGeoJSON(gismap.geometry);\r\n            let start2 = 0;\r\n            if (this.profiling == true) {\r\n                start2 = Date.now();\r\n                window.console.log(`Tempo de processamento do dados (segundos): ${(start2 - start) / 1000}`);\r\n            }\r\n            gismap.draw();\r\n\r\n            let end = 0;\r\n            if (this.profiling == true) {\r\n                end = Date.now();\r\n                window.console.log(`Tempo de desenho do mapa (segundos): ${(end - start2) / 1000}`);\r\n            }\r\n            if (options.legend != false)\r\n                gismap.buildLegend();\r\n            if (options.loader != false) {\r\n                gismap.loader();\r\n            }\r\n            if (this.profiling == true) {\r\n                end = Date.now();\r\n                window.console.log(`Tempo total (segundos): ${(end - this.startTimeStamp) / 1000}`);\r\n            }\r\n        }, 1);\r\n    }\r\n\r\n    changemapDefaults(defaultid) {\r\n        const options = {};\r\n        switch (defaultid) {\r\n            case 1:\r\n                break;\r\n            default:\r\n                break;\r\n        }\r\n        return options;\r\n    }\r\n}",
+    "content": "import { Choropleth } from './Maps/Choropleth';\r\nimport { DotMap } from './Maps/DotMap';\r\nimport { ChangeMap } from './Maps/ChangeMap';\r\nimport { ProportionalSymbolsMap } from './Maps/ProportionalSymbolsMap'\r\nimport { ChorochromaticMap } from './Maps/ChorochromaticMap';\r\n\r\n/**\r\n * Gisplay API entry point with one method for each map available.\r\n */\r\nexport class Gisplay {\r\n\r\n    /**\r\n     * Creates an instance of the Gisplay API.\r\n     * \r\n     * @memberOf Gisplay\r\n     */\r\n    constructor() {\r\n        console.log(\"Gisplay Class constructor\");\r\n        /**\r\n         * TimeStamp at the beginning.\r\n         * @type {number} \r\n         */\r\n        this.startTimeStamp = 0;\r\n\r\n        /**\r\n         * Whether or not it  should profile the API.\r\n         * @type {string} - Whether or not it  should profile the API.\r\n         */\r\n        window.profiling = true;\r\n        /**\r\n         * @type {Array} - Array of maps. @WHY?\r\n         */\r\n        window.maps = new Array();\r\n        /**\r\n         * @type {number} - The number of maps. @WHY?\r\n         */\r\n        window.mapcount = 0;\r\n\r\n        //WebGL API\r\n        /**\r\n        * @type {number} - The number of vertices produced. @WHY?\r\n        */\r\n        window._vertexcount = 0;\r\n        /**\r\n        * @type {number} - The number of ???. @WHY?\r\n        */\r\n        window._tricount = 0;\r\n    }\r\n\r\n    /**\r\n     * Creates a map of type Choropleth.\r\n     * @param {Object} bgmap - Background map object be used(atm only MapBox being used).- Background map object be used(atm only MapBox being used).\r\n     * @param {JSON} geometry - The geometry was read from the file.\r\n     * @param {Object} options - User personalization options.\r\n     * \r\n     * @memberOf Gisplay\r\n     */\r\n    makeChoropleth(bgmap, geometry, options) {\r\n        console.log(bgmap);\r\n        if (window.profiling == true)\r\n            this.startTimeStamp = Date.now();\r\n        const gismap = new Choropleth(bgmap, geometry, options);\r\n        this.makeMap(gismap, options);\r\n    }\r\n\r\n    /**\r\n     * Creates a Dot Map.\r\n     * @param {Object} bgmap - Background map object be used(atm only MapBox being used).\r\n     * @param {JSON} geometry - The geometry was read from the file.\r\n     * @param {Object} options - User personalization options.\r\n     * \r\n     * @memberOf Gisplay\r\n     */\r\n    makeDotMap(bgmap, geometry, options) {\r\n        if (window.profiling == true)\r\n            this.startTimeStamp = Date.now();\r\n        const gismap = new DotMap(bgmap, geometry, options);\r\n        this.makeMap(gismap, options);\r\n    }\r\n\r\n    /**\r\n     * Creates a Change Map.\r\n     * @param {Object} bgmap - Background map object be used(atm only MapBox being used).\r\n     * @param {JSON} geometry - The geometry was read from the file.\r\n     * @param {Object} options - User personalization options.\r\n     * \r\n     * @memberOf Gisplay\r\n     */\r\n    makeChangeMap(bgmap, geometry, options) {\r\n        if (window.profiling == true)\r\n            this.startTimeStamp = Date.now();\r\n        const gismap = new ChangeMap(bgmap, geometry, options);\r\n        this.makeMap(gismap, options);\r\n    }\r\n\r\n    /**\r\n     * Creates a Proportional Symbols Map.\r\n     * @param {Object} bgmap - Background map object be used(atm only MapBox being used).\r\n     * @param {JSON} geometry - The geometry was read from the file.\r\n     * @param {Object} options - User personalization options.\r\n     * \r\n     * @memberOf Gisplay\r\n     */\r\n    makeProportionalSymbolsMap(bgmap, geometry, options) {\r\n        if (window.profiling == true)\r\n            this.startTimeStamp = Date.now();\r\n        const gismap = new ProportionalSymbolsMap(bgmap, geometry, options);\r\n        this.makeMap(gismap, options); //@Rui add options (n tinha WUT)\r\n    }\r\n\r\n    /**\r\n     * Creates a Chorocromatic Map.\r\n     * @param {Object} bgmap - Background map object be used(atm only MapBox being used).\r\n     * @param {JSON} geometry - The geometry was read from the file.\r\n     * @param {Object} options - User personalization options.\r\n     * \r\n     * @memberOf Gisplay\r\n     */\r\n    makeChorochromaticMap(bgmap, geometry, options) {\r\n        if (window.profiling == true)\r\n            this.startTimeStamp = Date.now();\r\n        const gismap = new ChorochromaticMap(bgmap, geometry, options);\r\n        this.makeMap(gismap, options);//@Rui .defaultid);\r\n    }\r\n\r\n    /**\r\n     * Starts the construction of the map.\r\n     * @todo Should clean up this removing profiling code?\r\n     * @param {Map} gismap - The Gisplay Map to use (Choropleth, DotMap,etc).\r\n     * @param {Object} options - User personalization options.\r\n     * \r\n     * @memberOf Gisplay\r\n     */\r\n    makeMap(gismap, options) {\r\n        let defaultid = options.defaultid != null ? defaultid : 1;\r\n        setTimeout(console => {\r\n            let start = 0;\r\n            if (window.profiling == true)\r\n                start = Date.now();\r\n            if (gismap.colorscheme == undefined)\r\n                gismap.colorscheme = gismap.defaults(defaultid).colorScheme;\r\n            if (gismap.classbreaks == undefined) {\r\n                if (gismap.numberofclasses == undefined) {\r\n                    gismap.numberofclasses = gismap.defaults(defaultid).numberOfClasses;\r\n                }\r\n                gismap.preProcessData(gismap.geometry, gismap.numberofclasses, gismap.algorithm, gismap.colorscheme);\r\n            }\r\n\r\n            //gismap.processData(gismap.geometry);\r\n            gismap.loadGeoJSON(gismap.geometry);\r\n            let start2 = 0;\r\n            if (window.profiling == true) {\r\n                start2 = Date.now();\r\n                window.console.log(`Tempo de processamento do dados (segundos): ${(start2 - start) / 1000}`);\r\n            }\r\n            gismap.draw();\r\n\r\n            let end = 0;\r\n            if (window.profiling == true) {\r\n                end = Date.now();\r\n                window.console.log(`Tempo de desenho do mapa (segundos): ${(end - start2) / 1000}`);\r\n            }\r\n            if (options.legend != false)\r\n                gismap.buildLegend();\r\n            if (options.loader != false) {\r\n                gismap.loader();\r\n            }\r\n            if (window.profiling == true) {\r\n                end = Date.now();\r\n                window.console.log(`Tempo total (segundos): ${(end - this.startTimeStamp) / 1000}`);\r\n            }\r\n        }, 1);\r\n    }\r\n}",
     "static": true,
     "longname": "src/Gisplay/Gisplay.js",
     "access": null,
@@ -764,7 +798,7 @@
     "export": true,
     "importPath": "gisplay-es6-webpack/src/Gisplay/Gisplay.js",
     "importStyle": "{Gisplay}",
-    "description": "Gisplay API with one method for each map available.",
+    "description": "Gisplay API entry point with one method for each map available.",
     "lineNumber": 10,
     "interface": false
   },
@@ -778,19 +812,37 @@
     "static": false,
     "longname": "src/Gisplay/Gisplay.js~Gisplay#constructor",
     "access": null,
-    "description": null,
-    "lineNumber": 12,
-    "undocument": true,
+    "description": "Creates an instance of the Gisplay API.",
+    "lineNumber": 17,
     "unknown": [
       {
-        "tagName": "@_undocument",
-        "tagValue": ""
+        "tagName": "@memberOf",
+        "tagValue": "Gisplay"
       }
     ],
     "params": []
   },
   {
     "__docId__": 31,
+    "kind": "member",
+    "name": "startTimeStamp",
+    "memberof": "src/Gisplay/Gisplay.js~Gisplay",
+    "static": false,
+    "longname": "src/Gisplay/Gisplay.js~Gisplay#startTimeStamp",
+    "access": null,
+    "description": "TimeStamp at the beginning.",
+    "lineNumber": 23,
+    "type": {
+      "nullable": null,
+      "types": [
+        "number"
+      ],
+      "spread": false,
+      "description": null
+    }
+  },
+  {
+    "__docId__": 32,
     "kind": "method",
     "name": "makeChoropleth",
     "memberof": "src/Gisplay/Gisplay.js~Gisplay",
@@ -799,38 +851,49 @@
     "static": false,
     "longname": "src/Gisplay/Gisplay.js~Gisplay#makeChoropleth",
     "access": null,
-    "description": null,
-    "lineNumber": 24,
-    "undocument": true,
+    "description": "Creates a map of type Choropleth.",
+    "lineNumber": 58,
     "unknown": [
       {
-        "tagName": "@_undocument",
-        "tagValue": ""
+        "tagName": "@memberOf",
+        "tagValue": "Gisplay"
       }
     ],
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "bgmap",
-        "types": [
-          "*"
-        ]
+        "description": "Background map object be used(atm only MapBox being used).- Background map object be used(atm only MapBox being used)."
       },
       {
+        "nullable": null,
+        "types": [
+          "JSON"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "geometry",
-        "types": [
-          "*"
-        ]
+        "description": "The geometry was read from the file."
       },
       {
-        "name": "options",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "User personalization options."
       }
     ]
   },
   {
-    "__docId__": 32,
+    "__docId__": 33,
     "kind": "member",
     "name": "startTimeStamp",
     "memberof": "src/Gisplay/Gisplay.js~Gisplay",
@@ -838,7 +901,7 @@
     "longname": "src/Gisplay/Gisplay.js~Gisplay#startTimeStamp",
     "access": null,
     "description": null,
-    "lineNumber": 26,
+    "lineNumber": 61,
     "undocument": true,
     "unknown": [
       {
@@ -853,7 +916,7 @@
     }
   },
   {
-    "__docId__": 33,
+    "__docId__": 34,
     "kind": "method",
     "name": "makeDotMap",
     "memberof": "src/Gisplay/Gisplay.js~Gisplay",
@@ -862,38 +925,49 @@
     "static": false,
     "longname": "src/Gisplay/Gisplay.js~Gisplay#makeDotMap",
     "access": null,
-    "description": null,
-    "lineNumber": 32,
-    "undocument": true,
+    "description": "Creates a Dot Map.",
+    "lineNumber": 74,
     "unknown": [
       {
-        "tagName": "@_undocument",
-        "tagValue": ""
+        "tagName": "@memberOf",
+        "tagValue": "Gisplay"
       }
     ],
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "bgmap",
-        "types": [
-          "*"
-        ]
+        "description": "Background map object be used(atm only MapBox being used)."
       },
       {
+        "nullable": null,
+        "types": [
+          "JSON"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "geometry",
-        "types": [
-          "*"
-        ]
+        "description": "The geometry was read from the file."
       },
       {
-        "name": "options",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "User personalization options."
       }
     ]
   },
   {
-    "__docId__": 34,
+    "__docId__": 35,
     "kind": "member",
     "name": "startTimeStamp",
     "memberof": "src/Gisplay/Gisplay.js~Gisplay",
@@ -901,7 +975,7 @@
     "longname": "src/Gisplay/Gisplay.js~Gisplay#startTimeStamp",
     "access": null,
     "description": null,
-    "lineNumber": 34,
+    "lineNumber": 76,
     "undocument": true,
     "unknown": [
       {
@@ -916,7 +990,7 @@
     }
   },
   {
-    "__docId__": 35,
+    "__docId__": 36,
     "kind": "method",
     "name": "makeChangeMap",
     "memberof": "src/Gisplay/Gisplay.js~Gisplay",
@@ -925,38 +999,49 @@
     "static": false,
     "longname": "src/Gisplay/Gisplay.js~Gisplay#makeChangeMap",
     "access": null,
-    "description": null,
-    "lineNumber": 40,
-    "undocument": true,
+    "description": "Creates a Change Map.",
+    "lineNumber": 89,
     "unknown": [
       {
-        "tagName": "@_undocument",
-        "tagValue": ""
+        "tagName": "@memberOf",
+        "tagValue": "Gisplay"
       }
     ],
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "bgmap",
-        "types": [
-          "*"
-        ]
+        "description": "Background map object be used(atm only MapBox being used)."
       },
       {
+        "nullable": null,
+        "types": [
+          "JSON"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "geometry",
-        "types": [
-          "*"
-        ]
+        "description": "The geometry was read from the file."
       },
       {
-        "name": "options",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "User personalization options."
       }
     ]
   },
   {
-    "__docId__": 36,
+    "__docId__": 37,
     "kind": "member",
     "name": "startTimeStamp",
     "memberof": "src/Gisplay/Gisplay.js~Gisplay",
@@ -964,7 +1049,7 @@
     "longname": "src/Gisplay/Gisplay.js~Gisplay#startTimeStamp",
     "access": null,
     "description": null,
-    "lineNumber": 42,
+    "lineNumber": 91,
     "undocument": true,
     "unknown": [
       {
@@ -979,7 +1064,7 @@
     }
   },
   {
-    "__docId__": 37,
+    "__docId__": 38,
     "kind": "method",
     "name": "makeProportionalSymbolsMap",
     "memberof": "src/Gisplay/Gisplay.js~Gisplay",
@@ -988,38 +1073,49 @@
     "static": false,
     "longname": "src/Gisplay/Gisplay.js~Gisplay#makeProportionalSymbolsMap",
     "access": null,
-    "description": null,
-    "lineNumber": 47,
-    "undocument": true,
+    "description": "Creates a Proportional Symbols Map.",
+    "lineNumber": 104,
     "unknown": [
       {
-        "tagName": "@_undocument",
-        "tagValue": ""
+        "tagName": "@memberOf",
+        "tagValue": "Gisplay"
       }
     ],
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "bgmap",
-        "types": [
-          "*"
-        ]
+        "description": "Background map object be used(atm only MapBox being used)."
       },
       {
+        "nullable": null,
+        "types": [
+          "JSON"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "geometry",
-        "types": [
-          "*"
-        ]
+        "description": "The geometry was read from the file."
       },
       {
-        "name": "options",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "User personalization options."
       }
     ]
   },
   {
-    "__docId__": 38,
+    "__docId__": 39,
     "kind": "member",
     "name": "startTimeStamp",
     "memberof": "src/Gisplay/Gisplay.js~Gisplay",
@@ -1027,7 +1123,7 @@
     "longname": "src/Gisplay/Gisplay.js~Gisplay#startTimeStamp",
     "access": null,
     "description": null,
-    "lineNumber": 49,
+    "lineNumber": 106,
     "undocument": true,
     "unknown": [
       {
@@ -1042,7 +1138,7 @@
     }
   },
   {
-    "__docId__": 39,
+    "__docId__": 40,
     "kind": "method",
     "name": "makeChorochromaticMap",
     "memberof": "src/Gisplay/Gisplay.js~Gisplay",
@@ -1051,38 +1147,49 @@
     "static": false,
     "longname": "src/Gisplay/Gisplay.js~Gisplay#makeChorochromaticMap",
     "access": null,
-    "description": null,
-    "lineNumber": 55,
-    "undocument": true,
+    "description": "Creates a Chorocromatic Map.",
+    "lineNumber": 119,
     "unknown": [
       {
-        "tagName": "@_undocument",
-        "tagValue": ""
+        "tagName": "@memberOf",
+        "tagValue": "Gisplay"
       }
     ],
     "params": [
       {
+        "nullable": null,
+        "types": [
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "bgmap",
-        "types": [
-          "*"
-        ]
+        "description": "Background map object be used(atm only MapBox being used)."
       },
       {
+        "nullable": null,
+        "types": [
+          "JSON"
+        ],
+        "spread": false,
+        "optional": false,
         "name": "geometry",
-        "types": [
-          "*"
-        ]
+        "description": "The geometry was read from the file."
       },
       {
-        "name": "options",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "User personalization options."
       }
     ]
   },
   {
-    "__docId__": 40,
+    "__docId__": 41,
     "kind": "member",
     "name": "startTimeStamp",
     "memberof": "src/Gisplay/Gisplay.js~Gisplay",
@@ -1090,7 +1197,7 @@
     "longname": "src/Gisplay/Gisplay.js~Gisplay#startTimeStamp",
     "access": null,
     "description": null,
-    "lineNumber": 57,
+    "lineNumber": 121,
     "undocument": true,
     "unknown": [
       {
@@ -1105,7 +1212,7 @@
     }
   },
   {
-    "__docId__": 41,
+    "__docId__": 42,
     "kind": "method",
     "name": "makeMap",
     "memberof": "src/Gisplay/Gisplay.js~Gisplay",
@@ -1114,68 +1221,45 @@
     "static": false,
     "longname": "src/Gisplay/Gisplay.js~Gisplay#makeMap",
     "access": null,
-    "description": null,
-    "lineNumber": 62,
-    "undocument": true,
+    "description": "Starts the construction of the map.",
+    "lineNumber": 134,
+    "todo": [
+      "Should clean up this removing profiling code?"
+    ],
     "unknown": [
       {
-        "tagName": "@_undocument",
-        "tagValue": ""
+        "tagName": "@memberOf",
+        "tagValue": "Gisplay"
       }
     ],
     "params": [
       {
-        "name": "gismap",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Map"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "gismap",
+        "description": "The Gisplay Map to use (Choropleth, DotMap,etc)."
       },
       {
-        "name": "options",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "Object"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "options",
+        "description": "User personalization options."
       }
     ]
-  },
-  {
-    "__docId__": 42,
-    "kind": "method",
-    "name": "changemapDefaults",
-    "memberof": "src/Gisplay/Gisplay.js~Gisplay",
-    "generator": false,
-    "async": false,
-    "static": false,
-    "longname": "src/Gisplay/Gisplay.js~Gisplay#changemapDefaults",
-    "access": null,
-    "description": null,
-    "lineNumber": 105,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
-    "params": [
-      {
-        "name": "defaultid",
-        "types": [
-          "*"
-        ]
-      }
-    ],
-    "return": {
-      "types": [
-        "*"
-      ]
-    }
   },
   {
     "__docId__": 43,
     "kind": "file",
     "name": "src/Gisplay/Legend.js",
-    "content": "/**\r\n * This class represents the Map Legend. 15/03\r\n */\r\nexport class Legend {\r\n    constructor(id, title) {\r\n        this.title = title;\r\n        this.init(id);\r\n        return this;\r\n    }\r\n\r\n    insertLegend(map) {\r\n        this.legendDiv.appendChild(this.table);\r\n        map.getContainer().appendChild(this.legendDiv);\r\n    }\r\n\r\n    insertPointRow(currentaes, mapobj) {\r\n        this.insertRow(currentaes, mapobj, 2);\r\n    }\r\n\r\n    insertPolygonRow(currentaes, mapobj) {\r\n        this.insertRow(currentaes, mapobj, 1);\r\n    }\r\n\r\n    insertRow(currentaes, mapobj, type) {\r\n\r\n        const row = document.createElement('tr');\r\n        const value = document.createElement('td');\r\n        const color = document.createElement('td');\r\n        let text;\r\n        if (typeof currentaes.range[0] === 'number') {\r\n            const mininput = currentaes.range[0] != null ? currentaes.range[0] : mapobj.min;\r\n            const maxinput = currentaes.range[1] != null ? currentaes.range[1] : mapobj.max;\r\n            if (currentaes.outer == false)\r\n                text = document.createTextNode(`[${mininput}, ${maxinput}[`);\r\n            else\r\n                text = document.createTextNode(`[${mininput}, ${maxinput}]`);\r\n        }\r\n        else\r\n            text = document.createTextNode(currentaes.range[0]);\r\n        value.appendChild(text);\r\n\r\n        const colorDiv = document.createElement('div');\r\n        colorDiv.style.position = 'relative';\r\n        const rgbc = `rgba(${currentaes.fillColor[0]},${currentaes.fillColor[1]},${currentaes.fillColor[2]},${currentaes.fillColor[3]})`;\r\n        colorDiv.style['backgroundColor'] = rgbc;\r\n        if (type == 1) {//polygon\r\n            colorDiv.style.height = 25;//(mapCanvas.height / 10);\r\n            colorDiv.style.width = 80;//(mapCanvas.width / 10);\r\n            if (currentaes.strokeColor != null && currentaes != undefined)\r\n                colorDiv.style['borderColor'] = `rgba(${currentaes.strokeColor[0]},${currentaes.strokeColor[1]},${currentaes.strokeColor[2]},${currentaes.strokeColor[3]})`;\r\n            colorDiv.className = '_gisplayrectangle';\r\n        }\r\n        else if (type == 2) {//point\r\n            let size;\r\n            if (currentaes.pointSize != null) {\r\n                size = Math.max(currentaes.pointSize, 5);\r\n            }\r\n            else\r\n                size = 25;\r\n            colorDiv.style.height = size;\r\n            colorDiv.style.width = size;\r\n            colorDiv.className = '_gisplaycircle';\r\n        }\r\n\r\n\r\n        color.appendChild(colorDiv);\r\n\r\n        row.appendChild(color);\r\n        row.appendChild(value);\r\n\r\n\r\n\r\n        row.onclick = function () {\r\n            if (window.profiling == true)\r\n                var start = Date.now();\r\n            if (mapobj.legendToggle != false) {\r\n                const toFade = !currentaes.enableDisable();\r\n                if (toFade == true) {\r\n                    this.className += \" _gisplayfade\";\r\n                }\r\n                else {\r\n                    this.className = this.className.replace(/(?:^|\\s)_gisplayfade(?!\\S)/g, '');\r\n                }\r\n            }\r\n            if (mapobj.legendOnClickCall != null && mapobj.legendOnClickCall != undefined)\r\n                mapobj.legendOnClickCall(currentaes);\r\n            mapobj.draw();\r\n            if (window.profiling == true) {\r\n                const end = Date.now();\r\n                window.console.log(`Tempo de processamento de filtragem pela legenda (segundos): ${(end - start) / 1000}`);\r\n            }\r\n\r\n        };\r\n\r\n        this.table.appendChild(row);\r\n\r\n    }\r\n\r\n    insertGradient(mapobj, left, middle, right) {\r\n        const row = document.createElement('tr');\r\n        const value = document.createElement('td');\r\n        const valueDiv = document.createElement('div');\r\n        value.colSpan = 2;\r\n        value.style.textAlign = 'center';\r\n        let numberof = 5;\r\n        if (mapobj.aesthetics.length > 5)\r\n            numberof = mapobj.aesthetics.length;\r\n        let strcolor = '';\r\n        for (let i = 0; i < numberof; i++) {\r\n            const color = mapobj.fcolor(i / numberof).rgb();\r\n            strcolor += `,rgba(${Math.round(color[0])},${Math.round(color[1])},${Math.round(color[2])},${mapobj.alpha})`;\r\n        }\r\n        strcolor += ') ';\r\n        valueDiv.style.background = `-webkit-linear-gradient(left${strcolor}`;\r\n\r\n        valueDiv.style.height = 25;//(mapCanvas.height / 10);\r\n        valueDiv.style.width = 130;//(mapCanvas.width / 10);\r\n\r\n        const row2 = document.createElement('tr');\r\n        const value2 = document.createElement('td');\r\n        value2.colSpan = 2;\r\n\r\n        const divleft = document.createElement('div');\r\n        divleft.style.textAlign = 'left';\r\n        divleft.style.width = '33%';\r\n        divleft.style.display = \"inline-block\";\r\n        const lefttext = document.createTextNode(left);\r\n        const divmid = document.createElement('div');\r\n        divmid.style.textAlign = 'center';\r\n        divmid.style.width = '33%';\r\n        divmid.style.display = \"inline-block\";\r\n        const text = document.createTextNode(middle);\r\n        const divright = document.createElement('div');\r\n        divright.style.textAlign = 'right';\r\n        divright.style.width = '33%';\r\n        divright.style.display = \"inline-block\";\r\n        const righttext = document.createTextNode(right);\r\n\r\n\r\n\r\n        divleft.appendChild(lefttext);\r\n        divmid.appendChild(text);\r\n        divright.appendChild(righttext);\r\n        value2.appendChild(divleft);\r\n        value2.appendChild(divmid);\r\n        value2.appendChild(divright);\r\n        value.appendChild(valueDiv);\r\n        row2.appendChild(value2);\r\n        row.appendChild(value);\r\n        this.table.appendChild(row);\r\n        this.table.appendChild(row2);\r\n    }\r\n\r\n    init(id, classname) {\r\n        //console.log(\"id == \" + id);\r\n        const mapCanvas = document.getElementById(`mapCanvas${id}`);\r\n        this.legendDiv = document.createElement('div');\r\n        if (classname != undefined && classname != null) {\r\n            this.legendDiv.className = classname;\r\n        }\r\n        else {\r\n            this.legendDiv.className = '_gisplaylegendBR';\r\n        }\r\n        this.legendDiv.id = `legendDiv${id}`;\r\n\r\n\r\n\r\n\r\n\r\n        this.table = document.createElement('table');\r\n        this.table.style.zIndex = \"2000\";\r\n        const thvalue = document.createElement('th');\r\n        const thcolor = document.createElement('th');\r\n        thcolor.style.align = \"center\";\r\n        //thcolor.style.width = 100;\r\n        this.table.appendChild(thcolor);\r\n        this.table.appendChild(thvalue);\r\n        const titlerow = document.createElement('tr');\r\n        const titletd = document.createElement('td');\r\n        titletd.colSpan = 2;\r\n        titletd.style.textAlign = 'center';\r\n        titletd.style.width = 100;\r\n        const titletext = document.createTextNode(this.title);\r\n        titletd.appendChild(titletext);\r\n        titlerow.appendChild(titletd);\r\n        this.table.appendChild(titlerow);\r\n\r\n    }\r\n\r\n    insertProportionalSymbols(currentaes, mapobj, numberof) {\r\n        if (this.lastdiv == undefined) {\r\n            var row = document.createElement('tr');\r\n            var value = document.createElement('td');\r\n            value.colSpan = 2;\r\n            value.style.textAlign = 'center';\r\n            this.firstInsertion = true;\r\n        } else { this.firstInsertion = false; }\r\n\r\n        const rgbc = `rgba(${currentaes.fillColor[0]},${currentaes.fillColor[1]},${currentaes.fillColor[2]},${1})`;\r\n        let strokecolor;\r\n\r\n        if (currentaes.strokeColor != null && currentaes != undefined)\r\n            strokecolor = `rgba(${currentaes.strokeColor[0]},${currentaes.strokeColor[1]},${currentaes.strokeColor[2]},${currentaes.strokeColor[3]})`;\r\n        else\r\n            strokecolor = `rgba(${0},${0},${0},${1})`;\r\n\r\n        for (let i = numberof - 1; i >= 0; i--) {\r\n            const current = document.createElement('div');\r\n            let propvalue;\r\n            if (this.firstInsertion == false && i == (numberof - 1) || numberof == 1)\r\n                propvalue = currentaes.range[1];\r\n            else\r\n                propvalue = mapobj.min + i / (numberof - 1) * (mapobj.max - mapobj.min);\r\n\r\n            const text = document.createTextNode(this.round(propvalue));\r\n            current.appendChild(text);\r\n            const colorDiv = document.createElement('div');\r\n            colorDiv.style.position = 'relative';\r\n            colorDiv.style.backgroundColor = rgbc;\r\n            colorDiv.className = '_gisplayproportionalcircle';\r\n            colorDiv.style.borderColor = strokecolor;\r\n            const temppointsize = ((mapobj.maxpointsize - mapobj.minpointsize) / (mapobj.max - mapobj.min)) * (propvalue - mapobj.min);\r\n            const size = Math.max(temppointsize, 7.5);\r\n            colorDiv.style.height = size;\r\n            colorDiv.style.width = size;\r\n            colorDiv.style.inherit = false;\r\n\r\n            colorDiv.onclick = function (e) {\r\n                if (window.profiling == true)\r\n                    var start = Date.now();\r\n                if (mapobj.legendToggle != false) {\r\n                    const toFade = !currentaes.enableDisable();\r\n                    if (toFade == true) {\r\n                        this.className += \" _gisplayfade\";\r\n                    }\r\n                    else {\r\n                        this.className = this.className.replace(/(?:^|\\s)_gisplayfade(?!\\S)/g, '');\r\n                    }\r\n                }\r\n                if (mapobj.legendOnClickCall != null && mapobj.legendOnClickCall != undefined)\r\n                    mapobj.legendOnClickCall(currentaes);\r\n                mapobj.draw();\r\n                if (window.profiling == true) {\r\n                    const end = Date.now();\r\n                    window.console.log(`Tempo de processamento de filtragem pela legenda (segundos): ${(end - start) / 1000}`);\r\n                }\r\n                if (!e) var e = window.event;\r\n                e.cancelBubble = true;\r\n                if (e.stopPropagation) e.stopPropagation();\r\n\r\n            };\r\n            current.appendChild(colorDiv);\r\n            if (/*i!= (numberof-1) &&*/ this.lastdiv != undefined) {\r\n                this.lastdiv.appendChild(current);\r\n                this.lastdiv = colorDiv;\r\n            }\r\n            else {\r\n                value.appendChild(current);\r\n                this.lastdiv = colorDiv;\r\n            }\r\n\r\n        }\r\n        if (this.firstInsertion == true) {\r\n            row.appendChild(value);\r\n            this.table.appendChild(row);\r\n        }\r\n\r\n\r\n    }\r\n\r\n    round(value, exp) {//@Rui Added cuz its used by insertProportionalSymbols\r\n        if (typeof exp === 'undefined' || +exp === 0)\r\n            return Math.round(value);\r\n\r\n        value = +value;\r\n        exp = +exp;\r\n\r\n        if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0))\r\n            return NaN;\r\n\r\n        // Shift\r\n        value = value.toString().split('e');\r\n        value = Math.round(+(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp)));\r\n\r\n        // Shift back\r\n        value = value.toString().split('e');\r\n        return +(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp));\r\n    }\r\n}",
+    "content": "/**\r\n * This class represents the Map Legend. 15/03\r\n */\r\nexport class Legend {\r\n    /**\r\n     * Creates an instance of Legend class.\r\n     * @param {number} id -  The id of the legend.\r\n     * @param {string} title - The title for the legend.\r\n     * \r\n     * @memberOf Legend\r\n     */\r\n    constructor(id, title) {\r\n        /**\r\n         * Title of the Gisplay map Legend.\r\n         * @type {string}\r\n         */\r\n        this.title = title;\r\n        this.init(id);\r\n        return this; //@Rui Remove this\r\n    }\r\n\r\n    insertLegend(map) {\r\n        this.legendDiv.appendChild(this.table);\r\n        map.getContainer().appendChild(this.legendDiv);\r\n    }\r\n\r\n    insertPointRow(currentaes, mapobj) {\r\n        this.insertRow(currentaes, mapobj, 2);\r\n    }\r\n\r\n    insertPolygonRow(currentaes, mapobj) {\r\n        this.insertRow(currentaes, mapobj, 1);\r\n    }\r\n\r\n    insertRow(currentaes, mapobj, type) {\r\n\r\n        const row = document.createElement('tr');\r\n        const value = document.createElement('td');\r\n        const color = document.createElement('td');\r\n        let text;\r\n        if (typeof currentaes.range[0] === 'number') {\r\n            const mininput = currentaes.range[0] != null ? currentaes.range[0] : mapobj.min;\r\n            const maxinput = currentaes.range[1] != null ? currentaes.range[1] : mapobj.max;\r\n            if (currentaes.outer == false)\r\n                text = document.createTextNode(`[${mininput}, ${maxinput}[`);\r\n            else\r\n                text = document.createTextNode(`[${mininput}, ${maxinput}]`);\r\n        }\r\n        else\r\n            text = document.createTextNode(currentaes.range[0]);\r\n        value.appendChild(text);\r\n\r\n        const colorDiv = document.createElement('div');\r\n        colorDiv.style.position = 'relative';\r\n        const rgbc = `rgba(${currentaes.fillColor[0]},${currentaes.fillColor[1]},${currentaes.fillColor[2]},${currentaes.fillColor[3]})`;\r\n        colorDiv.style['backgroundColor'] = rgbc;\r\n        if (type == 1) {//polygon\r\n            colorDiv.style.height = 25;//(mapCanvas.height / 10);\r\n            colorDiv.style.width = 80;//(mapCanvas.width / 10);\r\n            if (currentaes.strokeColor != null && currentaes != undefined)\r\n                colorDiv.style['borderColor'] = `rgba(${currentaes.strokeColor[0]},${currentaes.strokeColor[1]},${currentaes.strokeColor[2]},${currentaes.strokeColor[3]})`;\r\n            colorDiv.className = '_gisplayrectangle';\r\n        }\r\n        else if (type == 2) {//point\r\n            let size;\r\n            if (currentaes.pointSize != null) {\r\n                size = Math.max(currentaes.pointSize, 5);\r\n            }\r\n            else\r\n                size = 25;\r\n            colorDiv.style.height = size;\r\n            colorDiv.style.width = size;\r\n            colorDiv.className = '_gisplaycircle';\r\n        }\r\n\r\n\r\n        color.appendChild(colorDiv);\r\n\r\n        row.appendChild(color);\r\n        row.appendChild(value);\r\n\r\n        row.onclick = function () {\r\n            if (window.profiling == true)\r\n                var start = Date.now();\r\n            if (mapobj.legendToggle != false) {\r\n                const toFade = !currentaes.enableDisable();\r\n                if (toFade == true) {\r\n                    this.className += \" _gisplayfade\";\r\n                }\r\n                else {\r\n                    this.className = this.className.replace(/(?:^|\\s)_gisplayfade(?!\\S)/g, '');\r\n                }\r\n            }\r\n            if (mapobj.legendOnClickCall != null && mapobj.legendOnClickCall != undefined)\r\n                mapobj.legendOnClickCall(currentaes);\r\n            mapobj.draw();\r\n            if (window.profiling == true) {\r\n                const end = Date.now();\r\n                window.console.log(`Tempo de processamento de filtragem pela legenda (segundos): ${(end - start) / 1000}`);\r\n            }\r\n\r\n        };\r\n\r\n        this.table.appendChild(row);\r\n\r\n    }\r\n\r\n    insertGradient(mapobj, left, middle, right) {\r\n        const row = document.createElement('tr');\r\n        const value = document.createElement('td');\r\n        const valueDiv = document.createElement('div');\r\n        value.colSpan = 2;\r\n        value.style.textAlign = 'center';\r\n        let numberof = 5;\r\n        if (mapobj.aesthetics.length > 5)\r\n            numberof = mapobj.aesthetics.length;\r\n        let strcolor = '';\r\n        for (let i = 0; i < numberof; i++) {\r\n            const color = mapobj.fcolor(i / numberof).rgb();\r\n            strcolor += `,rgba(${Math.round(color[0])},${Math.round(color[1])},${Math.round(color[2])},${mapobj.alpha})`;\r\n        }\r\n        strcolor += ') ';\r\n        valueDiv.style.background = `-webkit-linear-gradient(left${strcolor}`;\r\n\r\n        valueDiv.style.height = 25;//(mapCanvas.height / 10);\r\n        valueDiv.style.width = 130;//(mapCanvas.width / 10);\r\n\r\n        const row2 = document.createElement('tr');\r\n        const value2 = document.createElement('td');\r\n        value2.colSpan = 2;\r\n\r\n        const divleft = document.createElement('div');\r\n        divleft.style.textAlign = 'left';\r\n        divleft.style.width = '33%';\r\n        divleft.style.display = \"inline-block\";\r\n        const lefttext = document.createTextNode(left);\r\n        const divmid = document.createElement('div');\r\n        divmid.style.textAlign = 'center';\r\n        divmid.style.width = '33%';\r\n        divmid.style.display = \"inline-block\";\r\n        const text = document.createTextNode(middle);\r\n        const divright = document.createElement('div');\r\n        divright.style.textAlign = 'right';\r\n        divright.style.width = '33%';\r\n        divright.style.display = \"inline-block\";\r\n        const righttext = document.createTextNode(right);\r\n\r\n\r\n\r\n        divleft.appendChild(lefttext);\r\n        divmid.appendChild(text);\r\n        divright.appendChild(righttext);\r\n        value2.appendChild(divleft);\r\n        value2.appendChild(divmid);\r\n        value2.appendChild(divright);\r\n        value.appendChild(valueDiv);\r\n        row2.appendChild(value2);\r\n        row.appendChild(value);\r\n        this.table.appendChild(row);\r\n        this.table.appendChild(row2);\r\n    }\r\n\r\n    init(id, classname) {\r\n        //console.log(\"id == \" + id);\r\n        const mapCanvas = document.getElementById(`mapCanvas${id}`);\r\n        this.legendDiv = document.createElement('div');\r\n        if (classname != undefined && classname != null) {\r\n            this.legendDiv.className = classname;\r\n        }\r\n        else {\r\n            this.legendDiv.className = '_gisplaylegendBR';\r\n        }\r\n        this.legendDiv.id = `legendDiv${id}`;\r\n\r\n\r\n\r\n\r\n\r\n        this.table = document.createElement('table');\r\n        this.table.style.zIndex = \"2000\";\r\n        const thvalue = document.createElement('th');\r\n        const thcolor = document.createElement('th');\r\n        thcolor.style.align = \"center\";\r\n        //thcolor.style.width = 100;\r\n        this.table.appendChild(thcolor);\r\n        this.table.appendChild(thvalue);\r\n        const titlerow = document.createElement('tr');\r\n        const titletd = document.createElement('td');\r\n        titletd.colSpan = 2;\r\n        titletd.style.textAlign = 'center';\r\n        titletd.style.width = 100;\r\n        const titletext = document.createTextNode(this.title);\r\n        titletd.appendChild(titletext);\r\n        titlerow.appendChild(titletd);\r\n        this.table.appendChild(titlerow);\r\n\r\n    }\r\n\r\n    insertProportionalSymbols(currentaes, mapobj, numberof) {\r\n        if (this.lastdiv == undefined) {\r\n            var row = document.createElement('tr');\r\n            var value = document.createElement('td');\r\n            value.colSpan = 2;\r\n            value.style.textAlign = 'center';\r\n            this.firstInsertion = true;\r\n        } else { this.firstInsertion = false; }\r\n\r\n        const rgbc = `rgba(${currentaes.fillColor[0]},${currentaes.fillColor[1]},${currentaes.fillColor[2]},${1})`;\r\n        let strokecolor;\r\n\r\n        if (currentaes.strokeColor != null && currentaes != undefined)\r\n            strokecolor = `rgba(${currentaes.strokeColor[0]},${currentaes.strokeColor[1]},${currentaes.strokeColor[2]},${currentaes.strokeColor[3]})`;\r\n        else\r\n            strokecolor = `rgba(${0},${0},${0},${1})`;\r\n\r\n        for (let i = numberof - 1; i >= 0; i--) {\r\n            const current = document.createElement('div');\r\n            let propvalue;\r\n            if (this.firstInsertion == false && i == (numberof - 1) || numberof == 1)\r\n                propvalue = currentaes.range[1];\r\n            else\r\n                propvalue = mapobj.min + i / (numberof - 1) * (mapobj.max - mapobj.min);\r\n\r\n            const text = document.createTextNode(this.round(propvalue));\r\n            current.appendChild(text);\r\n            const colorDiv = document.createElement('div');\r\n            colorDiv.style.position = 'relative';\r\n            colorDiv.style.backgroundColor = rgbc;\r\n            colorDiv.className = '_gisplayproportionalcircle';\r\n            colorDiv.style.borderColor = strokecolor;\r\n            const temppointsize = ((mapobj.maxpointsize - mapobj.minpointsize) / (mapobj.max - mapobj.min)) * (propvalue - mapobj.min);\r\n            const size = Math.max(temppointsize, 7.5);\r\n            colorDiv.style.height = size;\r\n            colorDiv.style.width = size;\r\n            colorDiv.style.inherit = false;\r\n\r\n            colorDiv.onclick = function (e) {\r\n                if (window.profiling == true)\r\n                    var start = Date.now();\r\n                if (mapobj.legendToggle != false) {\r\n                    const toFade = !currentaes.enableDisable();\r\n                    if (toFade == true) {\r\n                        this.className += \" _gisplayfade\";\r\n                    }\r\n                    else {\r\n                        this.className = this.className.replace(/(?:^|\\s)_gisplayfade(?!\\S)/g, '');\r\n                    }\r\n                }\r\n                if (mapobj.legendOnClickCall != null && mapobj.legendOnClickCall != undefined)\r\n                    mapobj.legendOnClickCall(currentaes);\r\n                mapobj.draw();\r\n                if (window.profiling == true) {\r\n                    const end = Date.now();\r\n                    window.console.log(`Tempo de processamento de filtragem pela legenda (segundos): ${(end - start) / 1000}`);\r\n                }\r\n                if (!e) var e = window.event;\r\n                e.cancelBubble = true;\r\n                if (e.stopPropagation) e.stopPropagation();\r\n\r\n            };\r\n            current.appendChild(colorDiv);\r\n            if (/*i!= (numberof-1) &&*/ this.lastdiv != undefined) {\r\n                this.lastdiv.appendChild(current);\r\n                this.lastdiv = colorDiv;\r\n            }\r\n            else {\r\n                value.appendChild(current);\r\n                this.lastdiv = colorDiv;\r\n            }\r\n\r\n        }\r\n        if (this.firstInsertion == true) {\r\n            row.appendChild(value);\r\n            this.table.appendChild(row);\r\n        }\r\n\r\n\r\n    }\r\n\r\n    round(value, exp) {//@Rui Added cuz its used by insertProportionalSymbols\r\n        if (typeof exp === 'undefined' || +exp === 0)\r\n            return Math.round(value);\r\n\r\n        value = +value;\r\n        exp = +exp;\r\n\r\n        if (isNaN(value) || !(typeof exp === 'number' && exp % 1 === 0))\r\n            return NaN;\r\n\r\n        // Shift\r\n        value = value.toString().split('e');\r\n        value = Math.round(+(value[0] + 'e' + (value[1] ? (+value[1] + exp) : exp)));\r\n\r\n        // Shift back\r\n        value = value.toString().split('e');\r\n        return +(value[0] + 'e' + (value[1] ? (+value[1] - exp) : -exp));\r\n    }\r\n}",
     "static": true,
     "longname": "src/Gisplay/Legend.js",
     "access": null,
@@ -1207,27 +1291,34 @@
     "static": false,
     "longname": "src/Gisplay/Legend.js~Legend#constructor",
     "access": null,
-    "description": null,
-    "lineNumber": 5,
-    "undocument": true,
+    "description": "Creates an instance of Legend class.",
+    "lineNumber": 12,
     "unknown": [
       {
-        "tagName": "@_undocument",
-        "tagValue": ""
+        "tagName": "@memberOf",
+        "tagValue": "Legend"
       }
     ],
     "params": [
       {
-        "name": "id",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "number"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "id",
+        "description": "The id of the legend."
       },
       {
-        "name": "title",
+        "nullable": null,
         "types": [
-          "*"
-        ]
+          "string"
+        ],
+        "spread": false,
+        "optional": false,
+        "name": "title",
+        "description": "The title for the legend."
       }
     ]
   },
@@ -1239,19 +1330,15 @@
     "static": false,
     "longname": "src/Gisplay/Legend.js~Legend#title",
     "access": null,
-    "description": null,
-    "lineNumber": 6,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
+    "description": "Title of the Gisplay map Legend.",
+    "lineNumber": 17,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "string"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -1265,7 +1352,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#insertLegend",
     "access": null,
     "description": null,
-    "lineNumber": 11,
+    "lineNumber": 22,
     "undocument": true,
     "unknown": [
       {
@@ -1293,7 +1380,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#insertPointRow",
     "access": null,
     "description": null,
-    "lineNumber": 16,
+    "lineNumber": 27,
     "undocument": true,
     "unknown": [
       {
@@ -1327,7 +1414,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#insertPolygonRow",
     "access": null,
     "description": null,
-    "lineNumber": 20,
+    "lineNumber": 31,
     "undocument": true,
     "unknown": [
       {
@@ -1361,7 +1448,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#insertRow",
     "access": null,
     "description": null,
-    "lineNumber": 24,
+    "lineNumber": 35,
     "undocument": true,
     "unknown": [
       {
@@ -1399,7 +1486,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#className",
     "access": null,
     "description": null,
-    "lineNumber": 79,
+    "lineNumber": 88,
     "undocument": true,
     "unknown": [
       {
@@ -1422,7 +1509,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#className",
     "access": null,
     "description": null,
-    "lineNumber": 82,
+    "lineNumber": 91,
     "undocument": true,
     "unknown": [
       {
@@ -1447,7 +1534,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#insertGradient",
     "access": null,
     "description": null,
-    "lineNumber": 99,
+    "lineNumber": 108,
     "undocument": true,
     "unknown": [
       {
@@ -1493,7 +1580,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#init",
     "access": null,
     "description": null,
-    "lineNumber": 154,
+    "lineNumber": 163,
     "undocument": true,
     "unknown": [
       {
@@ -1525,7 +1612,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#legendDiv",
     "access": null,
     "description": null,
-    "lineNumber": 157,
+    "lineNumber": 166,
     "undocument": true,
     "unknown": [
       {
@@ -1548,7 +1635,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#table",
     "access": null,
     "description": null,
-    "lineNumber": 170,
+    "lineNumber": 179,
     "undocument": true,
     "unknown": [
       {
@@ -1573,7 +1660,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#insertProportionalSymbols",
     "access": null,
     "description": null,
-    "lineNumber": 190,
+    "lineNumber": 199,
     "undocument": true,
     "unknown": [
       {
@@ -1611,7 +1698,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#firstInsertion",
     "access": null,
     "description": null,
-    "lineNumber": 196,
+    "lineNumber": 205,
     "undocument": true,
     "unknown": [
       {
@@ -1634,7 +1721,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#firstInsertion",
     "access": null,
     "description": null,
-    "lineNumber": 197,
+    "lineNumber": 206,
     "undocument": true,
     "unknown": [
       {
@@ -1657,7 +1744,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#className",
     "access": null,
     "description": null,
-    "lineNumber": 234,
+    "lineNumber": 243,
     "undocument": true,
     "unknown": [
       {
@@ -1680,7 +1767,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#className",
     "access": null,
     "description": null,
-    "lineNumber": 237,
+    "lineNumber": 246,
     "undocument": true,
     "unknown": [
       {
@@ -1703,7 +1790,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#lastdiv",
     "access": null,
     "description": null,
-    "lineNumber": 255,
+    "lineNumber": 264,
     "undocument": true,
     "unknown": [
       {
@@ -1726,7 +1813,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#lastdiv",
     "access": null,
     "description": null,
-    "lineNumber": 259,
+    "lineNumber": 268,
     "undocument": true,
     "unknown": [
       {
@@ -1751,7 +1838,7 @@
     "longname": "src/Gisplay/Legend.js~Legend#round",
     "access": null,
     "description": null,
-    "lineNumber": 271,
+    "lineNumber": 280,
     "undocument": true,
     "unknown": [
       {
@@ -2641,7 +2728,7 @@
     "__docId__": 100,
     "kind": "file",
     "name": "src/Gisplay/Maps/Choropleth.js",
-    "content": "import { Map } from './Map';\r\nimport { Legend } from '../Legend';\r\n\r\n/**\r\n * Choropleth implementation 06/03\r\n */\r\nexport class Choropleth extends Map {\r\n\r\n    constructor(bgmap, geometry, options) {\r\n        super(bgmap, geometry, options);\r\n        this.aesthetics = new Array();\r\n        this.geometry = geometry;\r\n        this.loadOptions(options, bgmap);\r\n        this.id = mapcount++;\r\n        this.type = 'CP';\r\n        maps.push(this);\r\n        this.initialize();\r\n        /*return this;*/\r\n    }\r\n\r\n    draw() {\r\n        //console.log(\"Choropleth drawaaa() called\");\r\n        this.clear();\r\n        for (let i = 0; i < this.aesthetics.length; i++) {\r\n            if (this.aesthetics[i].enabled == true) {\r\n                this.drawTriangles(this.aesthetics[i]);\r\n            }\r\n            this.drawBorders(this.aesthetics[i]);\r\n        }\r\n    }\r\n\r\n    buildLegend() {\r\n        //console.log(\"Choropleth buildLegend() called\");\r\n        this.legend = new Legend(this.id, this.legendTitle);\r\n        for (const a in this.aesthetics) {\r\n            this.legend.insertPolygonRow(this.aesthetics[a], this);\r\n        }\r\n        this.legend.insertLegend(this.map);\r\n    }\r\n\r\n    defaults(defaultid) {\r\n        //console.log(\"Choropleth defaults() called\");\r\n        const options = {};\r\n        switch (defaultid) {\r\n            case 1:\r\n                options.colorScheme = ['white', 'yellow', 'orange', 'red'];\r\n                options.numberOfClasses = 4;\r\n                break;\r\n            default:\r\n                break;\r\n        }\r\n        return options;\r\n    }\r\n}",
+    "content": "import { Map } from './Map';\r\nimport { Legend } from '../Legend';\r\n\r\n/**\r\n * Choropleth implementation 06/03\r\n */\r\nexport class Choropleth extends Map {\r\n\r\n    constructor(bgmap, geometry, options) {\r\n        super(bgmap, geometry, options);\r\n        this.aesthetics = new Array();\r\n        this.geometry = geometry;\r\n        this.loadOptions(options, bgmap);\r\n        this.id = mapcount++;\r\n        this.type = 'CP';\r\n        maps.push(this);\r\n        this.initialize();\r\n        /*return this;*/\r\n    }\r\n\r\n    //@override\r\n    draw() {\r\n        //console.log(\"Choropleth drawaaa() called\");\r\n        this.clear();\r\n        for (let i = 0; i < this.aesthetics.length; i++) {\r\n            if (this.aesthetics[i].enabled == true) {\r\n                this.drawTriangles(this.aesthetics[i]);\r\n            }\r\n            this.drawBorders(this.aesthetics[i]);\r\n        }\r\n    }\r\n\r\n    buildLegend() {\r\n        //console.log(\"Choropleth buildLegend() called\");\r\n        this.legend = new Legend(this.id, this.legendTitle);\r\n        for (const a in this.aesthetics) {\r\n            this.legend.insertPolygonRow(this.aesthetics[a], this);\r\n        }\r\n        this.legend.insertLegend(this.map);\r\n    }\r\n\r\n    defaults(defaultid) {\r\n        //console.log(\"Choropleth defaults() called\");\r\n        const options = {};\r\n        switch (defaultid) {\r\n            case 1:\r\n                options.colorScheme = ['white', 'yellow', 'orange', 'red'];\r\n                options.numberOfClasses = 4;\r\n                break;\r\n            default:\r\n                break;\r\n        }\r\n        return options;\r\n    }\r\n}",
     "static": true,
     "longname": "src/Gisplay/Maps/Choropleth.js",
     "access": null,
@@ -2809,7 +2896,7 @@
     "longname": "src/Gisplay/Maps/Choropleth.js~Choropleth#draw",
     "access": null,
     "description": null,
-    "lineNumber": 21,
+    "lineNumber": 22,
     "undocument": true,
     "unknown": [
       {
@@ -2830,7 +2917,7 @@
     "longname": "src/Gisplay/Maps/Choropleth.js~Choropleth#buildLegend",
     "access": null,
     "description": null,
-    "lineNumber": 32,
+    "lineNumber": 33,
     "undocument": true,
     "unknown": [
       {
@@ -2849,7 +2936,7 @@
     "longname": "src/Gisplay/Maps/Choropleth.js~Choropleth#legend",
     "access": null,
     "description": null,
-    "lineNumber": 34,
+    "lineNumber": 35,
     "undocument": true,
     "unknown": [
       {
@@ -2874,7 +2961,7 @@
     "longname": "src/Gisplay/Maps/Choropleth.js~Choropleth#defaults",
     "access": null,
     "description": null,
-    "lineNumber": 41,
+    "lineNumber": 42,
     "undocument": true,
     "unknown": [
       {
@@ -5378,7 +5465,7 @@
     "__docId__": 206,
     "kind": "file",
     "name": "src/gisplayv2.js",
-    "content": "/**\r\n * This file is the entry point for the Gisplay API\r\n */\r\nimport { Gisplay } from './Gisplay/Gisplay'\r\n\r\nmodule.exports = {\r\n\r\n    /** #########################CHOROPLETH MAPS################################# */\r\n    //Choropleth\r\n    createBGMap: function () {\r\n        console.log(\"Start gisplayv2. TESTE workflow18/02.\");\r\n        L.mapbox.accessToken = 'pk.eyJ1IjoibG9sYXNkIiwiYSI6ImNpbmxsZDJkejAwOHR2Zm0yZHVwOWV1ejEifQ.SJ6CupBlW0gPic0n-HgY6w';\r\n        window.map = L.mapbox.map('map', 'mapbox.streets').setView([49.36855556, -81.66371667], 4);\r\n    },\r\n\r\n    startChoropleth: function () {\r\n        var gisplay = new Gisplay();\r\n        var options = {\r\n            colorScheme: [\"white\", \"yellow\", \"orange\", \"red\"],\r\n            numberOfClasses: 4,\r\n            attr: 'f3',\r\n            legendTitle: 'Fatals'\r\n        };\r\n        //var data = new Array();\r\n        var time = Date.now();\r\n\r\n        var reader = new FileReader();\r\n        reader.onloadend = function () {\r\n            //new Choropleth(map, null,options);\r\n\r\n            var data = JSON.parse(reader.result);\r\n            //console.log(data);\r\n            var datareadtimestamp = Date.now();\r\n            console.log(\"tempo de leitura do ficheiro: \" + (datareadtimestamp - time) / 1000 + \" segundos\");\r\n\r\n            /* console.log(window.map)\r\n             console.log(map)*/\r\n            gisplay.makeChoropleth(window.map, data, options);\r\n            console.log(\"tempo gisplay: \" + (Date.now() - datareadtimestamp) / 1000 + \" segundos\");\r\n            console.log(\"tempo total: \" + (Date.now() - time) / 1000 + \" segundos\");\r\n        }\r\n        reader.readAsText(document.getElementById(\"file\").files[0]);\r\n    },\r\n\r\n    createBGMapChorocromatic: function () {\r\n        L.mapbox.accessToken = 'pk.eyJ1IjoibG9sYXNkIiwiYSI6ImNpbmxsZDJkejAwOHR2Zm0yZHVwOWV1ejEifQ.SJ6CupBlW0gPic0n-HgY6w';\r\n        window.map = L.mapbox.map('map', 'mapbox.streets').setView([49.36855556, -81.66371667], 4);\r\n    },\r\n\r\n    startChorocromatic: function () {\r\n        var gisplay = new Gisplay();\r\n        var options = {\r\n            attr: 'f2',\r\n            legendTitle: \"Most Frequent Crime\"\r\n        };\r\n\r\n        var time = Date.now();\r\n        console.log(\"starting Chorocromatic Map...\");\r\n\r\n        var reader = new FileReader();\r\n        reader.onloadend = function () {\r\n            var data = JSON.parse(reader.result);\r\n            var datareadtimestamp = Date.now();\r\n            console.log(\"tempo de leitura do ficheiro: \" + (datareadtimestamp - time) / 1000 + \" segundos\");\r\n            gisplay.makeChorochromaticMap(map, data, options);\r\n        }\r\n        reader.readAsText(document.getElementById(\"file\").files[0]);\r\n    },\r\n\r\n    /** #########################DOT MAPS################################# */\r\n    //DOT MAP Example 1\r\n    createBGMapDotMap: function () {\r\n        L.mapbox.accessToken = 'pk.eyJ1IjoibG9sYXNkIiwiYSI6ImNpbmxsZDJkejAwOHR2Zm0yZHVwOWV1ejEifQ.SJ6CupBlW0gPic0n-HgY6w';\r\n        window.map = L.mapbox.map('map', 'mapbox.dark').setView([49.36855556, -81.66371667], 4);\r\n    },\r\n\r\n    startDotMap1: function () {\r\n        var gisplay = new Gisplay();\r\n        console.log(\"starting Dot Map 1...\");\r\n\r\n        var options = {\r\n            colorScheme: [\"red\", \"green\"],\r\n            attr: 'f1',\r\n            legendTitle: \"Alcohol\"\r\n        };\r\n\r\n        var reader = new FileReader();\r\n        reader.onloadend = function () {\r\n            var data = JSON.parse(reader.result);\r\n            gisplay.makeDotMap(map, data, options);\r\n        }\r\n        reader.readAsText(document.getElementById(\"file\").files[0]);\r\n    },\r\n\r\n    //DOT MAP Example 2\r\n    startDotMap2: function () {\r\n        var gisplay = new Gisplay();\r\n        console.log(\"starting Dot Map 2...\");\r\n\r\n        var options = {\r\n            colorScheme: [\"blue\", \"red\"],\r\n            maxPointSize: 100,\r\n            numberOfClasses: 2,\r\n            classBreaksMethod: \"k-means\",\r\n            minPointSize: 1,\r\n            attr: 'f2',\r\n            legendTitle: \"Fatals\"\r\n        };\r\n\r\n        var reader = new FileReader();\r\n        reader.onloadend = function () {\r\n            var data = JSON.parse(reader.result);\r\n            gisplay.makeDotMap(map, data, options);\r\n        }\r\n        reader.readAsText(document.getElementById(\"file\").files[0]);\r\n    },\r\n\r\n    /** #########################CHANGE MAPS################################# */\r\n    //Change map Example\r\n    createBGMapChangeMap: function () {\r\n        L.mapbox.accessToken = 'pk.eyJ1IjoibG9sYXNkIiwiYSI6ImNpbmxsZDJkejAwOHR2Zm0yZHVwOWV1ejEifQ.SJ6CupBlW0gPic0n-HgY6w';\r\n        window.map = L.mapbox.map('map', 'mapbox.dark').setView([49.36855556, -81.66371667], 4);\r\n    },\r\n\r\n    startChangeMap: function () {\r\n        var gisplay = new Gisplay();\r\n        console.log(\"starting Change Map 1...\");\r\n\r\n        var options = {\r\n            colorScheme: [\"green\", \"red\"],\r\n            minuend: 'f6',\r\n            subtrahend: 'f2',\r\n            alpha: 1,\r\n            legendTitle: \"Evolução entre 2009 e 2013\"\r\n        };\r\n\r\n        var reader = new FileReader();\r\n        reader.onloadend = function () {\r\n            var data = JSON.parse(reader.result);\r\n            gisplay.makeChangeMap(map, data, options);\r\n        }\r\n        reader.readAsText(document.getElementById(\"file\").files[0]);\r\n    },\r\n\r\n    /** ########################PROP. SYMBOLS MAPS########################### */\r\n    createBGPSymbols: function () {\r\n        L.mapbox.accessToken = 'pk.eyJ1IjoibG9sYXNkIiwiYSI6ImNpbmxsZDJkejAwOHR2Zm0yZHVwOWV1ejEifQ.SJ6CupBlW0gPic0n-HgY6w';\r\n        window.map = L.mapbox.map('map', 'mapbox.dark').setView([49.36855556, -81.66371667], 4);\r\n    },\r\n\r\n    startPSymbols: function () {\r\n        var gisplay = new Gisplay();\r\n        console.log(\"starting Proportional Symbols...\");\r\n        var options = {\r\n            maxPointSize: 100,\r\n            minPointSize: 5,\r\n            attr: 'f1',\r\n            alpha: 1.0,\r\n            numberOfLegendItems: 3,\r\n            legendTitle: \"Accidents\"\r\n        };\r\n\r\n        var time = Date.now();\r\n\r\n        var reader = new FileReader();\r\n        reader.onloadend = function () {\r\n            var data = JSON.parse(reader.result);\r\n            gisplay.makeProportionalSymbolsMap(map, data, options);\r\n        }\r\n        reader.readAsText(document.getElementById(\"file\").files[0]);\r\n    },\r\n\r\n    /** #########################HEAT MAPS################################# */\r\n};\r\n",
+    "content": "/**\r\n * This file is the entry point for the Gisplay API\r\n */\r\nimport { Gisplay } from './Gisplay/Gisplay'\r\n\r\nmodule.exports = {\r\n\r\n    /** #########################CHOROPLETH MAPS################################# */\r\n    //Choropleth\r\n    createBGMap: function () {\r\n        console.log(\"Start gisplayv2. TESTE workflow18/02.\");\r\n        L.mapbox.accessToken = 'pk.eyJ1IjoibG9sYXNkIiwiYSI6ImNpbmxsZDJkejAwOHR2Zm0yZHVwOWV1ejEifQ.SJ6CupBlW0gPic0n-HgY6w';\r\n        window.map = L.mapbox.map('map', 'mapbox.streets').setView([49.36855556, -81.66371667], 4);\r\n    },\r\n\r\n    startChoropleth: function () {\r\n        /*window.count = 0;*/\r\n        var gisplay = new Gisplay();\r\n        var options = {\r\n            colorScheme: [\"white\", \"yellow\", \"orange\", \"red\"],\r\n            numberOfClasses: 4,\r\n            attr: 'f3',\r\n            legendTitle: 'Fatals'\r\n        };\r\n        var time = Date.now();\r\n\r\n        var reader = new FileReader();\r\n        reader.onloadend = function () {\r\n            var data = JSON.parse(reader.result);\r\n            var datareadtimestamp = Date.now();\r\n            console.log(\"tempo de leitura do ficheiro: \" + (datareadtimestamp - time) / 1000 + \" segundos\");\r\n\r\n            /* console.log(window.map)\r\n             console.log(map)*/\r\n            gisplay.makeChoropleth(window.map, data, options);\r\n            console.log(\"tempo gisplay: \" + (Date.now() - datareadtimestamp) / 1000 + \" segundos\");\r\n            console.log(\"tempo total: \" + (Date.now() - time) / 1000 + \" segundos\");\r\n        }\r\n        reader.readAsText(document.getElementById(\"file\").files[0]);\r\n    },\r\n\r\n    createBGMapChorocromatic: function () {\r\n        L.mapbox.accessToken = 'pk.eyJ1IjoibG9sYXNkIiwiYSI6ImNpbmxsZDJkejAwOHR2Zm0yZHVwOWV1ejEifQ.SJ6CupBlW0gPic0n-HgY6w';\r\n        window.map = L.mapbox.map('map', 'mapbox.streets').setView([49.36855556, -81.66371667], 4);\r\n    },\r\n\r\n    startChorocromatic: function () {\r\n        var gisplay = new Gisplay();\r\n        var options = {\r\n            attr: 'f2',\r\n            legendTitle: \"Most Frequent Crime\"\r\n        };\r\n\r\n        var time = Date.now();\r\n        console.log(\"starting Chorocromatic Map...\");\r\n\r\n        var reader = new FileReader();\r\n        reader.onloadend = function () {\r\n            var data = JSON.parse(reader.result);\r\n            var datareadtimestamp = Date.now();\r\n            console.log(\"tempo de leitura do ficheiro: \" + (datareadtimestamp - time) / 1000 + \" segundos\");\r\n            gisplay.makeChorochromaticMap(map, data, options);\r\n        }\r\n        reader.readAsText(document.getElementById(\"file\").files[0]);\r\n    },\r\n\r\n    /** #########################DOT MAPS################################# */\r\n    //DOT MAP Example 1\r\n    createBGMapDotMap: function () {\r\n        L.mapbox.accessToken = 'pk.eyJ1IjoibG9sYXNkIiwiYSI6ImNpbmxsZDJkejAwOHR2Zm0yZHVwOWV1ejEifQ.SJ6CupBlW0gPic0n-HgY6w';\r\n        window.map = L.mapbox.map('map', 'mapbox.dark').setView([49.36855556, -81.66371667], 4);\r\n    },\r\n\r\n    startDotMap1: function () {\r\n        var gisplay = new Gisplay();\r\n        console.log(\"starting Dot Map 1...\");\r\n\r\n        var options = {\r\n            colorScheme: [\"red\", \"green\"],\r\n            attr: 'f1',\r\n            legendTitle: \"Alcohol\"\r\n        };\r\n\r\n        var reader = new FileReader();\r\n        reader.onloadend = function () {\r\n            var data = JSON.parse(reader.result);\r\n            gisplay.makeDotMap(map, data, options);\r\n        }\r\n        reader.readAsText(document.getElementById(\"file\").files[0]);\r\n    },\r\n\r\n    //DOT MAP Example 2\r\n    startDotMap2: function () {\r\n        var gisplay = new Gisplay();\r\n        console.log(\"starting Dot Map 2...\");\r\n\r\n        var options = {\r\n            colorScheme: [\"blue\", \"red\"],\r\n            maxPointSize: 100,\r\n            numberOfClasses: 2,\r\n            classBreaksMethod: \"k-means\",\r\n            minPointSize: 1,\r\n            attr: 'f2',\r\n            legendTitle: \"Fatals\"\r\n        };\r\n\r\n        var reader = new FileReader();\r\n        reader.onloadend = function () {\r\n            var data = JSON.parse(reader.result);\r\n            gisplay.makeDotMap(map, data, options);\r\n        }\r\n        reader.readAsText(document.getElementById(\"file\").files[0]);\r\n    },\r\n\r\n    /** #########################CHANGE MAPS################################# */\r\n    //Change map Example\r\n    createBGMapChangeMap: function () {\r\n        L.mapbox.accessToken = 'pk.eyJ1IjoibG9sYXNkIiwiYSI6ImNpbmxsZDJkejAwOHR2Zm0yZHVwOWV1ejEifQ.SJ6CupBlW0gPic0n-HgY6w';\r\n        window.map = L.mapbox.map('map', 'mapbox.dark').setView([49.36855556, -81.66371667], 4);\r\n    },\r\n\r\n    startChangeMap: function () {\r\n        var gisplay = new Gisplay();\r\n        console.log(\"starting Change Map 1...\");\r\n\r\n        var options = {\r\n            colorScheme: [\"green\", \"red\"],\r\n            minuend: 'f6',\r\n            subtrahend: 'f2',\r\n            alpha: 1,\r\n            legendTitle: \"Evolução entre 2009 e 2013\"\r\n        };\r\n\r\n        var reader = new FileReader();\r\n        reader.onloadend = function () {\r\n            var data = JSON.parse(reader.result);\r\n            gisplay.makeChangeMap(map, data, options);\r\n        }\r\n        reader.readAsText(document.getElementById(\"file\").files[0]);\r\n    },\r\n\r\n    /** ########################PROP. SYMBOLS MAPS########################### */\r\n    createBGPSymbols: function () {\r\n        L.mapbox.accessToken = 'pk.eyJ1IjoibG9sYXNkIiwiYSI6ImNpbmxsZDJkejAwOHR2Zm0yZHVwOWV1ejEifQ.SJ6CupBlW0gPic0n-HgY6w';\r\n        window.map = L.mapbox.map('map', 'mapbox.dark').setView([49.36855556, -81.66371667], 4);\r\n    },\r\n\r\n    startPSymbols: function () {\r\n        var gisplay = new Gisplay();\r\n        console.log(\"starting Proportional Symbols...\");\r\n        var options = {\r\n            maxPointSize: 100,\r\n            minPointSize: 5,\r\n            attr: 'f1',\r\n            alpha: 1.0,\r\n            numberOfLegendItems: 3,\r\n            legendTitle: \"Accidents\"\r\n        };\r\n\r\n        var time = Date.now();\r\n\r\n        var reader = new FileReader();\r\n        reader.onloadend = function () {\r\n            var data = JSON.parse(reader.result);\r\n            gisplay.makeProportionalSymbolsMap(map, data, options);\r\n        }\r\n        reader.readAsText(document.getElementById(\"file\").files[0]);\r\n    },\r\n\r\n    /** #########################HEAT MAPS################################# */\r\n};\r\n",
     "static": true,
     "longname": "src/gisplayv2.js",
     "access": null,

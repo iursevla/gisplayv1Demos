@@ -48,42 +48,126 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/Gisplay/Aesthetic.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import {Feature} from &apos;./Feature&apos;;
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Feature } from &apos;./Feature&apos;;
 
+/**
+ * Class that represents an aesthetic element. There will be one Aesthetic class for each class on the Legend.
+ * 
+ * @export
+ * @class Aesthetic
+ */
 export class Aesthetic {
-    
+
+    /**
+     * Creates an instance of Aesthetic. 
+     * There will be as many Aesthetic objects as the number of classes on the Legend. 
+     * @example 1-&gt; {&quot;id&quot;:0,&quot;attr&quot;:&quot;f3&quot;,&quot;fcolor&quot;:[255,255,255,0.8],
+     *         &quot;stroke&quot;:[0,0,0,1],&quot;pointsize&quot;:null,&quot;range&quot;:[1,37]}
+     * @example 2-&gt; {&quot;id&quot;:1,&quot;attr&quot;:&quot;f3&quot;,&quot;fcolor&quot;:[255,255,0,0.8],
+     *         &quot;stroke&quot;:[0,0,0,1],&quot;pointsize&quot;:null,&quot;range&quot;:[37,78]}
+     * @param {number} id - The unique id of the Aesthetic object.
+     * @param {string} attr - The attribute being mapped on this Aesthetic.
+     * @param {number[]} fcolor - The color to fill the Aesthetic element(RGBA).
+     * @param {number[]} stroke - Stroke color values(RGBA).
+     * @param {number|null} pointsize - Size of the Aesthetic point to be drawn (Used only in maps that require dots to be drawn).
+     * @param {number[]} range - The range for this particular Aesthetic element.
+     * 
+     * @memberOf Aesthetic
+     */
     constructor(id, attr, fcolor, stroke, pointsize, range) {
+        /**
+         * The unique id of the Aesthetic object. 
+         * @type {number}
+         */
         this.id = id;
-        this.fillColor = fcolor;
-        this.strokeColor = stroke;
-        this.range = range;
+        /**
+         * The attribute being mapped on the Aesthetic.
+         * @type {string}
+         */
         this._attr = attr;
+        /**
+         * The color to fill the Aesthetic element(RGBA).
+         * @type {number[4]}
+         */
+        this.fillColor = fcolor;
+        /**
+         * Stroke color values(RGBA).
+         * @type {number[4]}
+         */
+        this.strokeColor = stroke;
+        /**
+         * The size of the Aesthetic point to be drawn (Used only in maps that require dots to be drawn).
+         * @type {number|null}
+         */
         this.pointSize = pointsize == null ? 1.0 : parseFloat(pointsize);
+        /**
+         * The range for this particular Aesthetic element.
+         * @type {number[2]}
+         */
+        this.range = range;
+        /**
+         * This Array will keep track of all Features associated with this Aesthetic object.
+         * @type {Array&lt;Feature&gt;}
+         */
         this._features = new Array();
+        /**
+         * This Array is used for? 
+         * @todo
+         * @type {Array&lt;Feature&gt;}
+         */
         this._allFeatures = null;
-        this.enabled = true;
+        /**
+         * This particular element will be active or not in the Legend.
+         * @type {boolean}
+         */
+        this.enabled = true;//Elemento da legenda ativado ou desativado
+        /**
+         * Outer of? This is used for what?
+         * @type {boolean}
+         */
         this.outer = false;
-        return this;
+        return this; //@TODO remove this
     }
 
+    /**
+     * Adds a new feature to this Aesthetic object.
+     * @param {number} id - The Feature id. Each feature will have a different id inside this Aesthetic object.
+     * @param {{fx: string, _gisplayid:number}} properties - Properties associated with the Feature.
+     * @param {{itemSize: number, numItems: number}} triangles - Number of triangles associated with the Feature.
+     * @param {{itemSize: number, numItems: number}} borders - Number of borders associated with the Feature.
+     * @param {number[]} points - The points that belong to the Feature.
+     * 
+     * @memberOf Aesthetic
+     */
     addFeature(id, properties, triangles, borders, points) {
         this._features.push(new Feature(id, properties, triangles, borders, points));
     }
 
+    /**
+     * Gets this Aesthetic attribute.
+     * @returns {Aesthetic._attr} - The string representing the attr of this Aesthetic.
+     * 
+     * @memberOf Aesthetic
+     */
     getAttr() {
         return this._attr;
     }
 
+    /**
+     * Checks the existence or not ? of {Aesthethic._attr}
+     * 
+     * @param {string} value - The attribute  
+     * @returns {boolean} - True if the value is ?
+     * 
+     * @memberOf Aesthetic
+     */
     checkProperty(value) {
         if (this.range == null)
             return true;
         else {
-            if (typeof value === &apos;number&apos;) {
-
-                return ((this.range[0] == null || value &gt;= this.range[0])
-                    &amp;&amp; (this.range[1] == null ||
-                        (value &lt; this.range[1] || (value &lt;= this.range[1] &amp;&amp; this.outer == true))));
-            }
+            if (typeof value === &apos;number&apos;) 
+                return ((this.range[0] == null || value &gt;= this.range[0]) &amp;&amp;
+                    (this.range[1] == null || (value &lt; this.range[1] || (value &lt;= this.range[1] &amp;&amp; this.outer == true))));
             else
                 return (value == this.range[0]);
         }
@@ -107,7 +191,17 @@ export class Aesthetic {
         this.enabled = !this.enabled;
         return this.enabled;
     }
-}</code></pre>
+}
+
+ /*var obj = {
+            i: id,
+            a: attr,
+            f: fcolor,
+            s: stroke,
+            p: pointsize,
+            r: range
+        }
+        console.warn(&quot;Aest called constructor!!! == &quot; + JSON.stringify(obj));*/</code></pre>
 
 </div>
 

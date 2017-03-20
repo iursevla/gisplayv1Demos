@@ -49,24 +49,66 @@
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/Gisplay/Feature.js</h1>
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">//Intermediate API
+
 /**
+ * This class represents a Feature. Each feature belongs to one Aesthetic element.
  * 
+ * @export
+ * @class Feature
  */
 export class Feature {
-
+    /**
+     * Creates an instance of Feature.
+     * @example 1-&gt; {&quot;id&quot;:0,&quot;properties&quot;:{&quot;f1&quot;:&quot;Alabama&quot;,&quot;f2&quot;:&quot;Autauga&quot;,&quot;f3&quot;:150,&quot;_gisplayid&quot;:0},
+                     &quot;triangles&quot;:[{&quot;itemSize&quot;:2,&quot;numItems&quot;:417}],&quot;borders&quot;:[{&quot;itemSize&quot;:2,&quot;numItems&quot;:141}],&quot;points&quot;:[]}
+     * @param {number} id - This Feature id.
+     * @param {{fx: string, _gisplayid:number}} properties - Properties associated with this Feature.  
+     * @param {{itemSize: number, numItems: number}} triangles - Number of triangles associated with this Feature. 
+     * @param {{itemSize: number, numItems: number}} borders - Number of borders associated with this Feature.
+     * @param {number[]} points - The points that belong to this Feature.
+     * 
+     * @memberOf Feature
+     */
     constructor(id, properties, triangles, borders, points) {
+        /**
+         * This Feature id.
+         * @type {number} 
+         */
         this._id = id;
+        /**
+         * Properties associated with this Feature.  
+         * @type {{fx: string, _gisplayid:number}}  
+         */
         this._properties = properties;
+        /**
+         * Number of triangles associated with this Feature.
+         * @type {{itemSize: number, numItems: number}}
+         */
         this._triangles = triangles;
+        /**
+         * Number of borders associated with this Feature.
+         * @type {{itemSize: number, numItems: number}}
+         */
         this._borders = borders;
+        /**
+         * The points that belong to this Feature.
+         * @type {number[]}
+         */
         this._points = points;
-        return this;
+        return this;// @Rui Remover this
     }
-    
 }
-
-
-</code></pre>
+ /* if (window.count == 0) {
+            var obj = {
+                i: id,
+                prs: properties,
+                ts: triangles,
+                bs: borders,
+                pts: points,
+            }
+            window.count++;
+            console.log(JSON.stringify(obj))
+        }*/</code></pre>
 
 </div>
 

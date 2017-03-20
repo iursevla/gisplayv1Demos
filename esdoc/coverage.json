@@ -1,26 +1,14 @@
 {
-  "coverage": "5.35%",
-  "expectCount": 168,
-  "actualCount": 9,
+  "coverage": "22.72%",
+  "expectCount": 176,
+  "actualCount": 40,
   "files": {
     "src/Gisplay/Aesthetic.js": {
-      "expectCount": 14,
-      "actualCount": 0,
+      "expectCount": 17,
+      "actualCount": 15,
       "undocumentLines": [
-        3,
-        19,
-        42,
-        27,
-        5,
-        56,
-        14,
-        7,
-        23,
-        6,
-        15,
-        11,
-        9,
-        8
+        126,
+        140
       ]
     },
     "src/Gisplay/Maps/BGMapWrapper.js": {
@@ -74,13 +62,13 @@
       "actualCount": 1,
       "undocumentLines": [
         11,
-        32,
+        33,
         9,
-        41,
-        21,
+        42,
+        22,
         12,
         14,
-        34,
+        35,
         15
       ]
     },
@@ -100,52 +88,39 @@
       ]
     },
     "src/Gisplay/Feature.js": {
-      "expectCount": 2,
-      "actualCount": 1,
-      "undocumentLines": [
-        7
-      ]
+      "expectCount": 7,
+      "actualCount": 7,
+      "undocumentLines": []
     },
     "src/Gisplay/Gisplay.js": {
-      "expectCount": 10,
-      "actualCount": 1,
-      "undocumentLines": [
-        105,
-        12,
-        40,
-        55,
-        24,
-        32,
-        62,
-        47,
-        26
-      ]
+      "expectCount": 9,
+      "actualCount": 9,
+      "undocumentLines": []
     },
     "src/Gisplay/Legend.js": {
       "expectCount": 16,
-      "actualCount": 1,
+      "actualCount": 3,
       "undocumentLines": [
-        79,
-        5,
-        196,
-        154,
-        99,
-        11,
-        16,
-        20,
-        190,
-        24,
-        255,
-        157,
-        271,
-        170,
-        6
+        88,
+        205,
+        163,
+        108,
+        22,
+        27,
+        31,
+        199,
+        35,
+        264,
+        166,
+        280,
+        179
       ]
     },
     "src/Gisplay/Maps/Map.js": {
-      "expectCount": 61,
+      "expectCount": 62,
       "actualCount": 1,
       "undocumentLines": [
+        506,
         95,
         234,
         1130,
