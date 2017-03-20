@@ -1884,7 +1884,7 @@
     "__docId__": 65,
     "kind": "file",
     "name": "src/Gisplay/Maps/BGMapWrapper.js",
-    "content": "/**\r\n * This class represents a background map wrapper. Used to be a \"middle-man\" between the \r\n * background map provider and the API.\r\n */\r\nexport class BGMapWrapper {\r\n\r\n    /**\r\n     * This is the map that comes from the background map provider(e.g., MapBox).\r\n     * @param {Object} map \r\n     */\r\n    constructor(map) {\r\n        console.log(\"BGMapWrapper constructor?\");\r\n        this.map = map;\r\n    }\r\n\r\n    /**\r\n     * Returns the map's containing HTML element.\r\n     */\r\n    getContainer() {\r\n        return this.map.getContainer();\r\n    }\r\n\r\n    /**\r\n     * Given one id it creates a canvas object.\r\n     * @todo Understand case mapbox comment bellow.\r\n     * @param {number} id - The id of the canvas to be created.\r\n     * @returns {HTMLCanvasElement} Canvas object where everything will be drawn.\r\n     */\r\n    createCanvas(id) {\r\n        const mapCanvas = document.createElement('canvas');\r\n        mapCanvas.id = `mapCanvas${id}`;\r\n        mapCanvas.style.position = 'absolute';\r\n\r\n        const mapDiv = this.map.getContainer();\r\n        mapCanvas.height = mapDiv.offsetHeight;\r\n        mapCanvas.width = mapDiv.offsetWidth;\r\n        //mapCanvas.style.zIndex = \"2\";\r\n\r\n        //case mapbox\r\n        mapDiv.insertBefore(mapCanvas, mapDiv.firstChild.nextSibling);\r\n\r\n        const canvas = document.getElementById(`mapCanvas${id}`);\r\n        return canvas;\r\n    }\r\n\r\n    /**\r\n     * Returns the map's current zoom level.\r\n     */\r\n    getZoom() {\r\n        return this.map.getZoom();\r\n    }\r\n\r\n    /**\r\n     * Returns the longitude of the northwest corner of the bounding box.\r\n     */\r\n    getLngBound() {\r\n        return this.map.getBounds().getNorthWest().lng;\r\n    }\r\n\r\n    /**\r\n     * Returns the latitude of the northwest corner of the bounding box.\r\n     */\r\n    getLatBound() {\r\n        return this.map.getBounds().getNorthWest().lat;\r\n    }\r\n\r\n    /**\r\n     * Adds a listener to a specified event type.\r\n     * @param {string} eventstr - The event type to add a listen for.\r\n     * @param {Function} eventfunction - The function to be called when the event is fired. The listener function is called with the data object passed to  fire , extended with  target and  type properties. \r\n     */\r\n    onEvent(eventstr, eventfunction) {\r\n        this.map.on(eventstr, eventfunction);\r\n    }\r\n\r\n    /**\r\n     * @todo This method is calling another with parameters in the 1st if. This is incorrect.\r\n     * Creates loader to be shown at the beginning when the API is loading all data.\r\n     */\r\n    loader() {\r\n        if (this.loaderDiv === undefined)\r\n            this.createLoader(this.map);\r\n        else {\r\n            if (this.loaderDiv.style.display == 'none')\r\n                this.loaderDiv.style.display = 'flex';\r\n            else {\r\n                this.loaderDiv.style.display = 'none';\r\n            }\r\n\r\n            if (this.loaderDiv.className.includes('_gisplayhidden')) {\r\n                this.loaderDiv.className = this.loaderDiv.className.replace(/(?:^|\\s)_gisplayhidden(?!\\S)/g, '_gisplayLoaderOuterDiv');\r\n            }\r\n            else {\r\n                this.loaderDiv.className = this.loaderDiv.className.replace(/(?:^|\\s)_gisplayLoaderOuterDiv(?!\\S)/g, '_gisplayhidden');\r\n            }\r\n        }\r\n    }\r\n\r\n    /**\r\n     * @todo Probably it is not being used because nobody calls it(see L:82).\r\n     * Auxiliar method to be called when the we want to create the loader.\r\n     * It inserts two divs on the map\r\n     */\r\n    createLoader() {\r\n        const outerDiv = document.createElement('div');\r\n        const innerDiv = document.createElement('div');\r\n        innerDiv.className = '_gisplayloader';\r\n\r\n        const mapDiv = this.getContainer();\r\n\r\n        /*outerDiv.style = ' opacity: 0.5; background-color: grey; justify-content: center; display: flex;';\r\n        outerDiv.style.position = 'absolute';\r\n        outerDiv.style.zIndex = '999999999';*/\r\n        outerDiv.className = '_gisplayLoaderOuterDiv';\r\n        outerDiv.style.height = mapDiv.offsetHeight;\r\n        outerDiv.style.width = mapDiv.offsetWidth;\r\n        outerDiv.appendChild(innerDiv);\r\n        this.loaderDiv = outerDiv;\r\n\r\n        mapDiv.parentElement.insertBefore(outerDiv, mapDiv);\r\n    }\r\n}\r\n",
+    "content": "/**\r\n * This class represents a background map wrapper. Used to be a \"middle-man\" between the \r\n * background map provider and the API.\r\n */\r\nexport class BGMapWrapper {\r\n\r\n    /**\r\n     * This is the map that comes from the background map provider(e.g., MapBox).\r\n     * @param {Object} map \r\n     */\r\n    constructor(map) {\r\n        console.log(\"BGMapWrapper constructor?\");\r\n        /**\r\n         * This is the map that comes from the background map provider(e.g., MapBox). \r\n         * @type {Object}\r\n         */\r\n        this.map = map;\r\n    }\r\n\r\n    /**\r\n     * Returns the map's containing HTML element.\r\n     */\r\n    getContainer() {\r\n        return this.map.getContainer();\r\n    }\r\n\r\n    /**\r\n     * Given one id it creates a canvas object.\r\n     * @todo Understand case mapbox comment bellow.\r\n     * @param {number} id - The id of the canvas to be created.\r\n     * @returns {HTMLCanvasElement} Canvas object where everything will be drawn.\r\n     */\r\n    createCanvas(id) {\r\n        const mapCanvas = document.createElement('canvas');\r\n        mapCanvas.id = `mapCanvas${id}`;\r\n        mapCanvas.style.position = 'absolute';\r\n\r\n        const mapDiv = this.map.getContainer();\r\n        mapCanvas.height = mapDiv.offsetHeight;\r\n        mapCanvas.width = mapDiv.offsetWidth;\r\n        //mapCanvas.style.zIndex = \"2\";\r\n\r\n        //case mapbox\r\n        mapDiv.insertBefore(mapCanvas, mapDiv.firstChild.nextSibling);\r\n\r\n        const canvas = document.getElementById(`mapCanvas${id}`);\r\n        return canvas;\r\n    }\r\n\r\n    /**\r\n     * Returns the map's current zoom level.\r\n     */\r\n    getZoom() {\r\n        return this.map.getZoom();\r\n    }\r\n\r\n    /**\r\n     * Returns the longitude of the northwest corner of the bounding box.\r\n     */\r\n    getLngBound() {\r\n        return this.map.getBounds().getNorthWest().lng;\r\n    }\r\n\r\n    /**\r\n     * Returns the latitude of the northwest corner of the bounding box.\r\n     */\r\n    getLatBound() {\r\n        return this.map.getBounds().getNorthWest().lat;\r\n    }\r\n\r\n    /**\r\n     * Adds a listener to a specified event type.\r\n     * @param {string} eventstr - The event type to add a listen for.\r\n     * @param {Function} eventfunction - The function to be called when the event is fired. The listener function is called with the data object passed to  fire , extended with  target and  type properties. \r\n     */\r\n    onEvent(eventstr, eventfunction) {\r\n        this.map.on(eventstr, eventfunction);\r\n    }\r\n\r\n    /**\r\n     * @todo This method is calling another with parameters in the 1st if. This is incorrect.\r\n     * Creates loader to be shown at the beginning when the API is loading all data.\r\n     */\r\n    loader() {\r\n        if (this.loaderDiv === undefined)\r\n            this.createLoader(this.map);\r\n        else {\r\n            if (this.loaderDiv.style.display == 'none')\r\n                this.loaderDiv.style.display = 'flex';\r\n            else {\r\n                this.loaderDiv.style.display = 'none';\r\n            }\r\n\r\n            if (this.loaderDiv.className.includes('_gisplayhidden')) {\r\n                this.loaderDiv.className = this.loaderDiv.className.replace(/(?:^|\\s)_gisplayhidden(?!\\S)/g, '_gisplayLoaderOuterDiv');\r\n            }\r\n            else {\r\n                this.loaderDiv.className = this.loaderDiv.className.replace(/(?:^|\\s)_gisplayLoaderOuterDiv(?!\\S)/g, '_gisplayhidden');\r\n            }\r\n        }\r\n    }\r\n\r\n    /**\r\n     * @todo Probably it is not being used because nobody calls it(see L:82).\r\n     * Auxiliar method to be called when the we want to create the loader.\r\n     * It inserts two divs on the map\r\n     */\r\n    createLoader() {\r\n        const outerDiv = document.createElement('div');\r\n        const innerDiv = document.createElement('div');\r\n        innerDiv.className = '_gisplayloader';\r\n\r\n        const mapDiv = this.getContainer();\r\n\r\n        /*outerDiv.style = ' opacity: 0.5; background-color: grey; justify-content: center; display: flex;';\r\n        outerDiv.style.position = 'absolute';\r\n        outerDiv.style.zIndex = '999999999';*/\r\n        outerDiv.className = '_gisplayLoaderOuterDiv';\r\n        outerDiv.style.height = mapDiv.offsetHeight;\r\n        outerDiv.style.width = mapDiv.offsetWidth;\r\n        outerDiv.appendChild(innerDiv);\r\n        this.loaderDiv = outerDiv;\r\n\r\n        mapDiv.parentElement.insertBefore(outerDiv, mapDiv);\r\n    }\r\n}\r\n",
     "static": true,
     "longname": "src/Gisplay/Maps/BGMapWrapper.js",
     "access": null,
@@ -1939,19 +1939,15 @@
     "static": false,
     "longname": "src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper#map",
     "access": null,
-    "description": null,
-    "lineNumber": 13,
-    "undocument": true,
-    "unknown": [
-      {
-        "tagName": "@_undocument",
-        "tagValue": ""
-      }
-    ],
+    "description": "This is the map that comes from the background map provider(e.g., MapBox). ",
+    "lineNumber": 17,
     "type": {
+      "nullable": null,
       "types": [
-        "*"
-      ]
+        "Object"
+      ],
+      "spread": false,
+      "description": null
     }
   },
   {
@@ -1965,7 +1961,7 @@
     "longname": "src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper#getContainer",
     "access": null,
     "description": "Returns the map's containing HTML element.",
-    "lineNumber": 19,
+    "lineNumber": 23,
     "params": [],
     "return": {
       "types": [
@@ -1984,7 +1980,7 @@
     "longname": "src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper#createCanvas",
     "access": null,
     "description": "Given one id it creates a canvas object.",
-    "lineNumber": 29,
+    "lineNumber": 33,
     "todo": [
       "Understand case mapbox comment bellow."
     ],
@@ -2026,7 +2022,7 @@
     "longname": "src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper#getZoom",
     "access": null,
     "description": "Returns the map's current zoom level.",
-    "lineNumber": 49,
+    "lineNumber": 53,
     "params": [],
     "return": {
       "types": [
@@ -2045,7 +2041,7 @@
     "longname": "src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper#getLngBound",
     "access": null,
     "description": "Returns the longitude of the northwest corner of the bounding box.",
-    "lineNumber": 56,
+    "lineNumber": 60,
     "params": [],
     "return": {
       "types": [
@@ -2064,7 +2060,7 @@
     "longname": "src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper#getLatBound",
     "access": null,
     "description": "Returns the latitude of the northwest corner of the bounding box.",
-    "lineNumber": 63,
+    "lineNumber": 67,
     "params": [],
     "return": {
       "types": [
@@ -2083,7 +2079,7 @@
     "longname": "src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper#onEvent",
     "access": null,
     "description": "Adds a listener to a specified event type.",
-    "lineNumber": 72,
+    "lineNumber": 76,
     "params": [
       {
         "nullable": null,
@@ -2118,7 +2114,7 @@
     "longname": "src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper#loader",
     "access": null,
     "description": "",
-    "lineNumber": 80,
+    "lineNumber": 84,
     "todo": [
       "This method is calling another with parameters in the 1st if. This is incorrect.\nCreates loader to be shown at the beginning when the API is loading all data."
     ],
@@ -2135,7 +2131,7 @@
     "longname": "src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper#createLoader",
     "access": null,
     "description": "",
-    "lineNumber": 104,
+    "lineNumber": 108,
     "todo": [
       "Probably it is not being used because nobody calls it(see L:82).\nAuxiliar method to be called when the we want to create the loader.\nIt inserts two divs on the map"
     ],
@@ -2150,7 +2146,7 @@
     "longname": "src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper#loaderDiv",
     "access": null,
     "description": null,
-    "lineNumber": 118,
+    "lineNumber": 122,
     "undocument": true,
     "unknown": [
       {
