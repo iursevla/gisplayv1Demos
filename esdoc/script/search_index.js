@@ -48,6 +48,12 @@ window.esdocSearchIndex = [
     "class"
   ],
   [
+    "gisplay-es6-webpack/src/gisplay/maps/gisplayoptions.js~gisplayoptions",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html",
+    "<span>GisplayOptions</span> <span class=\"search-result-import-path\">gisplay-es6-webpack/src/Gisplay/Maps/GisplayOptions.js</span>",
+    "class"
+  ],
+  [
     "gisplay-es6-webpack/src/gisplay/legend.js~legend",
     "class/src/Gisplay/Legend.js~Legend.html",
     "<span>Legend</span> <span class=\"search-result-import-path\">gisplay-es6-webpack/src/Gisplay/Legend.js</span>",
@@ -57,6 +63,12 @@ window.esdocSearchIndex = [
     "gisplay-es6-webpack/src/gisplay/maps/map.js~map",
     "class/src/Gisplay/Maps/Map.js~Map.html",
     "<span>Map</span> <span class=\"search-result-import-path\">gisplay-es6-webpack/src/Gisplay/Maps/Map.js</span>",
+    "class"
+  ],
+  [
+    "gisplay-es6-webpack/src/gisplay/maps/map2.js~map",
+    "class/src/Gisplay/Maps/Map2.js~Map.html",
+    "<span>Map</span> <span class=\"search-result-import-path\">gisplay-es6-webpack/src/Gisplay/Maps/Map2.js</span>",
     "class"
   ],
   [
@@ -990,6 +1002,114 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/gisplay/maps/gisplayoptions.js",
+    "file/src/Gisplay/Maps/GisplayOptions.js.html",
+    "src/Gisplay/Maps/GisplayOptions.js",
+    "file"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#algorithm",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-algorithm",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#algorithm",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#alpha",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-alpha",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#alpha",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#attr",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-attr",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#attr",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#classbreaks",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-classBreaks",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#classBreaks",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#colorscheme",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-colorscheme",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#colorscheme",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#constructor",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-constructor-constructor",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#constructor",
+    "method"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#dynamic",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-dynamic",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#dynamic",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#interactive",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-interactive",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#interactive",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#legendonclickcall",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-legendOnClickCall",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#legendOnClickCall",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#legendtitle",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-legendTitle",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#legendTitle",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#maponclickcall",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-mapOnClickCall",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#mapOnClickCall",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#maxfeatures",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-maxfeatures",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#maxfeatures",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#minuend",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-minuend",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#minuend",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#numberoflegenditems",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-numberOfLegendItems",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#numberOfLegendItems",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#numberofclasses",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-numberofclasses",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#numberofclasses",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#showpropertiesonclick",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-showPropertiesOnClick",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#showPropertiesOnClick",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#subtrahend",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-subtrahend",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#subtrahend",
+    "member"
+  ],
+  [
     "src/gisplay/maps/map.js",
     "file/src/Gisplay/Maps/Map.js.html",
     "src/Gisplay/Maps/Map.js",
@@ -1359,6 +1479,48 @@ window.esdocSearchIndex = [
     "src/gisplay/maps/map.js~map#treepoints",
     "class/src/Gisplay/Maps/Map.js~Map.html#instance-member-treepoints",
     "src/Gisplay/Maps/Map.js~Map#treepoints",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/map2.js",
+    "file/src/Gisplay/Maps/Map2.js.html",
+    "src/Gisplay/Maps/Map2.js",
+    "file"
+  ],
+  [
+    "src/gisplay/maps/map2.js~map#constructor",
+    "class/src/Gisplay/Maps/Map2.js~Map.html#instance-constructor-constructor",
+    "src/Gisplay/Maps/Map2.js~Map#constructor",
+    "method"
+  ],
+  [
+    "src/gisplay/maps/map2.js~map#draw",
+    "class/src/Gisplay/Maps/Map2.js~Map.html#instance-method-draw",
+    "src/Gisplay/Maps/Map2.js~Map#draw",
+    "method"
+  ],
+  [
+    "src/gisplay/maps/map2.js~map#gisplayoptions",
+    "class/src/Gisplay/Maps/Map2.js~Map.html#instance-member-gisplayOptions",
+    "src/Gisplay/Maps/Map2.js~Map#gisplayOptions",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/map2.js~map#loadoptions",
+    "class/src/Gisplay/Maps/Map2.js~Map.html#instance-method-loadOptions",
+    "src/Gisplay/Maps/Map2.js~Map#loadOptions",
+    "method"
+  ],
+  [
+    "src/gisplay/maps/map2.js~map#map",
+    "class/src/Gisplay/Maps/Map2.js~Map.html#instance-member-map",
+    "src/Gisplay/Maps/Map2.js~Map#map",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/map2.js~map#options",
+    "class/src/Gisplay/Maps/Map2.js~Map.html#instance-member-options",
+    "src/Gisplay/Maps/Map2.js~Map#options",
     "member"
   ],
   [

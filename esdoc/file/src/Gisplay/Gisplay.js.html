@@ -41,7 +41,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/ChorochromaticMap.js~ChorochromaticMap.html">ChorochromaticMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/Choropleth.js~Choropleth.html">Choropleth</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/DotMap.js~DotMap.html">DotMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html">GisplayOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/Map.js~Map.html">Map</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/Map2.js~Map.html">Map</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/ProportionalSymbolsMap.js~ProportionalSymbolsMap.html">ProportionalSymbolsMap</a></span></span></li>
 </ul>
 </div>
@@ -100,8 +102,8 @@ export class Gisplay {
     /**
      * Creates a map of type Choropleth.
      * @param {Object} bgmap - Background map object be used(atm only MapBox being used).- Background map object be used(atm only MapBox being used).
-     * @param {JSON} geometry - The geometry was read from the file.
-     * @param {Object} options - User personalization options.
+     * @param {JSON} geometry - The object that contains the data.
+     * @param {Object} options - Object that contains user personalization options.
      * 
      * @memberOf Gisplay
      */
@@ -116,8 +118,8 @@ export class Gisplay {
     /**
      * Creates a Dot Map.
      * @param {Object} bgmap - Background map object be used(atm only MapBox being used).
-     * @param {JSON} geometry - The geometry was read from the file.
-     * @param {Object} options - User personalization options.
+     * @param {JSON} geometry - The object that contains the data.
+     * @param {Object} options - Object that contains user personalization options.
      * 
      * @memberOf Gisplay
      */
@@ -131,8 +133,8 @@ export class Gisplay {
     /**
      * Creates a Change Map.
      * @param {Object} bgmap - Background map object be used(atm only MapBox being used).
-     * @param {JSON} geometry - The geometry was read from the file.
-     * @param {Object} options - User personalization options.
+     * @param {JSON} geometry - The object that contains the data.
+     * @param {Object} options - Object that contains user personalization options.
      * 
      * @memberOf Gisplay
      */
@@ -146,8 +148,8 @@ export class Gisplay {
     /**
      * Creates a Proportional Symbols Map.
      * @param {Object} bgmap - Background map object be used(atm only MapBox being used).
-     * @param {JSON} geometry - The geometry was read from the file.
-     * @param {Object} options - User personalization options.
+     * @param {JSON} geometry - The object that contains the data.
+     * @param {Object} options - Object that contains user personalization options.
      * 
      * @memberOf Gisplay
      */
@@ -161,8 +163,8 @@ export class Gisplay {
     /**
      * Creates a Chorocromatic Map.
      * @param {Object} bgmap - Background map object be used(atm only MapBox being used).
-     * @param {JSON} geometry - The geometry was read from the file.
-     * @param {Object} options - User personalization options.
+     * @param {JSON} geometry - The object that contains the data.
+     * @param {Object} options - Object that contains user personalization options.
      * 
      * @memberOf Gisplay
      */
@@ -174,10 +176,10 @@ export class Gisplay {
     }
 
     /**
-     * Starts the construction of the map.
+     * Function that executes all the process associated with the creation of thematic maps.
      * @todo Should clean up this removing profiling code?
      * @param {Map} gismap - The Gisplay Map to use (Choropleth, DotMap,etc).
-     * @param {Object} options - User personalization options.
+     * @param {Object} options - Object that contains user personalization options.
      * 
      * @memberOf Gisplay
      */

@@ -41,7 +41,9 @@
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/ChorochromaticMap.js~ChorochromaticMap.html">ChorochromaticMap</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/Choropleth.js~Choropleth.html">Choropleth</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/DotMap.js~DotMap.html">DotMap</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html">GisplayOptions</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/Map.js~Map.html">Map</a></span></span></li>
+<li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/Map2.js~Map.html">Map</a></span></span></li>
 <li data-ice="doc"><span data-ice="kind" class="kind-class">C</span><span data-ice="name"><span><a href="class/src/Gisplay/Maps/ProportionalSymbolsMap.js~ProportionalSymbolsMap.html">ProportionalSymbolsMap</a></span></span></li>
 </ul>
 </div>
@@ -51,26 +53,14 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { BGMapWrapper } from &apos;./BGMapWrapper&apos;;
 import { Aesthetic } from &apos;../Aesthetic&apos;;
 
-/** 
- * ES5 libraries can be used either with 
- * 1)import if they are just functions or in the case of rtree and ktree a 
- * webpack loader is needed &quot;script-loader&quot;&quot; can do that.
- * 2) Added as &lt;script&gt; tag on index.html file
- * The former as choosen.
-import chroma from &apos;../../lib/chroma.min&apos;;
-import earcut from &apos;../../lib/earcut&apos;
-import {PolygonLookup} from &apos;../../lib/rtree&apos;;
-*/
-
 /**
  * This class contains the Map class which represents the current map.
- * Each map has a group of functions available.
+ * Each map has a group of functions available. There is only one map yet(maybe there will be two if we want to compare two).
  */
 export class Map {
 
     constructor(type, geometry, options) {
         console.log(&quot;Map constructor called -&gt; super()&quot;)
-        /* return this;*/ //@TODO Remove isnt doing anything? or is it saving the 3 parameters?
     }
 
     program() {
@@ -307,92 +297,22 @@ export class Map {
         return breaks;
     }
 
-    insertFeature(id, properties, triangles, borders, points) {
-        let flag = false;
-        for (let i = 0; i &lt; this.aesthetics.length; i++) {
-            if (this.aesthetics[i].checkProperty(properties[this.aesthetics[i].getAttr()]) == true) {
-                this.aesthetics[i].addFeature(id, properties, triangles, borders, points);
-                flag = true;
-            }
-        }
-        if (!flag) {
-            //TODO
-            //console.log(&quot;TODO: feature does not fit into any of the aesthetics defined.\n Value: &quot; + properties[this.attr]);
-        }
-    }
-
-    insertGroupedFeature(idaes, triangles, borders, points) {
-        this.aesthetics[idaes].addGroupedFeature(null, triangles, borders, points);
-    }
-
-    draw() {
-        alert(&quot;draw() not implemented&quot;);
-    }
-
-    processPolygon(polygon) {
-
-        if (polygon.geometry.type == &quot;Polygon&quot;) {
-            var outsidepolygon = polygon.geometry.coordinates[0];
-
-            var insidepolygons = [];
-            for (var k = 1; k &lt; polygon.geometry.coordinates.length; k++) {
-                //todo inside polygon
-                //insidepolygons.push(polygon.geometry.coordinates[i][k]);
-            }
-            var tempVerts = new Array();
-            for (var out = 0; out &lt; outsidepolygon.length - 1; out++) {
-                tempVerts.push(outsidepolygon[out][0], outsidepolygon[out][1]);
-                _vertexcount += (outsidepolygon.length + 1) / 2;
-                //console.log(&quot;lon: &quot; + outsidepolygon[out][0] + &quot; lat: &quot; + outsidepolygon[out][1]);
-            }
-
-
-
-            var triangles_vert = earcut(tempVerts);
-            _tricount += (triangles_vert.length / 3);
-            polyarray.push({ triangles: triangles_vert, vertex: tempVerts });
-        }
-
-
-
-        else if (polygon.geometry.type == &quot;MultiPolygon&quot;) {
-            var polyarray = [];
-            for (let i = 0; i &lt; polygon.geometry.coordinates.length; i++) {
-
-                var outsidepolygon = polygon.geometry.coordinates[i][0];
-
-                var insidepolygons = [];
-                for (var k = 1; k &lt; polygon.geometry.coordinates[i].length; k++) {
-                    //todo inside polygon
-                    insidepolygons.push(polygon.geometry.coordinates[i][k]);
-                }
-                var tempVerts = new Array();
-                _vertexcount += outsidepolygon.length;
-                for (var out = 0; out &lt; outsidepolygon.length - 1; out++) {
-                    tempVerts.push(outsidepolygon[out][0], outsidepolygon[out][1]);
-
-                    //console.log(&quot;lon: &quot; + outsidepolygon[out][0] + &quot; lat: &quot; + outsidepolygon[out][1]);
-                }
-
-
-
-                var triangles_vert = earcut(tempVerts);
-
-                //var temp = earcut.flatten(polygon.geometry.coordinates[i]);
-                //var triangles_vert = earcut(temp.vertices, temp.holes, temp.dimensions);
-                _tricount += (triangles_vert.length / 3);
-                polyarray.push({ triangles: triangles_vert, vertex: tempVerts });
-                //console.log(polyarray);
-            }
-
-
-            return polyarray;
-        }
-
-    }
-
+    /**
+     * 
+     * @param {JSON} geojson 
+     */
     processData(geojson) {
         this.loadGeoJSON(geojson);
+    }
+
+    loadGeoJSON(geojson) {
+        for (let g = 0; g &lt; geojson.features.length &amp;&amp; (this.maxfeatures == undefined || g &lt; this.maxfeatures); g++) {
+            geojson.features[g].properties[&apos;_gisplayid&apos;] = g;
+            const geometry = geojson.features[g].geometry;
+            const properties = geojson.features[g].properties;
+            this.createAndInsertFeature(g, geometry, properties);
+        }
+        this.buildTrees(geojson);
     }
 
     createAndInsertFeature(id, geometry, properties) {
@@ -453,11 +373,9 @@ export class Map {
                         bufferB[j].numItems = vertArray.length / 2;
                     }
                 }
-
             }
             //polygon
             this.insertFeature(id, properties, bufferT, bufferB, []);
-
         }
 
         else if (geometry.type == &quot;Point&quot; &amp;&amp; this.dynamic == true) {
@@ -480,10 +398,9 @@ export class Map {
 
             this.insertFeature(id, properties, [], [], bufferP);
 
-            if (this.treepoints == null || this.treepoints == undefined) this.treepoints = [];
+            if (this.treepoints == null || this.treepoints == undefined)
+                this.treepoints = [];
             this.treepoints.push({ lon: geometry.coordinates[0], lat: geometry.coordinates[1], properties });
-
-
         }
 
         else if (geometry.type == &quot;Point&quot; &amp;&amp; this.dynamic == false) {
@@ -501,13 +418,95 @@ export class Map {
                 this.tempPoints[aesarrays[y]].push(pixel.x, pixel.y);
             }
 
-            if (this.treepoints == null) this.treepoints = [];
+            if (this.treepoints == null)
+                this.treepoints = [];
             this.treepoints.push({ lon: geometry.coordinates[0], lat: geometry.coordinates[1], properties });
+        }
+    }
 
+    processPolygon(polygon) {
+        if (polygon.geometry.type == &quot;Polygon&quot;) {
+            var outsidepolygon = polygon.geometry.coordinates[0];
 
+            var insidepolygons = [];
+            for (var k = 1; k &lt; polygon.geometry.coordinates.length; k++) {
+                //todo inside polygon
+                //insidepolygons.push(polygon.geometry.coordinates[i][k]);
+            }
+            var tempVerts = new Array();
+            for (var out = 0; out &lt; outsidepolygon.length - 1; out++) {
+                tempVerts.push(outsidepolygon[out][0], outsidepolygon[out][1]);
+                _vertexcount += (outsidepolygon.length + 1) / 2;
+                //console.log(&quot;lon: &quot; + outsidepolygon[out][0] + &quot; lat: &quot; + outsidepolygon[out][1]);
+            }
+
+            var triangles_vert = earcut(tempVerts);
+            _tricount += (triangles_vert.length / 3);
+            polyarray.push({ triangles: triangles_vert, vertex: tempVerts });
         }
 
+        else if (polygon.geometry.type == &quot;MultiPolygon&quot;) {
+            var polyarray = [];
+            for (let i = 0; i &lt; polygon.geometry.coordinates.length; i++) {
 
+                var outsidepolygon = polygon.geometry.coordinates[i][0];
+
+                var insidepolygons = [];
+                for (var k = 1; k &lt; polygon.geometry.coordinates[i].length; k++) {
+                    //todo inside polygon
+                    insidepolygons.push(polygon.geometry.coordinates[i][k]);
+                }
+                var tempVerts = new Array();
+                _vertexcount += outsidepolygon.length;
+                for (var out = 0; out &lt; outsidepolygon.length - 1; out++) {
+                    tempVerts.push(outsidepolygon[out][0], outsidepolygon[out][1]);
+
+                    //console.log(&quot;lon: &quot; + outsidepolygon[out][0] + &quot; lat: &quot; + outsidepolygon[out][1]);
+                }
+
+                var triangles_vert = earcut(tempVerts);
+                //var temp = earcut.flatten(polygon.geometry.coordinates[i]);
+                //var triangles_vert = earcut(temp.vertices, temp.holes, temp.dimensions);
+                _tricount += (triangles_vert.length / 3);
+                polyarray.push({ triangles: triangles_vert, vertex: tempVerts });
+                //console.log(polyarray);
+            }
+            return polyarray;
+        }
+    }
+
+    insertFeature(id, properties, triangles, borders, points) {
+        let flag = false;
+        for (let i = 0; i &lt; this.aesthetics.length; i++) {
+            if (this.aesthetics[i].checkProperty(properties[this.aesthetics[i].getAttr()]) == true) {
+                this.aesthetics[i].addFeature(id, properties, triangles, borders, points);
+                flag = true;
+            }
+        }
+        if (!flag) {
+            //TODO
+            //console.log(&quot;TODO: feature does not fit into any of the aesthetics defined.\n Value: &quot; + properties[this.attr]);
+        }
+    }
+
+    latLongToPixelXY(longitude, latitude) {
+        const pi_180 = Math.PI / 180.0;
+        const pi_4 = Math.PI * 4;
+        const sinLatitude = Math.sin(latitude * pi_180);
+        const pixelY = (0.5 - Math.log((1 + sinLatitude) / (1 - sinLatitude)) / (pi_4)) * 256;
+        const pixelX = ((longitude + 180) / 360) * 256;
+
+        const pixel = { x: pixelX, y: pixelY };
+        return pixel;
+    }
+
+    fitFeature(properties) {
+        const result = [];
+        for (let a = 0; a &lt; this.aesthetics.length; a++) {
+            if (this.aesthetics[a].checkProperty(properties[this.aesthetics[a].getAttr()]) == true)
+                result.push(a);
+        }
+        return result;
     }
 
     buildTrees(geojson) {
@@ -529,7 +528,6 @@ export class Map {
                     this.insertGroupedFeature(t, [], [], bufferP);
                 }
             }
-
         }
         //console.log(geojson)
         if (this.treepoints != null)
@@ -538,15 +536,8 @@ export class Map {
             this.rtree = new PolygonLookup(geojson);
     }
 
-    loadGeoJSON(geojson) {
-        for (let g = 0; g &lt; geojson.features.length &amp;&amp; (this.maxfeatures == undefined || g &lt; this.maxfeatures); g++) {
-            geojson.features[g].properties[&apos;_gisplayid&apos;] = g;
-            const geometry = geojson.features[g].geometry;
-            const properties = geojson.features[g].properties;
-            this.createAndInsertFeature(g, geometry, properties);
-        }
-        this.buildTrees(geojson);
-
+    insertGroupedFeature(idaes, triangles, borders, points) {
+        this.aesthetics[idaes].addGroupedFeature(null, triangles, borders, points);
     }
 
     createCanvas() {
@@ -594,18 +585,6 @@ export class Map {
         matrix[13] += matrix[1] * tx + matrix[5] * ty;
         matrix[14] += matrix[2] * tx + matrix[6] * ty;
         matrix[15] += matrix[3] * tx + matrix[7] * ty;
-    }
-
-    latLongToPixelXY(longitude, latitude) {
-        const pi_180 = Math.PI / 180.0;
-        const pi_4 = Math.PI * 4;
-        const sinLatitude = Math.sin(latitude * pi_180);
-        const pixelY = (0.5 - Math.log((1 + sinLatitude) / (1 - sinLatitude)) / (pi_4)) * 256;
-        const pixelX = ((longitude + 180) / 360) * 256;
-
-        const pixel = { x: pixelX, y: pixelY };
-
-        return pixel;
     }
 
     clear() {
@@ -1142,15 +1121,6 @@ export class Map {
 
     }
 
-    fitFeature(properties) {
-        const result = [];
-        for (let a = 0; a &lt; this.aesthetics.length; a++) {
-            if (this.aesthetics[a].checkProperty(properties[this.aesthetics[a].getAttr()]) == true)
-                result.push(a);
-        }
-        return result;
-    }
-
     loadOptions(options, bgmap) {
         if (options.customMapService == true)
             this.map = bgmap;
@@ -1190,6 +1160,25 @@ export class Map {
         this.map.loader();
     }
 
+    getNumberOfPolygons() {
+        let count = 0;
+        for (let i = 0; i &lt; this.aesthetics.length; i++) {
+            for (let z = 0; z &lt; this.aesthetics[i]._features.length; z++) {
+                count += this.aesthetics[i]._features[z]._triangles.length;
+            }
+        }
+        return count;
+    }
+
+    //STATIC METHODS(should be implemented by sub-classes)
+    draw() {
+        alert(&quot;draw() not implemented&quot;);//throw new NotImplementedError();
+    }
+
+    /**
+     * @deprecated This was created for Heat Maps. Another idea will probably be used.
+     * @param {Aesthetic} aes 
+     */
     drawHeatPoints(aes) {
         const gl = this._webgl.gl;
 
@@ -1279,8 +1268,6 @@ export class Map {
             }
         };
 
-
-
         steupTextureFilteringAndMips(canvas.width, canvas.height, gl);
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
         gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
@@ -1302,16 +1289,6 @@ export class Map {
         //console.log(&quot;fase 2 concluida&quot;);
         gl.bindBuffer(gl.ARRAY_BUFFER, null);
         this._webgl.gl.useProgram(this._webgl.program);
-    }
-
-    getNumberOfPolygons() {
-        let count = 0;
-        for (let i = 0; i &lt; this.aesthetics.length; i++) {
-            for (let z = 0; z &lt; this.aesthetics[i]._features.length; z++) {
-                count += this.aesthetics[i]._features[z]._triangles.length;
-            }
-        }
-        return count;
     }
 }</code></pre>
 
