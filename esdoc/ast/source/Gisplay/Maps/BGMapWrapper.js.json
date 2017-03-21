@@ -3130,7 +3130,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\r\n     * @todo This method is calling another with parameters in the 1st if. This is incorrect.\r\n     * Creates loader to be shown at the beginning when the API is loading all data.\r\n     ",
+                    "value": "*\r\n     * Creates loader to be shown at the beginning when the API is loading all data.\r\n     * @todo This method is calling another with parameters in the 1st if. This is incorrect.\r\n     ",
                     "start": 2458,
                     "end": 2651,
                     "loc": {
@@ -4731,7 +4731,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\r\n     * @todo This method is calling another with parameters in the 1st if. This is incorrect.\r\n     * Creates loader to be shown at the beginning when the API is loading all data.\r\n     ",
+                    "value": "*\r\n     * Creates loader to be shown at the beginning when the API is loading all data.\r\n     * @todo This method is calling another with parameters in the 1st if. This is incorrect.\r\n     ",
                     "start": 2458,
                     "end": 2651,
                     "loc": {
@@ -4749,7 +4749,7 @@
                 "trailingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\r\n     * @todo Probably it is not being used because nobody calls it(see L:82).\r\n     * Auxiliar method to be called when the we want to create the loader.\r\n     * It inserts two divs on the map\r\n     ",
+                    "value": "*\r\n     * Auxiliar method to be called when the we want to create the loader.\r\n     * @todo Probably it is not being used because nobody calls it(see L:82).\r\n     * It inserts two divs on the map\r\n     ",
                     "start": 3396,
                     "end": 3602,
                     "loc": {
@@ -6127,7 +6127,7 @@
                 "leadingComments": [
                   {
                     "type": "CommentBlock",
-                    "value": "*\r\n     * @todo Probably it is not being used because nobody calls it(see L:82).\r\n     * Auxiliar method to be called when the we want to create the loader.\r\n     * It inserts two divs on the map\r\n     ",
+                    "value": "*\r\n     * Auxiliar method to be called when the we want to create the loader.\r\n     * @todo Probably it is not being used because nobody calls it(see L:82).\r\n     * It inserts two divs on the map\r\n     ",
                     "start": 3396,
                     "end": 3602,
                     "loc": {
@@ -6366,7 +6366,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\r\n     * @todo This method is calling another with parameters in the 1st if. This is incorrect.\r\n     * Creates loader to be shown at the beginning when the API is loading all data.\r\n     ",
+      "value": "*\r\n     * Creates loader to be shown at the beginning when the API is loading all data.\r\n     * @todo This method is calling another with parameters in the 1st if. This is incorrect.\r\n     ",
       "start": 2458,
       "end": 2651,
       "loc": {
@@ -6382,7 +6382,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\r\n     * @todo Probably it is not being used because nobody calls it(see L:82).\r\n     * Auxiliar method to be called when the we want to create the loader.\r\n     * It inserts two divs on the map\r\n     ",
+      "value": "*\r\n     * Auxiliar method to be called when the we want to create the loader.\r\n     * @todo Probably it is not being used because nobody calls it(see L:82).\r\n     * It inserts two divs on the map\r\n     ",
       "start": 3396,
       "end": 3602,
       "loc": {
@@ -11910,7 +11910,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\r\n     * @todo This method is calling another with parameters in the 1st if. This is incorrect.\r\n     * Creates loader to be shown at the beginning when the API is loading all data.\r\n     ",
+      "value": "*\r\n     * Creates loader to be shown at the beginning when the API is loading all data.\r\n     * @todo This method is calling another with parameters in the 1st if. This is incorrect.\r\n     ",
       "start": 2458,
       "end": 2651,
       "loc": {
@@ -14970,7 +14970,7 @@
     },
     {
       "type": "CommentBlock",
-      "value": "*\r\n     * @todo Probably it is not being used because nobody calls it(see L:82).\r\n     * Auxiliar method to be called when the we want to create the loader.\r\n     * It inserts two divs on the map\r\n     ",
+      "value": "*\r\n     * Auxiliar method to be called when the we want to create the loader.\r\n     * @todo Probably it is not being used because nobody calls it(see L:82).\r\n     * It inserts two divs on the map\r\n     ",
       "start": 3396,
       "end": 3602,
       "loc": {
