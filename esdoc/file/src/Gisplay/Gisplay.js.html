@@ -53,7 +53,7 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">import { Choropleth } from &apos;./Maps/Choropleth&apos;;
 import { DotMap } from &apos;./Maps/DotMap&apos;;
 import { ChangeMap } from &apos;./Maps/ChangeMap&apos;;
-import { ProportionalSymbolsMap } from &apos;./Maps/ProportionalSymbolsMap&apos;
+import { ProportionalSymbolsMap } from &apos;./Maps/ProportionalSymbolsMap&apos;;
 import { ChorochromaticMap } from &apos;./Maps/ChorochromaticMap&apos;;
 
 /**
@@ -184,7 +184,7 @@ export class Gisplay {
      * @memberOf Gisplay
      */
     makeMap(gismap, options) {
-        let defaultid = options.defaultid != null ? defaultid : 1;
+        let defaultid = options.defaultid != null ? defaultid : 1; //@todo Change opts.defaultid to optscolorSchemeDefaultId
         setTimeout(console =&gt; {
             let start = 0;
             if (window.profiling == true)

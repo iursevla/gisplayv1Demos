@@ -50,22 +50,35 @@
 </nav>
 
 <div class="content" data-ice="content"><h1 data-ice="title">src/Gisplay/Maps/GisplayOptions.js</h1>
-<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">
-/**
+<pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
  * This class will contain all the options available on the Gisplay API.
  */
 export class GisplayOptions {
 
     /**
      * Creates a new Options object. User options take precedence over default options.
-     * @param {Object} userOptions - The user defined options
+     * @param {Object} userOptions - The user defined options.
      * @param {string} userOptions.attr -  The attribute to be mapped.
      * @param {string[]} [userOptions.colorScheme] -  The color scheme to be used.
-     * @param {number} [userOptions.numberofclasses] -  Number of classes to be used on the map Legend.
-     * @param {string} [userOptions.algorithm=quantile] -  Algorithm to be used by the API to calculate classes intervals. 
+     * @param {number} [userOptions.numberOfClasses] -  Number of classes to be used on the map Legend.
+     * @param {string} [userOptions.classBreaksMethod=quantile] -  Algorithm to be used by the API to calculate classes intervals. 
      * @param {number[]} [userOptions.classBreaks=undefined] - Class intervals.
      * @param {boolean} [userOptions.interactive=true] - Show pop-up when the user clicks on a Feature.
      * @param {boolean} [userOptions.showPropertiesOnClick=null] - Show pop-up when the user clicks on a Feature.
+     * @param {boolean} [userOptions.showLegend=true] - Show map Legend.
+     * @param {string} [userOptions.legendTitle=this.attr] - Legend title for the Legend.
+     * @param {boolean} [userOptions.showLoader=true] - Show loader when loading data.
+     * @param {boolean} [userOptions.useCustomMapService=false] - Use custom map service.
+     * @param {number} [userOptions.minPointSize=1.0] - Minimum point size.
+     * @param {number} [userOptions.maxPointSize=10.0] - Maximum point size.
+     * @param {boolean} [userOptions.sizeByClass=false] - Specify the size of the dots on a PSymbols Map using classes.
+     * @param {boolean} [userOptions.memorySaver=false] - Save memory on Dot Maps.
+     * @param {boolean} [userOptions.colorSchemeId=1] - The color scheme id to use.
+     * @param {Function} [userOptions.legendOnClickFunction] - Function to be called when the user clicks on a Legend class.
+     * @param {Function} [userOptions.mapOnClickFunction] - Function to be called when the user clicks on the Map (on a Feature).
+     * @param {number} [userOptions.alpha=0.8] - Alpha to be used in WebGL.
+     * @param {number} [userOptions.maxfeatures=Number.MAX_VALUE] - The max number of features to be displayed.
+     * @param {number} [userOptions.numberOfLegendItems=2] - The max number of features to be displayed.
      */
     constructor(userOptions) {
         /**
@@ -73,6 +86,8 @@ export class GisplayOptions {
          * @type {string} 
          */
         this.attr = userOptions.attr;
+        //TODO: Uncoment next line
+        //if(!this.attr) throw new Error(&quot;Attribute not defined in userOptions, please define one attribute to be mapped&quot;);
         /**
          * Array of colors to be used by the API. 
          * @type {string[]}
@@ -80,16 +95,16 @@ export class GisplayOptions {
         this.colorscheme = userOptions.colorScheme;
         /**
          * Number of classes to be used on the map Legend. This option should be used when the user wants the API
-         * to calculate the classes (aka ranges) using the given number.
+         * to calculate the classes (aka ranges) using the given number. Otherwise the API will calculate the appropriate number of classes to use.
          * @type{number}
          */
-        this.numberofclasses = userOptions.numberOfClasses;
+        this.numberOfClasses = userOptions.numberOfClasses;
         /**
          * Algorithm to be used by the API to calculate classes intervals. 
          * Available options are &apos;quantile&apos;, &apos;equidistant&apos;, &apos;k-means&apos;.
          * @type {string}
          */
-        this.algorithm = userOptions.algorithm || &apos;quantile&apos;;
+        this.classBreaksMethod = userOptions.classBreaksMethod || &apos;quantile&apos;;
         /**
          * Class intervals. If this is defined then numberOfClasses and classBreakMethod are ignored.
          * @type {number[]}
@@ -105,32 +120,123 @@ export class GisplayOptions {
          * @todo NOT USED? 
          * @type {string[]}
          */
-        this.showPropertiesOnClick = options.showPropertiesOnClick || null;
+        this.showPropertiesOnClick = userOptions.showPropertiesOnClick || null;
+        /**
+         * Whether or not to show the map Legend.
+         * @type {boolean}
+         */
+        this.showLegend = userOptions.showLegend || true;
+        //this.minuend = userOptions.minuend;
+        //this.subtrahend = userOptions.subtrahend;
+        /**
+         * The title to be used on the Legend. 
+         * @todo The 3rd option will never be called so it&apos;s uselless this.minuend Because this.attr is obligatory.
+         * @type {string}
+         */
+        this.legendTitle = userOptions.legendTitle || this.attr;//|| (`${this.minuend} - ${this.subtrahend}`);
+        /**
+         * Whether to show or not the loader when we the API is loading the needed data.
+         * @type {boolean}
+         */
+        this.showLoader = userOptions.showLoader || true;
+        /**
+         * True when the user wants to use another background map service than those who are supported by default by the API.
+         * If this is true then the user should send the custom map service when creating the new Map. 
+         * @type {boolean} 
+         */
+        this.useCustomMapService = userOptions.useCustomMapService || false;
+        /**
+         * The minimum size of the points to be drawn on the Map. Will be used on PSymbols and maybe on Dot Map/Heat Map.
+         * @type {number}
+         */
+        this.minPointSize = userOptions.minPointSize === undefined ? 1.0 : parseFloat(userOptions.minPointSize); //N preciso do if no PSymbols?
+        /**
+         * The maximum size of the points to be drawn on the Map. Will be used on PSymbols. The dot with highest value 
+         * on the features will have the size given by the user.
+         * @type {number}
+         */
+        this.maxPointSize = userOptions.maxPointSize === undefined ? 10.0 : parseFloat(userOptions.maxPointSize); //N preciso do if no PSymbols?
+        /**
+         * If the user wants to specify the size of the dots on a PSymbols Map using classes, this attribute should be true.
+         * @type {boolean}
+         */
+        this.sizeByClass = userOptions.sizeByClass || false;
+        /**
+         * If false each feature will have it&apos;s own WebGLBuffer, otherwise the geometry will be grouped creating one WebGLBuffer by
+         * Aesthetic class. As the name implies allows memory saving and with this improves performance in lower end devices. 
+         * Only Available/Relevant to Dot Maps.
+         * @type {boolean}
+         */
+        this.memorySaver = userOptions.memorySaver || false;
+        /**
+         * Allows the user to choose the color scheme id to be used to choose from the list of defaults color shemes availabe on the Map to be created.
+         * @type {number}
+         */
+        this.colorSchemeId = userOptions.colorSchemeId || 1;
+        /**
+         * Function to be called when the user clicks on a Legend class. This function should receive an object of type Aesthetic.
+         * @type {Function}
+         */
+        this.legendOnClickFunction = userOptions.legendOnClickFunction;
+        /**
+         * Function to be called when the user clicks on the Map (on a Feature). This function should receive an array, which are the Feature properties.
+         * @type {Function}
+         */
+        this.mapOnClickFunction = userOptions.mapOnClickFunction;
 
-
-
-
-
-
+        /** #####################       OTHER OPTIONS(Non Described on the Thesis draft)      ############################## */
         /**
          * Alpha to be used in WebGL.
          * 0 means fully transparent &lt;-&gt; 1 fully opaque.
          * @type {number}
          */
-        this.alpha = userOptions.alpha != undefined ? userOptions.alpha : 0.8;
+        this.alpha = userOptions.alpha || 0.8;
         /**
-         * 
+         * The max number of features to be displayed. If not given by the user then it is the maximum numnber allowed.
+         * Number.MAX_VALUE = 1.79E+308
+         * @type {number}
          */
-        this.dynamic = userOptions.memorySaver == undefined ? false : !userOptions.memorySaver;
-        this.maxfeatures = userOptions.maxFeatures;
+        this.maxfeatures = userOptions.maxFeatures || Number.MAX_VALUE;
+        /**
+         * The number of legend items. Used for PSymbols Map.
+         * @type {number}
+         */
+        this.numberOfLegendItems = userOptions.numberOfLegendItems || 2;
 
-        this.algorithm = userOptions.classBreaksMethod;
-        this.legendOnClickCall = userOptions.legendOnClickFunction;
-        this.mapOnClickCall = userOptions.mapOnClickFunction;
-        this.minuend = userOptions.minuend;
-        this.subtrahend = userOptions.subtrahend;
-        this.legendTitle = userOptions.legendTitle != undefined ? userOptions.legendTitle : (this.attr != undefined ? this.attr : `${this.minuend} - ${this.subtrahend}`);
-        this.numberOfLegendItems = userOptions.numberOfLegendItems != undefined ? userOptions.numberOfLegendItems : 2;
+        /** #####################       OTHER NON-USER DEFINED OPTIONS      ############################## */
+        /**
+         * If it is dynamic or not. It&apos;s the inverse of the memorySaver value.
+         * @type {boolean}
+         */
+        this.dynamic = !this.memorySaver;
+
+        //this.algorithm = userOptions.classBreaksMethod;
+        //this.legendOnClickCall = userOptions.legendOnClickFunction;
+        //this.mapOnClickCall = userOptions.mapOnClickFunction;
+        //this.minuend = userOptions.minuend;
+        //this.subtrahend = userOptions.subtrahend;
+        // this.legendTitle = userOptions.legendTitle != undefined ? userOptions.legendTitle : (this.attr != undefined ? this.attr : `${this.minuend} - ${this.subtrahend}`);
+        //this.numberOfLegendItems = userOptions.numberOfLegendItems != undefined ? userOptions.numberOfLegendItems : 2;
+
+        /** #####################       DEPRECATED ############################## */
+        /**
+         * Intensity of a heat map. Higher values of intensity means more red in the end color. Otherwise more green.
+         * @deprecated Not used ATM, should probably be used for Heat Maps.
+         * @type {number}
+         */
+        this.intensity = userOptions.intensity || 1.0;
+        /**
+         * The user defined position of the Legend over the map. Allowed positions tl, tr, bl, br.
+         * @type {string}
+         * @deprecated Currently not in use. Maybe implement later.
+         */
+        this.legendPosition = userOptions.legendPosition || &apos;br&apos;;
+        /**
+         * Number of decimal numbers to show on the numerical values of the Legend.
+         * @deprecated Currently not in use. Maybe implement later.
+         * @type {number}
+         */
+        this.legendNumberFormat = userOptions.legendNumberFormat || 1;
     }
 }</code></pre>
 

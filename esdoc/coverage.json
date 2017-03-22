@@ -1,7 +1,7 @@
 {
-  "coverage": "36.31%",
-  "expectCount": 201,
-  "actualCount": 73,
+  "coverage": "43.33%",
+  "expectCount": 210,
+  "actualCount": 91,
   "files": {
     "src/Gisplay/Aesthetic.js": {
       "expectCount": 17,
@@ -84,17 +84,9 @@
       "undocumentLines": []
     },
     "src/Gisplay/Maps/GisplayOptions.js": {
-      "expectCount": 18,
-      "actualCount": 11,
-      "undocumentLines": [
-        76,
-        80,
-        77,
-        73,
-        78,
-        81,
-        79
-      ]
+      "expectCount": 27,
+      "actualCount": 27,
+      "undocumentLines": []
     },
     "src/Gisplay/Legend.js": {
       "expectCount": 16,
@@ -107,19 +99,16 @@
         40,
         208,
         44,
-        273,
+        275,
         175,
-        289,
+        291,
         188
       ]
     },
     "src/Gisplay/Maps/Map2.js": {
       "expectCount": 7,
-      "actualCount": 5,
-      "undocumentLines": [
-        11,
-        19
-      ]
+      "actualCount": 7,
+      "undocumentLines": []
     },
     "src/Gisplay/Maps/Map.js": {
       "expectCount": 62,

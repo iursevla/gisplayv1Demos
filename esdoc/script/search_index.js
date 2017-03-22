@@ -1008,12 +1008,6 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
-    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#algorithm",
-    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-algorithm",
-    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#algorithm",
-    "member"
-  ],
-  [
     "src/gisplay/maps/gisplayoptions.js~gisplayoptions#alpha",
     "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-alpha",
     "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#alpha",
@@ -1029,6 +1023,18 @@ window.esdocSearchIndex = [
     "src/gisplay/maps/gisplayoptions.js~gisplayoptions#classbreaks",
     "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-classBreaks",
     "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#classBreaks",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#classbreaksmethod",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-classBreaksMethod",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#classBreaksMethod",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#colorschemeid",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-colorSchemeId",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#colorSchemeId",
     "member"
   ],
   [
@@ -1050,15 +1056,33 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#intensity",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-intensity",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#intensity",
+    "member"
+  ],
+  [
     "src/gisplay/maps/gisplayoptions.js~gisplayoptions#interactive",
     "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-interactive",
     "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#interactive",
     "member"
   ],
   [
-    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#legendonclickcall",
-    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-legendOnClickCall",
-    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#legendOnClickCall",
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#legendnumberformat",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-legendNumberFormat",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#legendNumberFormat",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#legendonclickfunction",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-legendOnClickFunction",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#legendOnClickFunction",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#legendposition",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-legendPosition",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#legendPosition",
     "member"
   ],
   [
@@ -1068,9 +1092,15 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#maponclickcall",
-    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-mapOnClickCall",
-    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#mapOnClickCall",
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#maponclickfunction",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-mapOnClickFunction",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#mapOnClickFunction",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#maxpointsize",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-maxPointSize",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#maxPointSize",
     "member"
   ],
   [
@@ -1080,9 +1110,21 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#minuend",
-    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-minuend",
-    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#minuend",
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#memorysaver",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-memorySaver",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#memorySaver",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#minpointsize",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-minPointSize",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#minPointSize",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#numberofclasses",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-numberOfClasses",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#numberOfClasses",
     "member"
   ],
   [
@@ -1092,9 +1134,15 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#numberofclasses",
-    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-numberofclasses",
-    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#numberofclasses",
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#showlegend",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-showLegend",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#showLegend",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#showloader",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-showLoader",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#showLoader",
     "member"
   ],
   [
@@ -1104,9 +1152,15 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#subtrahend",
-    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-subtrahend",
-    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#subtrahend",
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#sizebyclass",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-sizeByClass",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#sizeByClass",
+    "member"
+  ],
+  [
+    "src/gisplay/maps/gisplayoptions.js~gisplayoptions#usecustommapservice",
+    "class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html#instance-member-useCustomMapService",
+    "src/Gisplay/Maps/GisplayOptions.js~GisplayOptions#useCustomMapService",
     "member"
   ],
   [
@@ -1518,10 +1572,10 @@ window.esdocSearchIndex = [
     "member"
   ],
   [
-    "src/gisplay/maps/map2.js~map#options",
-    "class/src/Gisplay/Maps/Map2.js~Map.html#instance-member-options",
-    "src/Gisplay/Maps/Map2.js~Map#options",
-    "member"
+    "src/gisplay/maps/map2.js~map#showloader",
+    "class/src/Gisplay/Maps/Map2.js~Map.html#instance-method-showLoader",
+    "src/Gisplay/Maps/Map2.js~Map#showLoader",
+    "method"
   ],
   [
     "src/gisplay/maps/proportionalsymbolsmap.js",

@@ -314,9 +314,11 @@ export class Legend {
                     const end = Date.now();
                     window.console.log(`Tempo de processamento de filtragem pela legenda (segundos): ${(end - start) / 1000}`);
                 }
-                if (!e) var e = window.event;
+                if (!e)
+                    var e = window.event;
                 e.cancelBubble = true;
-                if (e.stopPropagation) e.stopPropagation();
+                if (e.stopPropagation)
+                    e.stopPropagation();
 
             };
             current.appendChild(colorDiv);

@@ -53,8 +53,8 @@
 <pre class="source-code line-number raw-source-code"><code class="prettyprint linenums" data-ice="content">/**
  * This file is the entry point for the Gisplay API
  */
-import { Gisplay } from &apos;./Gisplay/Gisplay&apos;
-import { GisplayOptions } from &apos;./Gisplay/GisplayOptions&apos;;
+import { Gisplay } from &apos;./Gisplay/Gisplay&apos;;
+import { GisplayOptions } from &apos;./Gisplay/Maps/GisplayOptions&apos;;
 
 module.exports = {
 
@@ -88,7 +88,7 @@ module.exports = {
             gisplay.makeChoropleth(window.map, data, options);
             console.log(&quot;tempo gisplay: &quot; + (Date.now() - datareadtimestamp) / 1000 + &quot; segundos&quot;);
             console.log(&quot;tempo total: &quot; + (Date.now() - time) / 1000 + &quot; segundos&quot;);
-        }
+        };
         reader.readAsText(document.getElementById(&quot;file&quot;).files[0]);
     },
 

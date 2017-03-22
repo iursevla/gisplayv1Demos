@@ -109,13 +109,14 @@ Each map has a group of functions available. There is only one map yet(maybe the
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Gisplay/Maps/Map2.js~Map.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(bgmap: <span>*</span>, geometry: <span>*</span>, options: <span>*</span>)</span>
+          <span data-ice="name"><span><a href="class/src/Gisplay/Maps/Map2.js~Map.html#instance-constructor-constructor">constructor</a></span></span><span data-ice="signature">(bgmap: <span><a href="class/src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper.html">BGMapWrapper</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, geometry: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON</a></span>, userOptions: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>)</span>
         </p>
       </div>
       <div>
         
         
-        
+        <div data-ice="description"><p>Map constructor</p>
+</div>
       </div>
     </td>
     <td>
@@ -149,7 +150,8 @@ Each map has a group of functions available. There is only one map yet(maybe the
       <div>
         
         
-        
+        <div data-ice="description"><p>All the options available in the API.</p>
+</div>
       </div>
     </td>
     <td>
@@ -170,40 +172,13 @@ Each map has a group of functions available. There is only one map yet(maybe the
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Gisplay/Maps/Map2.js~Map.html#instance-member-map">map</a></span></span><span data-ice="signature">: <span>*</span></span>
+          <span data-ice="name"><span><a href="class/src/Gisplay/Maps/Map2.js~Map.html#instance-member-map">map</a></span></span><span data-ice="signature">: <span><a href="class/src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper.html">BGMapWrapper</a></span></span>
         </p>
       </div>
       <div>
         
         
-        
-      </div>
-    </td>
-    <td>
-      
-      
-    </td>
-  </tr>
-<tr data-ice="target">
-    <td>
-      <span class="access" data-ice="access">public</span>
-      
-      
-      
-      <span class="override" data-ice="override"></span>
-    </td>
-    <td>
-      <div>
-        <p>
-          
-          
-          <span data-ice="name"><span><a href="class/src/Gisplay/Maps/Map2.js~Map.html#instance-member-options">options</a></span></span><span data-ice="signature">: <span><a href="class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html">GisplayOptions</a></span></span>
-        </p>
-      </div>
-      <div>
-        
-        
-        <div data-ice="description"><p>GisplayOptions to be used through the API.</p>
+        <div data-ice="description"><p>The background map to use.</p>
 </div>
       </div>
     </td>
@@ -260,7 +235,7 @@ Each map has a group of functions available. There is only one map yet(maybe the
         <p>
           
           
-          <span data-ice="name"><span><a href="class/src/Gisplay/Maps/Map2.js~Map.html#instance-method-loadOptions">loadOptions</a></span></span><span data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, bgmap: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>)</span>
+          <span data-ice="name"><span><a href="class/src/Gisplay/Maps/Map2.js~Map.html#instance-method-loadOptions">loadOptions</a></span></span><span data-ice="signature">(userOptions: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, bgmap: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>)</span>
         </p>
       </div>
       <div>
@@ -268,6 +243,34 @@ Each map has a group of functions available. There is only one map yet(maybe the
         
         <div data-ice="description"><p>This method loads user options, and for each option if it isn&apos;t provided by the user, then it uses
 the default one. 1st method to be called.</p>
+</div>
+      </div>
+    </td>
+    <td>
+      
+      
+    </td>
+  </tr>
+<tr data-ice="target">
+    <td>
+      <span class="access" data-ice="access">public</span>
+      
+      
+      
+      <span class="override" data-ice="override"></span>
+    </td>
+    <td>
+      <div>
+        <p>
+          
+          
+          <span data-ice="name"><span><a href="class/src/Gisplay/Maps/Map2.js~Map.html#instance-method-showLoader">showLoader</a></span></span><span data-ice="signature">()</span>
+        </p>
+      </div>
+      <div>
+        
+        
+        <div data-ice="description"><p>Calls the Background Map Wrapper to show the loader while the data is being processed.</p>
 </div>
       </div>
     </td>
@@ -294,18 +297,19 @@ the default one. 1st method to be called.</p>
     
     
     
-    <span data-ice="name">constructor</span><span data-ice="signature">(bgmap: <span>*</span>, geometry: <span>*</span>, options: <span>*</span>)</span>
+    <span data-ice="name">constructor</span><span data-ice="signature">(bgmap: <span><a href="class/src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper.html">BGMapWrapper</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, geometry: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON</a></span>, userOptions: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Gisplay/Maps/Map2.js.html#lineNumber11">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Gisplay/Maps/Map2.js.html#lineNumber17">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>Map constructor</p>
+</div>
 
   
 
@@ -319,21 +323,24 @@ the default one. 1st method to be called.</p>
     
     <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">bgmap</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="class/src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper.html">BGMapWrapper</a></span> | <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Background map</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
       <td data-ice="name" data-depth="0">geometry</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/JSON">JSON</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>Geometry read from the file.</p>
+</td>
     </tr>
 <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">options</td>
-      <td data-ice="type"><span>*</span></td>
+      <td data-ice="name" data-depth="0">userOptions</td>
+      <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
       <td data-ice="appendix"></td>
-      <td data-ice="description"></td>
+      <td data-ice="description"><p>The user defined options.</p>
+</td>
     </tr>
 </tbody>
   </table>
@@ -372,14 +379,15 @@ the default one. 1st method to be called.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Gisplay/Maps/Map2.js.html#lineNumber16">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Gisplay/Maps/Map2.js.html#lineNumber32">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
+  <div data-ice="description"><p>All the options available in the API.</p>
+</div>
 
   
 
@@ -411,61 +419,18 @@ the default one. 1st method to be called.</p>
     
     
     
-    <span data-ice="name">map</span><span data-ice="signature">: <span>*</span></span>
+    <span data-ice="name">map</span><span data-ice="signature">: <span><a href="class/src/Gisplay/Maps/BGMapWrapper.js~BGMapWrapper.html">BGMapWrapper</a></span></span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Gisplay/Maps/Map2.js.html#lineNumber19">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Gisplay/Maps/Map2.js.html#lineNumber37">source</a></span></span>
     </span>
   </h3>
 
   
   
   
-  
-
-  
-
-  <div data-ice="properties">
-</div>
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-
-  
-  
-</div>
-<div class="detail" data-ice="detail">
-  <h3 data-ice="anchor" id="instance-member-options">
-    <span class="access" data-ice="access">public</span>
-    
-    
-    
-    
-    
-    <span data-ice="name">options</span><span data-ice="signature">: <span><a href="class/src/Gisplay/Maps/GisplayOptions.js~GisplayOptions.html">GisplayOptions</a></span></span>
-    <span class="right-info">
-      
-      
-      <span data-ice="source"><span><a href="file/src/Gisplay/Maps/Map2.js.html#lineNumber38">source</a></span></span>
-    </span>
-  </h3>
-
-  
-  
-  
-  <div data-ice="description"><p>GisplayOptions to be used through the API.</p>
+  <div data-ice="description"><p>The background map to use.</p>
 </div>
 
   
@@ -505,7 +470,7 @@ the default one. 1st method to be called.</p>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Gisplay/Maps/Map2.js.html#lineNumber70">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Gisplay/Maps/Map2.js.html#lineNumber55">source</a></span></span>
     </span>
   </h3>
 
@@ -545,11 +510,11 @@ the default one. 1st method to be called.</p>
     
     
     
-    <span data-ice="name">loadOptions</span><span data-ice="signature">(options: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, bgmap: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>)</span>
+    <span data-ice="name">loadOptions</span><span data-ice="signature">(userOptions: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>, bgmap: <span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span>)</span>
     <span class="right-info">
       
       
-      <span data-ice="source"><span><a href="file/src/Gisplay/Maps/Map2.js.html#lineNumber33">source</a></span></span>
+      <span data-ice="source"><span><a href="file/src/Gisplay/Maps/Map2.js.html#lineNumber27">source</a></span></span>
     </span>
   </h3>
 
@@ -571,7 +536,7 @@ the default one. 1st method to be called.</p>
     <tbody>
     
     <tr data-ice="property" data-depth="0">
-      <td data-ice="name" data-depth="0">options</td>
+      <td data-ice="name" data-depth="0">userOptions</td>
       <td data-ice="type"><span><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object">Object</a></span></td>
       <td data-ice="appendix"></td>
       <td data-ice="description"><p>Options given by the user.</p>
@@ -587,6 +552,50 @@ the default one. 1st method to be called.</p>
 </tbody>
   </table>
 </div>
+</div>
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+
+  
+  
+</div>
+<div class="detail" data-ice="detail">
+  <h3 data-ice="anchor" id="instance-method-showLoader">
+    <span class="access" data-ice="access">public</span>
+    
+    
+    
+    
+    
+    <span data-ice="name">showLoader</span><span data-ice="signature">()</span>
+    <span class="right-info">
+      
+      
+      <span data-ice="source"><span><a href="file/src/Gisplay/Maps/Map2.js.html#lineNumber48">source</a></span></span>
+    </span>
+  </h3>
+
+  
+  
+  
+  <div data-ice="description"><p>Calls the Background Map Wrapper to show the loader while the data is being processed.</p>
+</div>
+
+  
+
+  <div data-ice="properties">
 </div>
 
   

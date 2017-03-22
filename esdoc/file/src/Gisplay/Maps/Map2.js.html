@@ -60,60 +60,45 @@ import { GisplayOptions } from &apos;./GisplayOptions&apos;;
  */
 export class Map {
 
-    constructor(bgmap, geometry, options) {
-        /**
-         * 
-         * @type {GisplayOptions}
-         */
-        this.gisplayOptions = new GisplayOptions(options);
-        
-        if (this.gisplayOptions.customMapService)
-            this.map = bgmap;
-        else
-            this.map = new BGMapWrapper(bgmap);
-
-        if (this.gisplayOptions.loader)
-            this.loader();
+    /**
+     * Map constructor
+     * @param {BGMapWrapper|Object} bgmap - Background map
+     * @param {JSON} geometry - Geometry read from the file.
+     * @param {Object} userOptions - The user defined options. 
+     */
+    constructor(bgmap, geometry, userOptions) {
+        console.log(&quot;Map constructor called -&gt; super()&quot;);
     }
 
     /**
      * This method loads user options, and for each option if it isn&apos;t provided by the user, then it uses
      * the default one. 1st method to be called.
-     * @param {Object} options - Options given by the user. 
+     * @param {Object} userOptions - Options given by the user. 
      * @param {Object} bgmap  - The background map provider.
      */
-    loadOptions(options, bgmap) {
+    loadOptions(userOptions, bgmap) {
         /**
-         * GisplayOptions to be used through the API.
+         * All the options available in the API.
          * @type {GisplayOptions}
          */
-        this.options = new GisplayOptions(options);
+        this.gisplayOptions = new GisplayOptions(userOptions);
+        /**
+         * The background map to use.
+         * @type {BGMapWrapper}
+         */
+        this.map = this.gisplayOptions.useCustomMapService ? bgmap : new BGMapWrapper(bgmap); 
+        /* if (this.gisplayOptions.customMapService) this.map = bgmap;
+         else this.map = new BGMapWrapper(bgmap);*/
 
-        let opts = this.gisplayOptions;
+        if (this.gisplayOptions.showLoader)
+            this.showLoader();
+    }
 
-        if (opts.customMapService)
-            this.map = bgmap;
-        else
-            this.map = new BGMapWrapper(bgmap);
-
-        if (opts.loader != false)
-            this.loader();
-
-        /*this.alpha = options.alpha != undefined ? options.alpha : 0.8;
-        this.interactive = options.interactive == undefined ? true : !options.interactive;
-        this.attr = options.attr;
-        this.dynamic = options.memorySaver == undefined ? false : !options.memorySaver;
-        this.maxfeatures = options.maxFeatures;
-        this.breaks = options.classBreaks;
-        this.colorscheme = options.colorScheme;
-        this.numberofclasses = options.numberOfClasses;
-        this.algorithm = options.classBreaksMethod;
-        this.legendOnClickCall = options.legendOnClickFunction;
-        this.mapOnClickCall = options.mapOnClickFunction;
-        this.minuend = options.minuend;
-        this.subtrahend = options.subtrahend;
-        this.legendTitle = options.legendTitle != undefined ? options.legendTitle : (this.attr != undefined ? this.attr : `${this.minuend} - ${this.subtrahend}`);
-        this.numberOfLegendItems = options.numberOfLegendItems != undefined ? options.numberOfLegendItems : 2;*/
+    /**
+   * Calls the Background Map Wrapper to show the loader while the data is being processed.
+   */
+    showLoader() {
+        this.map.shoLoader();
     }
 
     /**
