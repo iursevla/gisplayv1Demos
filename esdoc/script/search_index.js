@@ -1542,6 +1542,12 @@ window.esdocSearchIndex = [
     "file"
   ],
   [
+    "src/gisplay/maps/map2.js~map#bgmap",
+    "class/src/Gisplay/Maps/Map2.js~Map.html#instance-member-bgMap",
+    "src/Gisplay/Maps/Map2.js~Map#bgMap",
+    "member"
+  ],
+  [
     "src/gisplay/maps/map2.js~map#constructor",
     "class/src/Gisplay/Maps/Map2.js~Map.html#instance-constructor-constructor",
     "src/Gisplay/Maps/Map2.js~Map#constructor",
@@ -1564,12 +1570,6 @@ window.esdocSearchIndex = [
     "class/src/Gisplay/Maps/Map2.js~Map.html#instance-method-loadOptions",
     "src/Gisplay/Maps/Map2.js~Map#loadOptions",
     "method"
-  ],
-  [
-    "src/gisplay/maps/map2.js~map#map",
-    "class/src/Gisplay/Maps/Map2.js~Map.html#instance-member-map",
-    "src/Gisplay/Maps/Map2.js~Map#map",
-    "member"
   ],
   [
     "src/gisplay/maps/map2.js~map#showloader",

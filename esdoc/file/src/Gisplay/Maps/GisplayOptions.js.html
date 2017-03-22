@@ -78,7 +78,7 @@ export class GisplayOptions {
      * @param {Function} [userOptions.mapOnClickFunction] - Function to be called when the user clicks on the Map (on a Feature).
      * @param {number} [userOptions.alpha=0.8] - Alpha to be used in WebGL.
      * @param {number} [userOptions.maxfeatures=Number.MAX_VALUE] - The max number of features to be displayed.
-     * @param {number} [userOptions.numberOfLegendItems=2] - The max number of features to be displayed.
+     * @param {number} [userOptions.numberOfLegendItems=2] - The number of Legend items (Used on PSymbols Map).
      */
     constructor(userOptions) {
         /**
@@ -209,14 +209,6 @@ export class GisplayOptions {
          * @type {boolean}
          */
         this.dynamic = !this.memorySaver;
-
-        //this.algorithm = userOptions.classBreaksMethod;
-        //this.legendOnClickCall = userOptions.legendOnClickFunction;
-        //this.mapOnClickCall = userOptions.mapOnClickFunction;
-        //this.minuend = userOptions.minuend;
-        //this.subtrahend = userOptions.subtrahend;
-        // this.legendTitle = userOptions.legendTitle != undefined ? userOptions.legendTitle : (this.attr != undefined ? this.attr : `${this.minuend} - ${this.subtrahend}`);
-        //this.numberOfLegendItems = userOptions.numberOfLegendItems != undefined ? userOptions.numberOfLegendItems : 2;
 
         /** #####################       DEPRECATED ############################## */
         /**

@@ -105,11 +105,6 @@
         188
       ]
     },
-    "src/Gisplay/Maps/Map2.js": {
-      "expectCount": 7,
-      "actualCount": 7,
-      "undocumentLines": []
-    },
     "src/Gisplay/Maps/Map.js": {
       "expectCount": 62,
       "actualCount": 3,
@@ -174,6 +169,11 @@
         530,
         350
       ]
+    },
+    "src/Gisplay/Maps/Map2.js": {
+      "expectCount": 7,
+      "actualCount": 7,
+      "undocumentLines": []
     },
     "src/Gisplay/Maps/ProportionalSymbolsMap.js": {
       "expectCount": 15,

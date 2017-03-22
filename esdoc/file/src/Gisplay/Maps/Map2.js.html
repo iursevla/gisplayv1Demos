@@ -83,22 +83,20 @@ export class Map {
          */
         this.gisplayOptions = new GisplayOptions(userOptions);
         /**
-         * The background map to use.
+         * The background map to be used. This map will  be drawn over the background map.
          * @type {BGMapWrapper}
          */
-        this.map = this.gisplayOptions.useCustomMapService ? bgmap : new BGMapWrapper(bgmap); 
-        /* if (this.gisplayOptions.customMapService) this.map = bgmap;
-         else this.map = new BGMapWrapper(bgmap);*/
+        this.bgMap = this.gisplayOptions.useCustomMapService ? bgmap : new BGMapWrapper(bgmap); 
 
         if (this.gisplayOptions.showLoader)
             this.showLoader();
     }
 
     /**
-   * Calls the Background Map Wrapper to show the loader while the data is being processed.
-   */
+     * Calls the Background Map Wrapper to show the loader while the data is being processed.
+     */
     showLoader() {
-        this.map.shoLoader();
+        this.bgMap.showLoader(); //TODO: Create showLoader at BGMapWrapper class
     }
 
     /**
@@ -107,6 +105,8 @@ export class Map {
     draw() {
         throw new Error(&quot;Draw method not implemented.&quot;);
     }
+
+
 }</code></pre>
 
 </div>
