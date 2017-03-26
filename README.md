@@ -1,2 +1,2 @@
-# gisplayv2Demos
-Home for the gisplay v2 Demos.
+# gisplayv1Demos
+Home for the gisplay v1 Demos ported to ES6. 
